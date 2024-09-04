@@ -1,8 +1,8 @@
 # readycite
 
-Quotation errors are unfortunately common in the scientific literature ([Jergas and Baethge, 2015](https://doi.org/10.7717/peerj.1364); [Mogull, 2017](https://doi.org/10.1371/journal.pone.0184727)). This type of error occurs when a claim is not supported by the provided citation. The standard advice to avoid quotation errors is: "*Read before you cite*" ([Steel, 1996](https://doi.org/10.1093/bioinformatics/btae420); [Simkin and Roychowdhury, 2003](https://doi.org/10.25088/ComplexSystems.14.3.269)).
+Quotation errors are unfortunately common in the scientific literature ([Jergas and Baethge, 2015](https://doi.org/10.7717/peerj.1364); [Mogull, 2017](https://doi.org/10.1371/journal.pone.0184727)). This type of error occurs when a claim is not supported by the provided citation. The standard advice to avoid quotation errors is: "*Read before you cite*" ([Steel, 1996](https://doi.org/10.1016/S0140-6736\(05\)66108-9); [Simkin and Roychowdhury, 2003](https://www.complex-systems.com/issues/14-3/)).
 
-Human judgment (informed by actually reading the cited reference) is essential to prevent quotation errors. At the same time, machine learning is emerging as a useful method of claim verification. Automated detection of quotation errors would help writers, reviewers, editors, and publishers to improve the quality of the scientific record.
+Human judgment (informed by actually reading the cited reference) is essential to prevent quotation errors. At the same time, machine learning is emerging as a useful method of claim verification. Automatic detection of quotation errors would help writers, reviewers, editors, and publishers to improve the quality of the scientific record.
 
 The aim of this project is to engineer a machine learning system that identifies quotation errors in a source text. Given a manuscript together with the text of the cited references, the algorithm will produce a list of claims (i.e., sentences with a citation) and a classification of whether each claim is adequately supported by the citation.
 
@@ -10,9 +10,9 @@ This project will utilize techniques of natural language processing (NLP) togeth
 
 ## Training data
 
-Many studies of quotation accuracy have been published, but few provide the raw data required to train a model. These data should include the list of claims, citations, and human annotations of of citation accuracy. Datasets from the following studies will be used in training:
+Many studies of quotation accuracy have been published, but few provide the raw data required to train a model. These data should include the list of claims, citations, and human annotations of citation accuracy. Datasets from the following studies will be used in training:
 
-[Sarol et al., 2024](https://10.1093/bioinformatics/btae420): **Citation-Integrity** is a corpus based on citations to 100 highly-cited biomedical publications with full text available from the PubMed Central Open Access Subset. Citing articles were randomly selected from those that cite the reference article multiple times. According to the authors, "A total of 3063 citation instances corresponding 3420 cita­tion context sentences and 3791 evidence sentences were annotated". Their data and NLP model are available on [GitHub](https://github.com/ScienceNLP-Lab/Citation-Integrity/) and [Google Drive](https://drive.google.com/drive/u/0/folders/11b6Z8iv2FXObWmLaqfYzgUQsaL4QgTT2).
+[Sarol et al., 2024](https://doi.org/10.1093/bioinformatics/btae420): **Citation-Integrity** is a corpus based on citations to 100 highly-cited biomedical publications with full text available from the PubMed Central Open Access Subset. Citing articles were randomly selected from those that cite the reference article multiple times. According to the authors, "A total of 3063 citation instances corresponding 3420 cita­tion context sentences and 3791 evidence sentences were annotated". Their data and NLP model are available on [GitHub](https://github.com/ScienceNLP-Lab/Citation-Integrity/) and [Google Drive](https://drive.google.com/drive/u/0/folders/11b6Z8iv2FXObWmLaqfYzgUQsaL4QgTT2).
 
 [Smith and Cumberledge, 2020](https://doi.org/10.1098/rspa.2020.0538): Dataset of quotation accuracy in general science journals. Human annotations of 250 citations in *Science*, *Science Advances*, *PNAS*, *Nature Communications*, and *Nature*. Data are available at [AHU Digital Repository](http://hdl.handle.net/20.500.12521/8).
 
