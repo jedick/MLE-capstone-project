@@ -8,11 +8,12 @@ The aim of this project is to build a machine learning system that identifies qu
 
 The unique features of this project are:
 - Data variety: Training on multiple publicly available datasets.
-- Data generation: Annotation of citations in one or more articles for additional insight into the data generation process.
-- End-to-end scope: Not only *claim verification* using evidence sentences or abstracts from references, but also *evidence retrieval* to retrieve evidence sentences from full-text references.
-- Scaling up: The system will be built to scale up to large datasets, such as bioRxiv.
+- Data preprocessing: Not only *claim verification* using evidence sentences or abstracts from references, but also *evidence retrieval* to retrieve evidence sentences from full-text references.
+- Large scale: The system will be built to process massive datasets.
 
-## Defining the problem
+## Scope of the project
+
+![Data sources, tasks, goals, and tech for the three phases of the project](images/project_overview.png "Project Overview")
 
 The problem starts relatively simple, with claims and abstracts or evidence sentences that are used for *claim verification*. Abstracts are available in the **SciFact** corpus and evidence sentences are available in the **Citation-Integrity** corpus.
 
@@ -20,17 +21,19 @@ There are two reasons why we can't stop there:
 1. Using abstracts for claim verification is problematic. The authors of **SciFact** note that "evidence is found in the abstract in more than 60% of cases" ([Wadden et al., 2020](https://doi.org/10.18653/v1/2020.emnlp-main.609)), but this implies that evidence for many claims is not in the abstract. Likewise, [Lang (2023)](https://doi.org/10.3897/ese.2023.e94153) advises that “errors can come from citing [...] abstracts,  which often contain information different from that in the associated article.”
 2. Hand-picked lists of evidence sentences, which are available in **Citation-Integrity**, require considerable human effort.
 
-Automatic *evidence retrieval* from full-text documents reduces the need for human input, but it also makes the problem more complex. Taking 100 sentences in a journal article as a low estimate ([the median for papers in PubMed Central is closer to 166](https://quantifyinghealth.com/length-of-a-research-paper)), at least 150,090 sentences would need to be processed to verify the citations available in the datasets used here (**SciFact**: 100 × ca. 1,409 reference articles; **Citation-Integrity**: 100 × 100 reference articles).
+Therefore, this project is planned to have three phases:
 
-In both stages, the model will be trained using the same datasets consisting of human annotations of quotation accuracy.
+- Phase 1: Model training using preprocessed datasets. For this claim verification task, a variety of large and small datasets will be used for training.
+- Phase 2: Setting up a preprocessing pipeline for *evidence retrieval* from full-text documents. This is a more specific task concerned with quotation accuracy that will use PDFs of articles rather than the evidence sentences provided in the datasets.
+- Phase 3: Deployment and processing of massive datasets, such as bioRxiv.
 
 ## Training data
 
-The training data include the claims with citations, abstracts or evidence sentences hand-picked from reference articles (which in a later stage will be replaced with automatic evidence retrieval), and human annotations of quotation accuracy. The total number of annotated citation instances in both datasets is approximately 4,800.
+Following the procedure used in the MultiVerS paper ([Wadden et al., 2022](https://doi.org/10.18653/v1/2022.findings-naacl.6)), the **Fever** [dataset](https://fever.ai/dataset/fever.html) with 185,445 claims derived from Wikipedia will be used for pretraining a claim verification model. Then, the following two datasets targeting quotation accuracy will be used to finetune the model. 
 
 [Wadden et al. (2020)](https://doi.org/10.18653/v1/2020.emnlp-main.609): “The **SciFact** dataset consists of 1,409 scientific claims verified against a corpus of 5,183 abstracts.” The claims were written by experts, paired with abstracts, and annotated with labels and rationales.
 
-[Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420): **Citation-Integrity** is a corpus based on citations to 100 highly-cited biomedical publications with full text available from the PubMed Central Open Access Subset. Citing articles were randomly selected from those that cite the reference article multiple times. According to the authors, “A total of 3063 citation instances corresponding 3420 cita­tion context sentences and 3791 evidence sentences were annotated”.
+[Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420): **Citation-Integrity** is a corpus based on citations to 100 highly-cited biomedical publications with full text available from the PubMed Central Open Access Subset. Citing articles were randomly selected from those that cite the reference article multiple times. According to the authors, “A total of 3063 citation instances corresponding 3420 citation context sentences and 3791 evidence sentences were annotated”.
 
 See [data/README.md](data/README.md) for source URLs and other information.
 
