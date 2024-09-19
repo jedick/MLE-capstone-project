@@ -23,17 +23,19 @@ There are two reasons why we can't stop there:
 
 Therefore, this project is planned to have three phases:
 
-- Phase 1: Model training using preprocessed datasets. For this claim verification task, a variety of large and small datasets will be used for training.
-- Phase 2: Setting up a preprocessing pipeline for *evidence retrieval* from full-text documents. This is a more specific task concerned with quotation accuracy that will use PDFs of articles rather than the evidence sentences provided in the datasets.
+- Phase 1: Model training using datasets with abstracts or hand-picked evidence sentences from references.
+- Phase 2: Setting up a preprocessing pipeline for evidence retrieval from full-text references.
 - Phase 3: Deployment and processing of massive datasets, such as bioRxiv.
 
 ## Training data
 
-Following the procedure used in the MultiVerS paper ([Wadden et al., 2022](https://doi.org/10.18653/v1/2022.findings-naacl.6)), the **Fever** [dataset](https://fever.ai/dataset/fever.html) with 185,445 claims derived from Wikipedia will be used for pretraining a claim verification model. Then, the following two datasets targeting quotation accuracy will be used to finetune the model. 
+The [**Fever** dataset](https://fever.ai/dataset/fever.html) with 185,445 claims derived from Wikipedia will be used for pretraining a claim verification model. Then, the following two datasets targeting quotation accuracy will be used to finetune the model. 
 
 [Wadden et al. (2020)](https://doi.org/10.18653/v1/2020.emnlp-main.609): “The **SciFact** dataset consists of 1,409 scientific claims verified against a corpus of 5,183 abstracts.” The claims were written by experts, paired with abstracts, and annotated with labels and rationales.
 
 [Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420): **Citation-Integrity** is a corpus based on citations to 100 highly-cited biomedical publications with full text available from the PubMed Central Open Access Subset. Citing articles were randomly selected from those that cite the reference article multiple times. According to the authors, “A total of 3063 citation instances corresponding 3420 citation context sentences and 3791 evidence sentences were annotated”.
+
+Although there is some overlap with the datasets used for the MultiVerS model described by [Wadden et al. (2022)](https://doi.org/10.18653/v1/2022.findings-naacl.6), this addition of the **Citation-Integrity** dataset improves the representation of quotation accuracy in this data collection.
 
 See [data/README.md](data/README.md) for source URLs and other information.
 
