@@ -2,7 +2,7 @@
 
 Quotation errors are unfortunately common in the scientific literature ([Jergas and Baethge, 2015](https://doi.org/10.7717/peerj.1364); [Mogull, 2017](https://doi.org/10.1371/journal.pone.0184727)). This type of error occurs when a claim is not supported by the provided citation. The standard advice to avoid quotation errors is: “*Read before you cite*” ([Steel, 1996](https://doi.org/10.1016/S0140-6736\(05\)66108-9); [Simkin and Roychowdhury, 2003](https://www.complex-systems.com/issues/14-3/)).
 
-Human judgment is essential to prevent quotation errors. At the same time, automatic detection of quotation errors would help writers, reviewers, and editors to improve the quality of the scientific record.
+Human judgment is essential to prevent quotation errors. At the same time, automatic detection of quotation errors would help writers, reviewers, and editors to improve the quality of scientific publications.
 
 The aim of this project is to build a machine learning system that identifies quotation errors in a source text. Given a manuscript together with the text of the cited references, the algorithm will produce a list of claims (i.e., sentences with a citation) and a prediction of whether each claim is adequately supported by the citation.
 
