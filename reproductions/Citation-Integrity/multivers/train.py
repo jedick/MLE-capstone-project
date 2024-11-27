@@ -100,11 +100,11 @@ def construct_trainer():
     args = parse_args()
     args.num_training_instances = get_num_training_instances(args)
 
-    # print(args)
-    # args_dict = vars(args)
-    # del args_dict["tpu_cores"]
-    # with open("train_configs.json", "w") as json_file:
-    #     json.dump(args_dict, json_file)
+    print(args)
+    args_dict = vars(args)
+    del args_dict["tpu_cores"]
+    with open("train_configs.json", "w") as json_file:
+        json.dump(args_dict, json_file)
 
     # Create the model.
     if args.starting_checkpoint is not None:

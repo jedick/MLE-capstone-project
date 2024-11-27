@@ -10,10 +10,10 @@ import subprocess
 def get_model(name):
     url = f"https://scifact.s3.us-west-2.amazonaws.com/longchecker/latest/checkpoints/{name}.ckpt"
     out_file = f"checkpoints/{name}.ckpt"
-    cmd = ["wget", "-O", out_file, url]
+    # Add -c to continue interrupted download 2024-11-26 jmd
+    cmd = ["wget", "-cO", out_file, url]
 
-    if not pathlib.Path(out_file).exists():
-        subprocess.run(cmd)
+    subprocess.run(cmd)
 
 
 def main():

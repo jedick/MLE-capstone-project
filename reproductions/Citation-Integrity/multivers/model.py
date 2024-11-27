@@ -12,10 +12,10 @@ from transformers.optimization import get_linear_schedule_with_warmup
 from pytorch_lightning.core.decorators import auto_move_data
 import numpy as np
 from transformers import AutoTokenizer
-from bertviz import head_view
+#from bertviz import head_view
 
 from transformers import LongformerModel
-from focal_loss.focal_loss import FocalLoss
+#from focal_loss.focal_loss import FocalLoss
 from allennlp_nn_util import batched_index_select
 from allennlp_feedforward import FeedForward
 from metrics import SciFactMetrics

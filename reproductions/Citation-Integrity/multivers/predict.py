@@ -49,7 +49,7 @@ def get_predictions(args):
         if hasattr(hparams, k):
             setattr(hparams, k, v)
 
-    with open("../train_configs.json", "r") as json_file:
+    with open("train_configs.json", "r") as json_file:
         deserialized_dict = json.load(json_file)
     args_as_namespace = argparse.Namespace(**deserialized_dict)
     data_module = dm.ConcatDataModule(args_as_namespace)
