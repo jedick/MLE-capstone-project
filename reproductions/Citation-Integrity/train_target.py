@@ -1,10 +1,9 @@
 """
 Kickoff training on target datasets.
-
+# sbatch -p GPU-shared -N 1 --gpus=v100-16:1 -t 15:00:00 run_training.sh
 NOTE: Training right now doesn't work with multiple GPU's and DDP. This is known issue;
 see for instance https://lightning.ai/forums/t/gradient-checkpointing-ddp-nan/398/7.
 """
-
 
 import argparse
 import subprocess
@@ -21,17 +20,18 @@ def get_args():
     parser.add_argument(
         "--dataset",
         type=str,
-        help="The dataset to train on.",
+    help="The dataset to train on.",
         choices=["scifact_20", "scifact_10", "healthver", "covidfact"],
     )
     parser.add_argument("--gpus", type=str, help=help_gpus)
+    parser.add_argument("--debug", action="store_true")
+
     parser.add_argument(
         "--gradient_checkpointing",
         action="store_true",
         help="Turning this on decreases memory usage at the cost of slower training",
     )
     args = parser.parse_args()
-
     return args
 
 
@@ -48,7 +48,8 @@ def main():
     if n_gpus not in [1, 2, 4, 8]:
         raise ValueError("The number of GPU's must be a power of 2.")
 
-    epochs = 20
+    # epochs = 20
+    epochs = 5
     workers_per_gpu = 4  # Number of CPU's per gpu.
     effective_batch_size = 8  # Desired effective batch size.
     accumulate_grad_batches = effective_batch_size // n_gpus
@@ -62,7 +63,7 @@ def main():
         "--datasets",
         args.dataset,
         "--starting_checkpoint",
-        "checkpoints/fever_sci.ckpt",
+        "checkpoints/healthver.ckpt",
         "--experiment_name",
         args.dataset,
         "--num_workers",
@@ -87,6 +88,9 @@ def main():
         "longformer-large-science",
         "--no_reweight_labels",
     ]
+
+    if args.debug == True:
+        cmd.append("--debug")
 
     # If training on more than 1 gpu, use DDP accelerator.
     if n_gpus > 1:

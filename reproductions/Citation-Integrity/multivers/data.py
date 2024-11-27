@@ -25,6 +25,9 @@ def get_tokenizer():
         "title_end": "</|title|>",
         "sentence_sep": "<|sent|>",
         "paragraph_sep": "<|par|>",
+        "citation_start": "<|cit|>",
+        "multi_citation_start": "<|multi_cit|>",
+        "other_citation_start": "<|other_cit|>",
     }
     tokenizer.add_tokens(list(ADDITIONAL_TOKENS.values()))
     return tokenizer
@@ -36,8 +39,9 @@ class MultiVerSDataset(Dataset):
     def __init__(self, entries, tokenizer):
         self.entries = entries
         self.tokenizer = tokenizer
-        self.label_lookup = {"REFUTES": 0, "NOT ENOUGH INFO": 1, "SUPPORTS": 2}
-
+        self.rationale_mask = 1.0
+        self.label_lookup = {"NOT_ACCURATE": 0, "NOT ENOUGH INFO": 1, "ACCURATE": 2}
+        
     def __len__(self):
         return len(self.entries)
 
@@ -47,12 +51,13 @@ class MultiVerSDataset(Dataset):
         res = {
             "claim_id": entry["claim_id"],
             "abstract_id": entry["abstract_id"],
+            "rationale_mask": self.rationale_mask,
         }
         tensorized = self._tensorize(**entry["to_tensorize"])
         res.update(tensorized)
         return res
 
-    def _tensorize(self, claim, sentences, title=None):
+    def _tensorize(self, claim, sentences, label, rationales, title=None):
         """
         This function does the meat of the preprocessing work. The arguments
         should be self-explanatory, except `title`. We have abstract titles for
@@ -68,9 +73,33 @@ class MultiVerSDataset(Dataset):
             )
 
         # Get the label and the rationales.
+        label_code = self.label_lookup[label]
+        if label_code != self.label_lookup["NOT ENOUGH INFO"]:
+            # If it's an evidence document, get the label and create an
+            # evidence vector for the sentences. Each evidence set gets
+            # its own digit, starting from 1.
+            rationale_sets = torch.zeros(len(sentences), dtype=torch.int64)
+            rationale_id = 1
+            for this_rationale in rationales:
+                rationale_sets[torch.tensor(this_rationale)] = rationale_id
+                rationale_id += 1
+        else:
+            # If it's not an evidence document, the label is `NEI` and
+            # none of the sentences are evidence.
+            rationale_sets = torch.zeros(len(sentences), dtype=torch.int64)
+
+        rationale = (rationale_sets > 0).int()
+        # `rationale_sets` has a separate int ID for each rationale.
+        rationale_sets = rationale_sets.tolist()
+        # `rationale` is a 0 / 1 indicator for whether it's a rationale.
+        rationale = rationale.tolist()
+
+        
         return {
             "tokenized": tokenized,
             "abstract_sent_idx": abstract_sent_idx,
+            "rationale": rationale,
+            "rationale_sets": rationale_sets,
         }
 
     def _tokenize(self, claim, sentences, title):
@@ -181,9 +210,9 @@ class MultiVerSReader:
         self.corpus_file = predict_args.corpus_file
         # Basically, I used two different sets of labels. This was dumb, but
         # doing this mapping fixes it.
-        self.label_map = {"SUPPORT": "SUPPORTS",
-                          "CONTRADICT": "REFUTES"}
-
+        # self.label_map = {"SUPPORT": "SUPPORTS",
+        #                   "CONTRADICT": "REFUTES"}
+    
     def get_data(self, tokenizer):
         """
         Get the data for the relevant fold.
@@ -195,18 +224,25 @@ class MultiVerSReader:
         claims = util.load_jsonl(self.data_file)
 
         for claim in claims:
-            for doc_id in claim["doc_ids"]:
+            for doc_id in claim["cited_doc_ids"]:
                 candidate_doc = corpus_dict[doc_id]
+                print(candidate_doc)
+                print(claim)
+                exit(0)
+                rationales = claim["evidence"]
                 to_tensorize = {"claim": claim["claim"],
                                 "sentences": candidate_doc["abstract"],
-                                "title": candidate_doc["title"]}
+                                "label": claim["label"],
+                                "rationales": rationales,
+                                "title": candidate_doc["title"],
+                                }
+                
                 entry = {"claim_id": claim["id"],
                          "abstract_id": candidate_doc["doc_id"],
                          "to_tensorize": to_tensorize}
                 res.append(entry)
 
         return MultiVerSDataset(res, tokenizer)
-
 
 class Collator:
     def __init__(self, tokenizer):
@@ -217,11 +253,14 @@ class Collator:
         # NOTE(dwadden) Set missing values to 0 for `abstract_sent_idx` instead
         # of -1 because it's going to be used as an input to
         # `batched_index_select` later on in the modeling code.
+        print(batch)
+        exit(0)
         res = {
             "claim_id": self._collate_scalar(batch, "claim_id"),
             "abstract_id": self._collate_scalar(batch, "abstract_id"),
             "tokenized": self._pad_tokenized([x["tokenized"] for x in batch]),
             "abstract_sent_idx": self._pad_field(batch, "abstract_sent_idx", 0),
+            "rationale": self._pad_field(batch, "rationale", -1),
         }
 
         # Make sure the keys match.

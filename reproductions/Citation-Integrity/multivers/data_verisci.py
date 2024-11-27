@@ -2,7 +2,7 @@
 Data-handling code copied over from `verisci/evaluate/lib/data.py` of the VeriSci
 library from the original SciFact release: https://github.com/allenai/scifact.
 """
-
+ 
 from enum import Enum
 import json
 import copy
@@ -19,16 +19,15 @@ def load_jsonl(fname):
 
 
 class Label(Enum):
-    SUPPORTS = 2
+    ACCURATE = 2
     NEI = 1
-    REFUTES = 0
-
+    NOT_ACCURATE = 0
 
 def make_label(label_str, allow_NEI=True):
     lookup = {
-        "SUPPORT": Label.SUPPORTS,
+        "ACCURATE": Label.ACCURATE,
         "NOT_ENOUGH_INFO": Label.NEI,
-        "CONTRADICT": Label.REFUTES,
+        "NOT_ACCURATE": Label.NOT_ACCURATE,
     }
 
     res = lookup[label_str]
@@ -98,7 +97,6 @@ class Corpus:
         for entry in corpus:
             doc = Document(entry["doc_id"], entry["title"], entry["abstract"])
             documents.append(doc)
-
         return cls(documents)
 
 
@@ -130,13 +128,16 @@ class GoldDataset:
         for this_example in examples:
             entry = copy.deepcopy(this_example)
             entry["release"] = self
+            
             entry["cited_docs"] = [
                 self.corpus.get_document(doc) for doc in entry["cited_doc_ids"]
             ]
+            
             assert len(entry["cited_docs"]) == len(entry["cited_doc_ids"])
             del entry["cited_doc_ids"]
             res.append(Claim(**entry))
-
+            # print(res)
+            # exit(0)
         res = sorted(res, key=lambda x: x.id)
         return res
 
@@ -178,8 +179,10 @@ class Claim:
         # label. So, we store the label at the "abstract level" rather than the
         # "rationale level".
         res = {}
+        # print(evidence_dict)
+        
         for doc_id, rationales in evidence_dict.items():
-            doc_id = int(doc_id)
+            doc_id = int(doc_id) 
             labels = [x["label"] for x in rationales]
             if len(set(labels)) > 1:
                 msg = (
@@ -189,9 +192,11 @@ class Claim:
                 raise Exception(msg)
             label = make_label(labels[0])
             rationale_sents = [x["sentences"] for x in rationales]
+            # print(rationale_sents)
             this_abstract = EvidenceAbstract(doc_id, label, rationale_sents)
+            # print(this_abstract)
             res[doc_id] = this_abstract
-
+        # exit(0)
         return res
 
     def __repr__(self):

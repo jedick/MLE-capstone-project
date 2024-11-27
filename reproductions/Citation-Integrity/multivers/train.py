@@ -1,18 +1,20 @@
+import sys
 import datetime
 import pytz
 import time
 from pathlib import Path
 import subprocess
-
+from data_verisci import Label
+import json
 import pytorch_lightning as pl
 from pytorch_lightning import loggers as pl_loggers
 from pytorch_lightning import callbacks
 from pytorch_lightning.plugins import DDPPlugin
 import argparse
-
+import torch
 import data_train as dm
 from model import MultiVerSModel
-
+print("import successfully!")
 
 def get_timestamp():
     "Store a timestamp for when training started."
@@ -84,22 +86,45 @@ def parse_args():
     parser = pl.Trainer.add_argparse_args(parser)
 
     args = parser.parse_args()
+    # validate parser
+    assert args.num_labels == len(Label)
     args.timestamp = get_timestamp()
     args.git_checksum = get_checksum()
     return args
 
 
-def main():
+def construct_trainer():
+    
     pl.seed_everything(76)
 
     args = parse_args()
     args.num_training_instances = get_num_training_instances(args)
+
+    # print(args)
+    # args_dict = vars(args)
+    # del args_dict["tpu_cores"]
+    # with open("train_configs.json", "w") as json_file:
+    #     json.dump(args_dict, json_file)
 
     # Create the model.
     if args.starting_checkpoint is not None:
         # Initialize weights from checkpoint and override hyperparams.
         model = MultiVerSModel.load_from_checkpoint(
             args.starting_checkpoint, hparams=args)
+        hparams = args
+        encoder = model.encoder
+        if hparams.starting_checkpoint == "checkpoints/healthver.ckpt":
+            target_embed_size = encoder.embeddings.word_embeddings.weight.size()[0]
+            # add additional tokens
+            num_new_tokens = 3
+            encoder.resize_token_embeddings(target_embed_size + num_new_tokens) # add 3 additional tokens with randomized initial embeddings. 
+            # # Create tunable embeddings for new tokens
+            embedding_dim = encoder.config.hidden_size
+            new_tokens_embeddings = torch.randn(num_new_tokens, embedding_dim, requires_grad=True)
+        
+            # # Assign the new embeddings to the end of the "word_embeddings" matrix
+            encoder.embeddings.word_embeddings.weight[-num_new_tokens:].data = new_tokens_embeddings
+        # print(encoder.embeddings.word_embeddings.weight.size())
     else:
         # Initialize from scratch.
         model = MultiVerSModel(args)
@@ -116,9 +141,9 @@ def main():
         save_dir=save_dir, name=name, version=version)
     loggers = [tb_logger, csv_logger]
 
-    # Checkpointing.
+    # Checkpointing. currently saving top 20, so all the checkpoint
     checkpoint_callback = callbacks.ModelCheckpoint(
-        monitor=args.monitor, mode="max", save_top_k=1, save_last=True,
+        monitor=args.monitor, mode="max", save_top_k=20, save_last=True,
         dirpath=checkpoint_dir)
     lr_callback = callbacks.LearningRateMonitor(logging_interval="step")
     gpu_callback = callbacks.GPUStatsMonitor()
@@ -135,13 +160,16 @@ def main():
     trainer = pl.Trainer.from_argparse_args(
         args, callbacks=trainer_callbacks, logger=loggers, plugins=plugins)
 
+    return trainer, model, data_module, args
+
+def main():
+    trainer, model, data_module, args = construct_trainer()
     # If asked to scale the batch size, tune instead of fitting.
     if args.auto_scale_batch_size:
         print("Scaling batch size.")
         trainer.tune(model, datamodule=data_module)
     else:
         trainer.fit(model, datamodule=data_module)
-
 
 if __name__ == "__main__":
     main()

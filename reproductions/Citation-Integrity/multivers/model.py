@@ -1,3 +1,4 @@
+import sys
 from argparse import ArgumentParser
 import pytorch_lightning as pl
 from pytorch_lightning.utilities.parsing import lightning_getattr
@@ -9,14 +10,19 @@ from torch.nn import functional as F
 import transformers
 from transformers.optimization import get_linear_schedule_with_warmup
 from pytorch_lightning.core.decorators import auto_move_data
+import numpy as np
+from transformers import AutoTokenizer
+from bertviz import head_view
 
 from transformers import LongformerModel
-
+from focal_loss.focal_loss import FocalLoss
 from allennlp_nn_util import batched_index_select
 from allennlp_feedforward import FeedForward
 from metrics import SciFactMetrics
-
+import pandas as pd
 import util
+
+IF_TRAIN = True
 
 
 def masked_binary_cross_entropy_with_logits(input, target, weight, rationale_mask):
@@ -85,7 +91,6 @@ class MultiVerSModel(pl.LightningModule):
         self.encoder_name = hparams.encoder_name
         self.encoder = self._get_encoder(hparams)
         self.dropout = nn.Dropout(self.encoder.config.hidden_dropout_prob)
-
         # Final output layers.
         hidden_size = self.encoder.config.hidden_size
         activations = [nn.GELU(), nn.Identity()]
@@ -97,7 +102,7 @@ class MultiVerSModel(pl.LightningModule):
             activations=activations,
             dropout=dropouts)
         self.rationale_classifier = FeedForward(
-            input_dim=2 * hidden_size,
+            input_dim=hidden_size*2,
             num_layers=2,
             hidden_dims=[hidden_size, 1],
             activations=activations,
@@ -126,7 +131,7 @@ class MultiVerSModel(pl.LightningModule):
         parser = ArgumentParser(parents=[parent_parser], add_help=False)
         parser.add_argument("--encoder_name", type=str, default="allenai/longformer-base-4096")
         parser.add_argument("--label_weight", type=float, default=1.0)
-        parser.add_argument("--rationale_weight", type=float, default=15.0)
+        parser.add_argument("--rationale_weight", type=float, default=0.0)
         parser.add_argument("--num_labels", type=int, default=3)
         parser.add_argument("--gradient_checkpointing", action="store_true")
         parser.add_argument("--lr", type=float, default=5e-5)
@@ -147,8 +152,9 @@ class MultiVerSModel(pl.LightningModule):
         starting_encoder_name = "allenai/longformer-large-4096"
         encoder = LongformerModel.from_pretrained(
             starting_encoder_name,
-            gradient_checkpointing=hparams.gradient_checkpointing)
-
+            gradient_checkpointing=hparams.gradient_checkpointing,
+            output_attentions = True)
+        
         orig_state_dict = encoder.state_dict()
         checkpoint_prefixed = torch.load(util.get_longformer_science_checkpoint())
 
@@ -174,9 +180,44 @@ class MultiVerSModel(pl.LightningModule):
         encoder.resize_token_embeddings(target_embed_size)
         encoder.load_state_dict(new_state_dict)
 
+        if hparams.starting_checkpoint != "checkpoints/healthver.ckpt" or IF_TRAIN == False:
+            print(f"hparams currently is {hparams.starting_checkpoint}")
+            # add additional tokens
+            num_new_tokens = 3
+            encoder.resize_token_embeddings(target_embed_size + num_new_tokens) # add 3 additional tokens with randomized initial embeddings. 
+            # # Create tunable embeddings for new tokens
+            embedding_dim = encoder.config.hidden_size
+            new_tokens_embeddings = torch.randn(num_new_tokens, embedding_dim, requires_grad=True)
+        
+            # # Assign the new embeddings to the end of the "word_embeddings" matrix
+            encoder.embeddings.word_embeddings.weight[-num_new_tokens:].data = new_tokens_embeddings
+            # print(target_embed_size = encoder.embeddings.word_embeddings.weight.size()[0])
         return encoder
 
-    def forward(self, tokenized, abstract_sent_idx):
+
+    def select_rationale_sent_pooled_rep(self, sentence_states, boolean_tensor_mask):
+        """
+        sentence_states: tensor size [batch_size, sequence_length, hidden_size]
+        boolean_tensor_mask: tensor size [batch_size, sequence_length]
+        target size: batch_size, 1, hidden_size
+        """
+        empty_tensor = None
+        assert torch.any(torch.isnan(sentence_states)) == False
+        assert torch.any(torch.isnan(boolean_tensor_mask)) == False
+        assert torch.any(boolean_tensor_mask) == True
+        
+        for i in range(sentence_states.size()[0]):
+            curr_sample = sentence_states[i,boolean_tensor_mask[i] , :] # [sequence_length, hidden_size]
+            curr_sample_avg = torch.mean(curr_sample, dim=0).unsqueeze(dim=0) # [1, hidden_size]
+            
+            if empty_tensor is None:
+                empty_tensor = curr_sample_avg
+            else:
+                empty_tensor = torch.cat((empty_tensor, curr_sample_avg), dim=0)
+
+        return empty_tensor # batch_size, hidden_size
+
+    def forward(self, tokenized, abstract_sent_idx, rationale_sents, claim_sent_idx):
         """
         Run the forward pass. Encode the inputs and return softmax values for
         the labels and the rationale sentences.
@@ -185,7 +226,7 @@ class MultiVerSModel(pl.LightningModule):
         used to represent each sentence in the abstract.
         """
         # Encode.
-        encoded = self.encoder(**tokenized)
+        encoded = self.encoder(**tokenized, output_attentions=True)
 
         # Make label predictions.
         pooled_output = self.dropout(encoded.pooler_output)
@@ -225,28 +266,25 @@ class MultiVerSModel(pl.LightningModule):
         predicted_rationales = (rationale_probs >= self.rationale_threshold).to(torch.int64)
 
         return {"label_logits": label_logits,
-                "rationale_logits": rationale_logits,
-                "label_probs": label_probs,
-                "rationale_probs": rationale_probs,
-                "predicted_labels": predicted_labels,
-                "predicted_rationales": predicted_rationales}
+                        "rationale_logits": rationale_logits,
+                        "label_probs": label_probs,
+                        "rationale_probs": rationale_probs,
+                        "predicted_labels": predicted_labels,
+                        "predicted_rationales": predicted_rationales}
 
     def training_step(self, batch, batch_idx):
-        "Multi-task loss on a batch of inputs."
-        res = self(batch["tokenized"], batch["abstract_sent_idx"])
-
+        res = self(batch["tokenized"], batch["abstract_sent_idx"], batch["rationale"], batch["claim_sent_idx"])
         # Loss for label prediction.
         label_loss = F.cross_entropy(
-            res["label_logits"], batch["label"], reduction="none")
+                res["label_logits"], batch["label"], reduction="none")
         # Take weighted average of per-sample losses.
         label_loss = (batch["weight"] * label_loss).sum()
 
         # Loss for rationale selection.
         rationale_loss = masked_binary_cross_entropy_with_logits(
-            res["rationale_logits"], batch["rationale"], batch["weight"],
-            batch["rationale_mask"])
+                res["rationale_logits"], batch["rationale"], batch["weight"],
+                batch["rationale_mask"])
 
-        # Loss is a weighted sum of the two components.
         loss = self.label_weight * label_loss + self.rationale_weight * rationale_loss
 
         # Invoke metrics.
@@ -259,7 +297,7 @@ class MultiVerSModel(pl.LightningModule):
         return loss
 
     def validation_step(self, batch, batch_idx):
-        pred = self(batch["tokenized"], batch["abstract_sent_idx"])
+        pred = self(batch["tokenized"], batch["abstract_sent_idx"], batch["rationale"], batch["claim_sent_idx"])
         self._invoke_metrics(pred, batch, "valid")
 
     def validation_epoch_end(self, outs):
@@ -270,7 +308,7 @@ class MultiVerSModel(pl.LightningModule):
         self._log_metrics("valid")
 
     def test_step(self, batch, batch_idx):
-        pred = self(batch["tokenized"], batch["abstract_sent_idx"])
+        pred = self(batch["tokenized"], batch["abstract_sent_idx"], batch["rationale"], batch["claim_sent_idx"])
         self._invoke_metrics(pred, batch, "test")
 
     def test_epoch_end(self, outs):
@@ -333,10 +371,9 @@ class MultiVerSModel(pl.LightningModule):
             optimizer, num_warmup_steps=warmup_steps, num_training_steps=num_steps)
 
         lr_dict = {"scheduler": scheduler,
-                   "interval": "step"}
+                     "interval": "step"}
         res = {"optimizer": optimizer,
-               "lr_scheduler": lr_dict}
-
+                 "lr_scheduler": lr_dict}
         return res
 
     @auto_move_data
@@ -346,7 +383,7 @@ class MultiVerSModel(pl.LightningModule):
         """
         # Run forward pass.
         with torch.no_grad():
-            output = self(batch["tokenized"], batch["abstract_sent_idx"])
+            output = self(batch["tokenized"], batch["abstract_sent_idx"], batch["rationale"], batch["claim_sent_idx"])
 
         return self.decode(output, batch, force_rationale)
 
@@ -357,10 +394,10 @@ class MultiVerSModel(pl.LightningModule):
         the output of the forward pass.
         """
         # Mapping from ints to labels.
-        label_lookup = {0: "CONTRADICT",
+        label_lookup = {0: "NOT_ACCURATE",
                         1: "NEI",
-                        2: "SUPPORT"}
-
+                        2: "ACCURATE"}
+    
         # Get predicted rationales, only keeping eligible sentences.
         instances = util.unbatch(batch, ignore=["tokenized"])
         output_unbatched = util.unbatch(output)
