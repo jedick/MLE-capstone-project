@@ -28,6 +28,9 @@ def make_label(label_str, allow_NEI=True):
         "ACCURATE": Label.ACCURATE,
         "NOT_ENOUGH_INFO": Label.NEI,
         "NOT_ACCURATE": Label.NOT_ACCURATE,
+        # To handle SciFact dataset 20241128 jmd
+        "SUPPORT": Label.ACCURATE,
+        "CONTRADICT": Label.NOT_ACCURATE,
     }
 
     res = lookup[label_str]

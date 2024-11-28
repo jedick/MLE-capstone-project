@@ -21,7 +21,7 @@ def get_args():
         "--dataset",
         type=str,
     help="The dataset to train on.",
-        choices=["scifact_20", "scifact_10", "healthver", "covidfact"],
+        choices=["citint", "scifact_20", "scifact_10", "scifact", "healthver", "covidfact"],
     )
     parser.add_argument("--gpus", type=str, help=help_gpus)
     parser.add_argument("--debug", action="store_true")
