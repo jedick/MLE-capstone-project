@@ -57,7 +57,7 @@ def main():
 
     cmd = [
         "python",
-        "multivers/train.py",
+        "src/train.py",
         "--result_dir",
         "checkpoints_user",
         "--datasets",
