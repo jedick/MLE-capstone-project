@@ -49,7 +49,7 @@ def main():
         raise ValueError("The number of GPU's must be a power of 2.")
 
     # epochs = 20
-    epochs = 5
+    epochs = 20
     workers_per_gpu = 4  # Number of CPU's per gpu.
     effective_batch_size = 8  # Desired effective batch size.
     accumulate_grad_batches = effective_batch_size // n_gpus

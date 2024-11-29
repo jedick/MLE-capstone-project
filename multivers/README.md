@@ -7,11 +7,6 @@ This model is modified from [Citation-Integrity](https://github.com/ScienceNLP-L
 - See [this commit](https://github.com/jedick/readycite/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf#diff-8e6dbc89855517e16e9eda8a378fb0a168e4b9296690f014c48e374b4709b2f1R30) for the differences between MultiVerS and CitationIntegrity. CitationIntegrity adds three tokens (`<|cit|>`, `<|multi_cit|>`, `<|other_cit|>`) and changes the number of epochs from 20 to 5.
 
 These notes were written by Jeffrey Dick in November 2024.
-The main changes I made are listed below:
-
-- Use names for the Citation-Integrity (`citint`) and original SciFact (`scifact`) datasets.
-- In `src/data_train.py`, revert `val_dataloader` to use the `"val"` instead of `"test"` set.
-- In `src/data_verisci.py`, handle SUPPORT and CONTRADICT labels from the SciFact dataset.
 
 ### Training data
 
@@ -38,7 +33,7 @@ conda install --file requirements.txt -c conda-forge
 
 Notes:
 
-- Commented bertviz and FocalLoss imports from multivers/model.py
+- Commented bertviz and FocalLoss imports from src/model.py
 - Minimized list of packages in requirements.txt and renamed torch to pytorch
 - Use -c conda forge to avoid this error: PackagesNotFoundError: The following packages are not available from current channels
 
@@ -87,11 +82,34 @@ CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python train_target.py --dat
 Make predictions - takes about 1.5 minutes.
 
 ```
-python multivers/predict.py \
+python src/predict.py \
   --checkpoint_path=checkpoints/last.ckpt \
   --input_file=data_train/target/citint/claims_test.jsonl \
   --corpus_file=data_train/target/citint/corpus.jsonl \
   --output_file=predictions.jsonl
 ```
 
+### Train the model on SciFact
+
+Takes about 1.5 hours for 5 epochs.
+
+```
+CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python train_target.py --dataset scifact --gpus=1 --gradient_checkpointing > ./output.txt 2>&1
+```
+
+Note: this is the original SciFact dataset.
+Use `scifact_10` or `scifact_20` for the datasets with negative sampling.
+
+### Change log
+
+Modifications made by JMD:
+
+- [cf8461](https://github.com/jedick/readycite/commit/cf846148c39557c45d99e2fcbb3409adea4fede3) 2024-11-28
+    - Use names for the Citation-Integrity (`citint`) and original SciFact (`scifact`) datasets.
+    - In `src/data_verisci.py`, handle SUPPORT and CONTRADICT labels from the SciFact dataset.
+    - In `src/data_train.py`, revert `val_dataloader` to use the `"val"` instead of `"test"` set.
+- [e10022](https://github.com/jedick/readycite/commit/e10022ecc4a24646708f6dd81e40f20208d62860) 2024-11-27
+    - Update `requirements.txt` and imports.
+- [13ebe7](https://github.com/jedick/readycite/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf) 2024-11-27
+    - Commit Citation-Integrity codebase [277152](https://github.com/ScienceNLP-Lab/Citation-Integrity/commit/277152f9dfe3873455220f4cd15269474ab15617) to show diffs from MultiVerS [a6ce03](https://github.com/dwadden/multivers/commit/a6ce033f0e17ae38c1f102eae1ee4ca213fbbe2e).
 
