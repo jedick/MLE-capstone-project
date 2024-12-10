@@ -1,4 +1,6 @@
-# 📚 ReadyCite: AI-Driven Fact Checking for Scientific Citations
+# 📚 ReadyCite
+
+***AI-Driven Fact Checking for Scientific Citations***
 
 ## 🎯 Project Overview
 

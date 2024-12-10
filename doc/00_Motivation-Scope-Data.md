@@ -52,11 +52,3 @@ See [data/README.md](data/README.md) for source URLs and other information.
 ## Keywords
 
 Quotation accuracy, Quotation error, Citation accuracy, Citation bias, Citation distortion, Citation integrity, Misattribution, Miscitation
-
-## History
-
-The content above was formerly the README.md for the project (Nov. 26 - Dec. 10, 2024).
-The new README.md was created with Claude Haiku (Explanatory style) using the following prompt:
-
-> Please compose a README.md for the GitHub repository for the ReadyCite project. Include an appealing but accurate heading and a concise description of the project's features. Include other sections (e.g. data, roadmap, frameworks) at your discretion. Use emojis to enhance keywords and section headings. Refer to the attached files for details. Attached Files: `00_Motivation-Scope-Data.md`,  `01_Project-Proposal.md`, and `02_Reproduction-of-Citation-Integrity.ipynb`
-
