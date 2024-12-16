@@ -327,6 +327,7 @@ class SciFactReader(FactCheckingReader):
         corpus_file = self.data_dir / "corpus.jsonl"
         data_file = claims_dir / f"claims_{fold_name}.jsonl"
         ds = GoldDataset(corpus_file, data_file)
+        print("GoldDataset constructed!")
 
         for i, claim in enumerate(ds.claims):
             # Only read 10 if we're doing a fast dev run.
@@ -370,6 +371,14 @@ class SciFactReader(FactCheckingReader):
         return SciFactDataset(res, tokenizer, self.name, self.rationale_mask)
 
 
+class SciFact0Reader(SciFactReader):
+    "SciFact train data with no negative sampling."
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.data_dir = self.data_root / "target/scifact"
+
+
 class SciFact10Reader(SciFactReader):
     "SciFact train data with 10 negative samples per positive."
 
@@ -406,6 +415,17 @@ class CovidFactReader(SciFactReader):
         super().__init__(*args, **kwargs)
         self.data_dir = self.data_root / "target/covidfact"
         self.name = "CovidFact"
+
+
+class CitIntReader(SciFactReader):
+    """
+    CitInt is formatted the same as SciFact.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.data_dir = self.data_root / "target/citint"
+        self.name = "CitInt"
 
 
 class ExternalReader(FactCheckingReader):
@@ -505,8 +525,10 @@ class ConcatDataModule(LightningDataModule):
         self.reader_lookup = {
             "scifact_20": SciFact20Reader,
             "scifact_10": SciFact10Reader,
+            "scifact": SciFact0Reader,
             "healthver": HealthVerReader,
             "covidfact": CovidFactReader,
+            "citint": CitIntReader,
             "fever": FEVERReader,
             "pubmedqa": PubMedQAReader,
             "evidence_inference": EvidenceInferenceReader,
@@ -517,13 +539,14 @@ class ConcatDataModule(LightningDataModule):
             "SciFact": hparams.scifact_weight,
             "HealthVer": hparams.healthver_weight,
             "CovidFact": hparams.covidfact_weight,
+            "CitInt": hparams.citint_weight,
             "FEVER": hparams.fever_weight,
             "PubMedQA": hparams.pubmedqa_weight,
             "EvidenceInference": hparams.evidence_inference_weight,
         }
 
         # Datasets with a test set
-        self.datasets_with_test = ["scifact", "healthver", "covidfact"]
+        self.datasets_with_test = ["citint", "scifact", "scifact_20", "scifact_10", "healthver", "covidfact"]
 
         self.dataset_names = hparams.datasets.split(",")
         for name in self.dataset_names:
@@ -551,7 +574,7 @@ class ConcatDataModule(LightningDataModule):
         data_dir: The data root directory. Defaults to env variable if not found.
         """
         parser = ArgumentParser(parents=[parent_parser], add_help=False)
-        parser.add_argument("--num_workers", type=int, default=1)
+        parser.add_argument("--num_workers", type=int, default=4)
         parser.add_argument("--train_batch_size", type=int, default=1)
         parser.add_argument("--eval_batch_size", type=int, default=2)
         parser.add_argument("--data_dir", type=str, default=None)
@@ -564,6 +587,7 @@ class ConcatDataModule(LightningDataModule):
         parser.add_argument("--scifact_weight", type=float, default=1.0)
         parser.add_argument("--healthver_weight", type=float, default=1.0)
         parser.add_argument("--covidfact_weight", type=float, default=1.0)
+        parser.add_argument("--citint_weight", type=float, default=1.0)
         parser.add_argument("--fever_weight", type=float, default=1.0)
         parser.add_argument("--pubmedqa_weight", type=float, default=1.0)
         parser.add_argument("--evidence_inference_weight", type=float, default=1.0)

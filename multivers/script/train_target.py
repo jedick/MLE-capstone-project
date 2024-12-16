@@ -22,16 +22,17 @@ def get_args():
         "--dataset",
         type=str,
         help="The dataset to train on.",
-        choices=["scifact_20", "scifact_10", "healthver", "covidfact"],
+        choices=["citint", "scifact_20", "scifact_10", "scifact", "healthver", "covidfact"],
     )
     parser.add_argument("--gpus", type=str, help=help_gpus)
+    parser.add_argument("--debug", action="store_true")
+
     parser.add_argument(
         "--gradient_checkpointing",
         action="store_true",
         help="Turning this on decreases memory usage at the cost of slower training",
     )
     args = parser.parse_args()
-
     return args
 
 
@@ -48,7 +49,7 @@ def main():
     if n_gpus not in [1, 2, 4, 8]:
         raise ValueError("The number of GPU's must be a power of 2.")
 
-    epochs = 20
+    epochs = 5
     workers_per_gpu = 4  # Number of CPU's per gpu.
     effective_batch_size = 8  # Desired effective batch size.
     accumulate_grad_batches = effective_batch_size // n_gpus
@@ -56,7 +57,7 @@ def main():
 
     cmd = [
         "python",
-        "multivers/train.py",
+        "src/train.py",
         "--result_dir",
         "checkpoints_user",
         "--datasets",
@@ -87,6 +88,9 @@ def main():
         "longformer-large-science",
         "--no_reweight_labels",
     ]
+
+    if args.debug == True:
+        cmd.append("--debug")
 
     # If training on more than 1 gpu, use DDP accelerator.
     if n_gpus > 1:
