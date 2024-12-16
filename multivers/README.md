@@ -1,112 +1,117 @@
-# The MultiVerS model
+# Setup notes
 
-This is the repository for the MultiVerS model for scientific claim verification, described in the NAACL Findings 2022 paper [MultiVerS: Improving scientific claim verification with weak supervision and full-document context](https://arxiv.org/abs/2112.01640).
+This model is modified from from [MultiVerS](https://github.com/dwadden/multivers).
+Some changes are ported from [Citation-Integrity](https://github.com/ScienceNLP-Lab/Citation-Integrity).
 
-MultiVers was formerly known as LongChecker. It's the exact same model; we just changed the name to emphasize different aspects of the modeling approach. I'm still in the process of changing the filenames within this repo.
+- See [README_multiverse.md](README_multiverse.md) for the original MultiVerS README.
+- See [README_Citation-Integrity.md](README_Citation-Integrity.md) for the original Citation-Integrity README.
 
-We provide data, model checkpoints, training and inference code for models trained on three scientific claim verification datasets: [SciFact](https://github.com/allenai/scifact), [CovidFact](https://github.com/asaakyan/covidfact), and [HealthVer](https://github.com/sarrouti/HealthVer) (see below for details).  While the SciFact test set is not public, predictions made using the SciFact checkpoint will reproduce the results in the preprint and on the [SciFact leaderboard](https://leaderboard.allenai.org/scifact/submissions/public).
 
-**Update (January 2023)**: Code and data to [train](doc/training.md) the models are now available. Apologies for the delay.
+These notes were written by Jeffrey Dick in 2024.
 
-**Update (May 2022)**: Apologies for the delay in getting the training code up. I will make sure that it is available by the time the work is presented at NAACL 2022, if not sooner.
+### Training data
 
-**Disclaimer**: This software is intended to be used as a research protype, and its outputs shouldn't be used to inform any medical decisions.
+See `data` directory in the root this repo for training files.
+Put `*.jsonl` files in:
 
-## Outline
+- `data_train/target/citint` for Citation-Integrity ([2024 paper](https://doi.org/10.1093/bioinformatics/btae420)). Note: these are not the files in the Citation-Integrity [`data` directory](https://github.com/ScienceNLP-Lab/Citation-Integrity/tree/main/Data) but were downloaded from [Google Drive](https://drive.google.com/drive/u/0/folders/11b6Z8iv2FXObWmLaqfYzgUQsaL4QgTT2?q=parent:11b6Z8iv2FXObWmLaqfYzgUQsaL4QgTT2).
+- `data_train/target/scifact_10` for SciFact (10 negative samples per positive - [2022 paper](https://arxiv.org/abs/2210.13777))
+- `data_train/target/scifact_20` for SciFact (20 negative samples per positive - [2021 paper](https://arxiv.org/abs/2112.01640))
+- `data_train/target/scifact` for SciFact (original version - [2020 paper](https://arxiv.org/abs/2004.14974))
 
-- [Setup](#setup)
-- [Running inference](#running-inference)
-- [Model checkpoints](#model-checkpoints)
-- [Evaluating predictions](#evaluating-predictions)
-- [Making predictions for new datasets](#making-predictions-for-new-datasets)
-- [Model training](#model-training)
-- [GPT-3 baseline](#gpt-3-baseline)
+### Setup conda environment with working Python version
 
-## Setup
-
-We recommend setting up a Conda environment:
-
-```bash
-conda create --name multivers python=3.8 conda-build
+```
+conda create -n multivers python=3.8
+conda activate multivers
 ```
 
-Then, install required packages:
+### Install required packages for MultiVerS
 
-```bash
-pip install -r requirements.txt
+```
+conda install --file requirements.txt -c conda-forge
 ```
 
-Next, call `conda develop .` from the root of this repository.
+Notes:
 
-Then, download the Longformer checkpoint from which all the fact-checking models are finetuned by doing
+- Minimized list of packages in requirements.txt and renamed torch to pytorch
+- Use -c conda-forge to avoid this error: PackagesNotFoundError: The following packages are not available from current channels
 
-```bash
-python script/get_checkpoint.py longformer_large_science
+
+### Install the CUDA flavor of PyTorch
+
+Run `nvidia-smi` to check CUDA version of the GPU.
+Then run this command from the [PyTorch website](https://pytorch.org/get-started/previous-versions/#v171):
+
+```
+conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
 ```
 
-## Running inference
+Note: run this *after* installing packages from requirements.txt to avoid error with pandas import (ValueError: numpy.dtype size changed, may indicate binary incompatibility. Expected 96 from C header, got 88 from PyObject).
 
-- First, download the processed versions of the data by running `bash script/get_data.sh`. This will download the CovidFact, HealthVer, and SciFact datasets into the `data` directory.
-- Then, download the model checkpoint you'd like to make predictions with using
+### Download checkpoints
 
-  ```bash
-  python script/get_checkpoint.py [checkpoint_name]
-  ```
+MultiVerS start training from the `fever_sci` checkpoint.
+Citation-Integrity starts training from the `healthver` checkpoint.
+Note: I modified the wget command in `get_checkpoint.py` to continue interrupted downloads.
 
-  Available models are listed in [model checkpoints](#model-checkpoints) section.
-- Make predictions using the convenience wrapper script [script/predict.sh](script/predict.sh). This script accepts a dataset name as an argument, and makes predictions using the correct inputs files and model checkpoints for that dataset. For instance, to make predictions on the SciFact test set using the version of MultiVerS trained on Scifact, do:
-
-  ```bash
-  bash script/predict.sh scifact
-  ```
-
-- For more control over the models and datasets used for prediction, you can use [multivers/predict.py](multivers/predict.py).
-
-## Model checkpoints
-
-The following model checkpoints are available. You can download them using `script/get_checkpoint.sh`.
-
-- `fever`: MultiVerS trained on [FEVER](https://fever.ai/).
-- `fever_sci`: MultiVerS trained on FEVER, plus two weakly-supervised scientific datasets: [PubMedQA](https://pubmedqa.github.io/) and [Evidence Inference](https://evidence-inference.ebm-nlp.com/).
-- `covidfact`: Finetuned on [CovidFact](https://github.com/asaakyan/covidfact), starting from the `fever_sci` checkpoint.
-- `healthver`: Finetuned on [HealthVer](https://github.com/sarrouti/HealthVer).
-- `scifact`: Finetuned on [SciFact](https://github.com/allenai/scifact).
-- `longformer_large_science`: [Longformer](https://github.com/allenai/longformer) pre-trained on a corpus of scientific documents. This model has not been trained on any fact-checking data; it's the starting point for all other models.
-
-You can also download all models by passing `all` to `get_checkpoint.sh`.
-
-## Evaluating predictions
-
-The SciFact test set is private, but the test sets for HealthVer and CovidFact are included in the data download. To evaluate model predictions, use the [scifact-evaluator](https://github.com/allenai/scifact-evaluator) code. Clone the repo, then use the [evaluation script](https://github.com/allenai/scifact-evaluator/blob/master/evaluator/eval.py) located at `evaluator/eval.py`. This script accepts two files:
-
-1. Predictions, as output by `multivers/predict.py`
-2. Gold labels, which are included in the data download.
-
-It will evaluate the predictions with respect to gold and save metrics to a file. See the evaluation script for more details.
-
-## Making predictions for new datasets
-
-You should be able to use one of the MultiVers checkpoints to make predictions for new data. First, you'll need to write a script to convert your dataset to the format described in [data.md](doc/data.md). Then, choose which model you'd like to use. If you don't know which one is best, we'd suggest:
-
-- `fever` for Wikipedia or general text.
-- `healthver` for claims specifically about COVID-19.
-- `scifact` for biomedical claims generally.
-
-Once you've got your model and dataset chosen, you can make predictions as follows:
-
-```bash
-    python multivers/predict.py \
-        --checkpoint_path=checkpoints/[model_name].ckpt \
-        --input_file=[path_to_your_claims] \
-        --corpus_file=[path_to_your_corpus] \
-        --output_file=[output_path]
+```
+python script/get_checkpoint.py fever_sci
+python script/get_checkpoint.py healthver
 ```
 
-## Model training
+### Download transformers
 
-Code is now available to train MultiVerS. See [training.md](doc/training.md) for details.
+Running the training script will automatically download transformers from huggingface.
+Sometimes getting an error, just try again (ValueError: Connection error, and we cannot find the requested files in the cached path. Please try again or make sure your Internet connection is on).
 
+```
+python script/train_target.py --dataset citint --gpus=1
+```
 
-## GPT-3 baseline
+### Train the model and make predictions
 
-I've added some code to do very un-optimized few-shot prediction using GPT-3. To run it, do `bash script/predict_gpt3.sh`. For info on the prompt used and the performance achieved, see [gpt3_baseline.md](doc/gpt3_baseline.md).
+This takes about 3 hours for 5 epochs.
+Results are saved in `checkpoints_user`; use last.ckpt for the predictions.
+See [David Wadden's notes about training](https://github.com/dwadden/multivers/blob/main/doc/training.md).
+
+```
+CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python script/train_target.py --dataset citint --gpus=1 --gradient_checkpointing
+```
+
+Make predictions - takes about 1.5 minutes.
+NOTE: This requires the `train_configs.json` file generated by the training to be present in the current directory.
+
+```
+python src/predict.py \
+  --checkpoint_path=checkpoints/last.ckpt \
+  --input_file=data_train/target/citint/claims_test.jsonl \
+  --corpus_file=data_train/target/citint/corpus.jsonl \
+  --output_file=predictions.jsonl
+```
+
+### Train the model on SciFact
+
+Takes about 1.5 hours for 5 epochs.
+
+```
+CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python script/train_target.py --dataset scifact --gpus=1 --gradient_checkpointing
+```
+
+Note: `scifact` is the original SciFact dataset.
+Use `scifact_10` or `scifact_20` for the datasets with negative sampling.
+
+### Change log
+
+Modifications made by JMD:
+
+- [[3e6935](https://github.com/jedick/ReadyCite/commit/3e69357ba6da88f9eea85e13f86cf9e7077811bd)] 2024-12-16 Commit MultiVerS codebase followed by these changes:
+	- Update `requirements.txt` with minimal list of packages
+	- `num_epochs` changed from 20 to 5
+	- Add support for Citation-Integrity (`citint`) and original SciFact (`scifact`) datasets
+	- Normalize labels in datasets (`SUPPORT`, `REFUTE`, `NEI`)
+- [[13ebe7](https://github.com/jedick/ReadyCite/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] 2024-11-27 Commit Citation-Integrity codebase (source: [277152](https://github.com/ScienceNLP-Lab/Citation-Integrity/commit/277152f9dfe3873455220f4cd15269474ab15617)) to show diffs from MultiVerS (source: [a6ce03](https://github.com/dwadden/multivers/commit/a6ce033f0e17ae38c1f102eae1ee4ca213fbbe2e)). Some changes in CitationIntegrity are:
+	- Changes the number of epochs for training from 20 to 5
+	- Adds three tokens (`<|cit|>`, `<|multi_cit|>`, `<|other_cit|>`) 
+	- Has `"test"` rather than `"val"` in `val_dataloader` 
+	- Changes `rationale_weight` from 15 to 0.

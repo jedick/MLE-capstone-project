@@ -191,7 +191,7 @@ class MultiVerSReader:
         claims = util.load_jsonl(self.data_file)
 
         for claim in claims:
-            for doc_id in claim["doc_ids"]:
+            for doc_id in claim["cited_doc_ids"]:
                 candidate_doc = corpus_dict[doc_id]
                 to_tensorize = {"claim": claim["claim"],
                                 "sentences": candidate_doc["abstract"],
