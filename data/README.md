@@ -1,7 +1,7 @@
 # Training data
 
 Note: The directories should be copied or linked to the appropriate location for training.
-For example, link `citint` to `../reproductions/data_train/target/citint` to train with the Citation-Integrity dataset.
+For example, link `citint` to `../multivers/data_train/target/citint` to train with the Citation-Integrity dataset.
 
 ## scifact
 

@@ -3,7 +3,7 @@ Module to handle training data.
 
 If you're just doing inference, look at `data.py` instead of this file.
 """
-from collections import Counter
+
 import os
 import pathlib
 import torch
@@ -14,7 +14,7 @@ import pandas as pd
 import numpy as np
 from torch.utils.data.dataset import ConcatDataset
 import random
-import json
+
 from pytorch_lightning import LightningDataModule
 
 from data_verisci import GoldDataset
@@ -29,6 +29,7 @@ def get_tokenizer(hparams):
     if hparams.encoder_name != "longformer-large-science":
         tokenizer = AutoTokenizer.from_pretrained(hparams.encoder_name)
         return tokenizer
+
     # Otherwise, add some extra tokens.
     tokenizer = AutoTokenizer.from_pretrained("allenai/longformer-large-4096")
     ADDITIONAL_TOKENS = {
@@ -42,9 +43,6 @@ def get_tokenizer(hparams):
         "title_end": "</|title|>",
         "sentence_sep": "<|sent|>",
         "paragraph_sep": "<|par|>",
-        "citation_start": "<|cit|>",
-        "multi_citation_start": "<|multi_cit|>",
-        "other_citation_start": "<|other_cit|>",
     }
     tokenizer.add_tokens(list(ADDITIONAL_TOKENS.values()))
     return tokenizer
@@ -58,8 +56,6 @@ class SciFactCollator:
         self.tokenizer = tokenizer
 
     def __call__(self, batch):
-        # it is called when an instance of SciFactCollator is invoked as a function.
-        # # Create an instance of SciFactCollator: collator = SciFactCollator()
         "Collate all the data together into padded batch tensors."
         # NOTE(dwadden) Set missing values to 0 for `abstract_sent_idx` instead
         # of -1 because it's going to be used as an input to
@@ -76,20 +72,15 @@ class SciFactCollator:
             "rationale_sets": self._pad_field(batch, "rationale_sets", -1),
             "weight": self._collate_scalar(batch, "weight"),
             "rationale_mask": self._collate_scalar(batch, "rationale_mask"),
-            "claim_sent_idx": self._collate_scalar(batch, "claim_sent_idx"),
         }
         # Make sure the keys match.
         assert res.keys() == batch[0].keys()
-
         return res
 
     @staticmethod
     def _collate_scalar(batch, field):
         "Collate scalars by concatting."
-        if field == 'abstract_id':
-            return torch.tensor([int(x[field]) for x in batch])
-        else:
-            return torch.tensor([x[field] for x in batch])
+        return torch.tensor([x[field] for x in batch])
 
     def _pad_tokenized(self, tokenized):
         """
@@ -120,7 +111,6 @@ class SciFactCollator:
         for entry in xxs:
             to_append = [pad_value] * (max_length - len(entry))
             padded = entry + to_append
-            
             res.append(padded)
 
         return torch.tensor(res)
@@ -137,7 +127,8 @@ class SciFactDataset(Dataset):
         self.tokenizer = tokenizer
         self.dataset_name = dataset_name
         self.rationale_mask = rationale_mask
-        self.label_lookup = {"NOT_ACCURATE": 0, "NOT ENOUGH INFO": 1, "ACCURATE": 2}
+        self.label_lookup = {"REFUTES": 0, "NOT ENOUGH INFO": 1, "SUPPORTS": 2}
+
     def __len__(self):
         return len(self.entries)
 
@@ -153,11 +144,7 @@ class SciFactDataset(Dataset):
             "rationale_mask": self.rationale_mask,
         }
         tensorized = self._tensorize(**entry["to_tensorize"])
-
-        if len(tensorized) != 0:
-            res.update(tensorized)
-        else:
-            print("remove it")
+        res.update(tensorized)
         return res
 
     def _tensorize(self, claim, sentences, label, rationales, title=None):
@@ -170,9 +157,8 @@ class SciFactDataset(Dataset):
             tokenized, abstract_sent_idx = self._tokenize_roberta(
                 claim, sentences, title
             )
-            exit(0)
         else:
-            tokenized, abstract_sent_idx, claim_sent_idx  = self._tokenize_longformer(
+            tokenized, abstract_sent_idx = self._tokenize_longformer(
                 claim, sentences, title
             )
 
@@ -187,52 +173,37 @@ class SciFactDataset(Dataset):
             for this_rationale in rationales:
                 rationale_sets[torch.tensor(this_rationale)] = rationale_id
                 rationale_id += 1
-            print(rationales, claim)
         else:
             # If it's not an evidence document, the label is `NEI` and
             # none of the sentences are evidence.
             rationale_sets = torch.zeros(len(sentences), dtype=torch.int64)
-            print(rationales, claim)
 
         rationale = (rationale_sets > 0).int()
         # `rationale_sets` has a separate int ID for each rationale.
         rationale_sets = rationale_sets.tolist()
         # `rationale` is a 0 / 1 indicator for whether it's a rationale.
         rationale = rationale.tolist()
-        
-        if tokenized is None and abstract_sent_idx is None:
-            print("remove! this")
-            return {}
-        
-        
+
         return {
             "tokenized": tokenized,
             "abstract_sent_idx": abstract_sent_idx,
             "label": label_code,
             "rationale": rationale,
             "rationale_sets": rationale_sets,
-            "claim_sent_idx": claim_sent_idx,
         }
 
     def _tokenize_longformer(self, claim, sentences, title):
         cited_text = self.tokenizer.eos_token.join(sentences)
-
         if title is not None:
             cited_text = title + self.tokenizer.eos_token + cited_text
         tokenized = self.tokenizer(claim + self.tokenizer.eos_token + cited_text)
-
-        if len(tokenized["input_ids"]) > 4096:
-            print("input id > 4096!")
-            return None, None
-        
         tokenized["global_attention_mask"] = self._get_global_attention_mask(tokenized)
         abstract_sent_idx = self._get_abstract_sent_tokens(tokenized, title)
-        claim_sent_idx = self._get_claim_sent_tokens(tokenized, title)
-        assert len(abstract_sent_idx) == len(sentences) , f'{len(abstract_sent_idx)} , {len(sentences)}'
-        
+
         # Make sure we've got the right number of abstract sentence tokens.
         assert len(abstract_sent_idx) == len(sentences)
-        return tokenized, abstract_sent_idx, claim_sent_idx
+
+        return tokenized, abstract_sent_idx
 
     def _tokenize_roberta(self, claim, sentences, title):
         "If we're using RoBERTa, we need to truncate the sentences to fit in window."
@@ -317,10 +288,8 @@ class SciFactDataset(Dataset):
         start_ix = 1 if title is None else 2
         return eos_idx[start_ix:].tolist()
 
-    def _get_claim_sent_tokens(self, tokenized, title):
-        is_eos = torch.tensor(tokenized["input_ids"]) == self.tokenizer.eos_token_id
-        eos_idx = torch.where(is_eos)[0]
-        return eos_idx[0]
+
+####################
 
 
 class FactCheckingReader:
@@ -357,12 +326,9 @@ class SciFactReader(FactCheckingReader):
         claims_dir = self.data_dir
         corpus_file = self.data_dir / "corpus.jsonl"
         data_file = claims_dir / f"claims_{fold_name}.jsonl"
-        print(f"currently looking at {data_file}!")
         ds = GoldDataset(corpus_file, data_file)
-        ds = GoldDataset(corpus_file, data_file)
-        print("GoldDataset constructed!")
+
         for i, claim in enumerate(ds.claims):
-            
             # Only read 10 if we're doing a fast dev run.
             if self.debug and i == 10:
                 break
@@ -370,10 +336,6 @@ class SciFactReader(FactCheckingReader):
             # lists document 7662395 twice. Need to fix the dataset. For now,
             # I'll just do this check.
             seen = set()
-            
-            positive_labels_rationale = []
-            negative_labels_rationale = []
-            
             for cited_doc in claim.cited_docs:
                 if cited_doc.id in seen:
                     # If we've seen it already, skip.
@@ -381,20 +343,14 @@ class SciFactReader(FactCheckingReader):
                 else:
                     seen.add(cited_doc.id)
                 # Convert claim and evidence into form for function input.
-                # the "NOT ENOUGH INFO" label applies to those cited_doc_ids but not evidence sentence
-                
                 if cited_doc.id in claim.evidence:
                     ev = claim.evidence[cited_doc.id]
                     label = ev.label.name
                     rationales = ev.rationales
-                    positive_labels_rationale.append((label, rationales, cited_doc))
                 else:
                     label = "NOT ENOUGH INFO"
                     rationales = []
-                    negative_labels_rationale.append((label, rationales, cited_doc))
-            
-            
-            for label, rationales, cited_doc in positive_labels_rationale+negative_labels_rationale:
+
                 # Append entry.
                 to_tensorize = {
                     "claim": claim.claim,
@@ -406,32 +362,12 @@ class SciFactReader(FactCheckingReader):
                 entry = {
                     "claim_id": claim.id,
                     "abstract_id": cited_doc.id,
-                    "negative_sample_id": 0,
+                    "negative_sample_id": 0,  # No negative sampling for SciFact yet.
                     "to_tensorize": to_tensorize,
                 }
-                sentences = cited_doc.sentences
-                title = cited_doc.title
-                claim_ = claim.claim
-                cited_text = tokenizer.eos_token.join(sentences)
-                if title is not None:
-                    cited_text = title + tokenizer.eos_token + cited_text
-                tokenized = tokenizer(claim_ + tokenizer.eos_token + cited_text)
-            
-                if len(tokenized["input_ids"]) > 4096:
-                    print("input id > 4096!")
-                    continue
-
                 res.append(entry)
 
         return SciFactDataset(res, tokenizer, self.name, self.rationale_mask)
-
-
-class SciFact0Reader(SciFactReader):
-    "SciFact train data with no negative sampling."
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.data_dir = self.data_root / "target/scifact"
 
 
 class SciFact10Reader(SciFactReader):
@@ -470,16 +406,6 @@ class CovidFactReader(SciFactReader):
         super().__init__(*args, **kwargs)
         self.data_dir = self.data_root / "target/covidfact"
         self.name = "CovidFact"
-
-class CitIntReader(SciFactReader):
-    """
-    CitInt is formatted the same as SciFact.
-    """
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.data_dir = self.data_root / "target/citint"
-        self.name = "CitInt"
 
 
 class ExternalReader(FactCheckingReader):
@@ -560,14 +486,6 @@ class EvidenceInferenceReader(ExternalReader):
 class ConcatDataModule(LightningDataModule):
     def __init__(self, hparams):
         super().__init__()
-        # print(hparams)
-        # args_dict = vars(hparams)
-        # del args_dict['tpu_cores']
-        # with open("train_configs.json", "w") as json_file:
-        #     json.dump(args_dict, json_file)
-        # exit(0)
-       
-        hparams.no_reweight_labels = False
         self.tokenizer = get_tokenizer(hparams)
         self.num_workers = hparams.num_workers
         self.train_batch_size = hparams.train_batch_size
@@ -587,10 +505,8 @@ class ConcatDataModule(LightningDataModule):
         self.reader_lookup = {
             "scifact_20": SciFact20Reader,
             "scifact_10": SciFact10Reader,
-            "scifact": SciFact0Reader,
             "healthver": HealthVerReader,
             "covidfact": CovidFactReader,
-            "citint": CitIntReader,
             "fever": FEVERReader,
             "pubmedqa": PubMedQAReader,
             "evidence_inference": EvidenceInferenceReader,
@@ -601,15 +517,13 @@ class ConcatDataModule(LightningDataModule):
             "SciFact": hparams.scifact_weight,
             "HealthVer": hparams.healthver_weight,
             "CovidFact": hparams.covidfact_weight,
-            "CitInt": hparams.citint_weight,
             "FEVER": hparams.fever_weight,
             "PubMedQA": hparams.pubmedqa_weight,
             "EvidenceInference": hparams.evidence_inference_weight,
         }
 
         # Datasets with a test set
-
-        self.datasets_with_test = ["citint", "scifact_20", "scifact_10", "healthver", "covidfact"]
+        self.datasets_with_test = ["scifact", "healthver", "covidfact"]
 
         self.dataset_names = hparams.datasets.split(",")
         for name in self.dataset_names:
@@ -637,7 +551,7 @@ class ConcatDataModule(LightningDataModule):
         data_dir: The data root directory. Defaults to env variable if not found.
         """
         parser = ArgumentParser(parents=[parent_parser], add_help=False)
-        parser.add_argument("--num_workers", type=int, default=2)
+        parser.add_argument("--num_workers", type=int, default=1)
         parser.add_argument("--train_batch_size", type=int, default=1)
         parser.add_argument("--eval_batch_size", type=int, default=2)
         parser.add_argument("--data_dir", type=str, default=None)
@@ -650,7 +564,6 @@ class ConcatDataModule(LightningDataModule):
         parser.add_argument("--scifact_weight", type=float, default=1.0)
         parser.add_argument("--healthver_weight", type=float, default=1.0)
         parser.add_argument("--covidfact_weight", type=float, default=1.0)
-        parser.add_argument("--citint_weight", type=float, default=1.0)
         parser.add_argument("--fever_weight", type=float, default=1.0)
         parser.add_argument("--pubmedqa_weight", type=float, default=1.0)
         parser.add_argument("--evidence_inference_weight", type=float, default=1.0)
@@ -671,6 +584,7 @@ class ConcatDataModule(LightningDataModule):
         return parser
 
     def setup(self, stage=None):
+        # Not all datasets have test sets.
         if set(self.dataset_names) & set(self.datasets_with_test):
             test_fold = self._process_fold("test")
         else:
@@ -681,7 +595,6 @@ class ConcatDataModule(LightningDataModule):
             "val": self._process_fold("val"),
             "test": test_fold,
         }
-        
 
     def _process_fold(self, fold):
         "Get the data from all the data readers."
@@ -690,19 +603,17 @@ class ConcatDataModule(LightningDataModule):
             # Only subclasses of SciFactReader have a test set.
             if fold == "test" and not isinstance(reader, SciFactReader):
                 continue
-            
             datasets.append(reader.get_fold(fold, self.tokenizer))
+
         # Add instance weights.
         datasets = self._add_instance_weights(datasets)
         datasets = self._sample_instances(datasets, fold)
 
         return ConcatDataset(datasets)
-    
+
     def train_dataloader(self):
         return self.get_dataloader("train", self.train_batch_size)
 
-    # did change this val_dataloader to use "Test" data 
-    # Reverted to "val" 20241128 jmd
     def val_dataloader(self):
         return self.get_dataloader("val", self.eval_batch_size)
 
@@ -739,24 +650,25 @@ class ConcatDataModule(LightningDataModule):
             # weight of the dataset.
             if not self.reweight_labels:
                 for entry in entries:
-                    entry["weight"] = ds_weight                
-            
+                    entry["weight"] = ds_weight
+            # Otherwise, reweight by label frequency.
             else:
                 # Re-weight so that supports and refutes are even, but don't
                 # downweight the NEI's,
                 labels = [x["to_tensorize"]["label"] for x in entries]
                 label_counts = (
-                    pd.Series(labels).value_counts().loc[["NOT_ACCURATE", "ACCURATE", "NOT ENOUGH INFO"]]
+                    pd.Series(labels).value_counts().loc[["SUPPORTS", "REFUTES"]]
                 )
-                
                 max_label_count = label_counts.max()
                 label_weights = max_label_count / label_counts
+                label_weights = np.minimum(label_weights, self.max_label_weight)
+                label_weights["NOT ENOUGH INFO"] = 1.0
+                # Loop over the entries and assign a weight.
                 for entry in entries:
                     this_label = entry["to_tensorize"]["label"]
-                    
                     this_label_weight = label_weights[this_label]
                     entry["weight"] = ds_weight * this_label_weight
-        
+
         return datasets
 
     def _sample_instances(self, datasets, fold):
@@ -765,7 +677,7 @@ class ConcatDataModule(LightningDataModule):
         the rest.
         """
         # If not capping, just return. Also, don't cap for evaluation data.
-        if self.cap_fever_nsamples or (fold != "train"):
+        if not self.cap_fever_nsamples or (fold != "train"):
             return datasets
 
         # Otherwise, do some subsampling.
