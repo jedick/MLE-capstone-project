@@ -34,7 +34,7 @@ class GPT3Predictor:
         unparsed = self.get_response(full_prompt)
         splt = [x for x in unparsed.split("\n")]
         label_str = splt[0].strip().lower()
-        lookup = {"true": "SUPPORT", "false": "CONTRADICT", "neither": "NEI"}
+        lookup = {"true": "SUPPORT", "false": "REFUTE", "neither": "NEI"}
         label = lookup[label_str]
         rationale_str = splt[2].split()[-1]
         rationales = ast.literal_eval(rationale_str)
@@ -161,7 +161,7 @@ Evidence: {highlights}"""
             highlights = []
             label = "Neither"
         else:
-            lookup = {"SUPPORT": "True", "CONTRADICT": "False"}
+            lookup = {"SUPPORT": "True", "REFUTE": "False"}
             ev = claim["evidence"][str(doc_id)]
             highlights = util.flatten([x["sentences"] for x in ev])
             label = lookup[ev[0]["label"]]
@@ -175,7 +175,7 @@ Evidence: {highlights}"""
         "Make few-shot prompt from 3 randomly-chosen examples."
         # Three randomly-chosen examples; one per label.
         support = {"claim_id": 1023, "doc_id": 16927286, "expected_label": "SUPPORT"}
-        refute = {"claim_id": 149, "doc_id": 6227220, "expected_label": "CONTRADICT"}
+        refute = {"claim_id": 149, "doc_id": 6227220, "expected_label": "REFUTE"}
         nei = {"claim_id": 1400, "doc_id": 14706752, "expected_label": "NEI"}
 
         prompts_list = [

@@ -19,16 +19,16 @@ def load_jsonl(fname):
 
 
 class Label(Enum):
-    SUPPORTS = 2
+    SUPPORT = 2
     NEI = 1
-    REFUTES = 0
+    REFUTE = 0
 
 
 def make_label(label_str, allow_NEI=True):
     lookup = {
-        "SUPPORT": Label.SUPPORTS,
-        "NOT_ENOUGH_INFO": Label.NEI,
-        "CONTRADICT": Label.REFUTES,
+        "SUPPORT": Label.SUPPORT,
+        "NEI": Label.NEI,
+        "REFUTE": Label.REFUTE,
     }
 
     res = lookup[label_str]

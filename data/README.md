@@ -1,7 +1,11 @@
 # Training data
 
-Note: The directories should be copied or linked to the appropriate location for training.
-For example, link `citint` to `../multivers/data_train/target/citint` to train with the Citation-Integrity dataset.
+Notes:
+- The directories should be copied or linked to the appropriate location for training.
+  For example, link `citint` to `../multivers/data_train/target/citint` to train with the Citation-Integrity dataset.
+- The labels `scifact` and `citint` have been normalized as follows:
+  - `SUPPORT` instead of `ACCURATE`
+  - `REFUTE` instead of `CONTRADICT` or `NOT_ACCURATE`
 
 ## scifact
 

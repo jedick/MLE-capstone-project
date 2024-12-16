@@ -357,7 +357,7 @@ class MultiVerSModel(pl.LightningModule):
         the output of the forward pass.
         """
         # Mapping from ints to labels.
-        label_lookup = {0: "CONTRADICT",
+        label_lookup = {0: "REFUTE",
                         1: "NEI",
                         2: "SUPPORT"}
 

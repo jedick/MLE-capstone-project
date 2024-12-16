@@ -127,7 +127,7 @@ class SciFactDataset(Dataset):
         self.tokenizer = tokenizer
         self.dataset_name = dataset_name
         self.rationale_mask = rationale_mask
-        self.label_lookup = {"REFUTES": 0, "NOT ENOUGH INFO": 1, "SUPPORTS": 2}
+        self.label_lookup = {"REFUTE": 0, "NEI": 1, "SUPPORT": 2}
 
     def __len__(self):
         return len(self.entries)
@@ -164,7 +164,7 @@ class SciFactDataset(Dataset):
 
         # Get the label and the rationales.
         label_code = self.label_lookup[label]
-        if label_code != self.label_lookup["NOT ENOUGH INFO"]:
+        if label_code != self.label_lookup["NEI"]:
             # If it's an evidence document, get the label and create an
             # evidence vector for the sentences. Each evidence set gets
             # its own digit, starting from 1.
@@ -349,7 +349,7 @@ class SciFactReader(FactCheckingReader):
                     label = ev.label.name
                     rationales = ev.rationales
                 else:
-                    label = "NOT ENOUGH INFO"
+                    label = "NEI"
                     rationales = []
 
                 # Append entry.
@@ -681,12 +681,12 @@ class ConcatDataModule(LightningDataModule):
                 # downweight the NEI's,
                 labels = [x["to_tensorize"]["label"] for x in entries]
                 label_counts = (
-                    pd.Series(labels).value_counts().loc[["SUPPORTS", "REFUTES"]]
+                    pd.Series(labels).value_counts().loc[["SUPPORT", "REFUTE"]]
                 )
                 max_label_count = label_counts.max()
                 label_weights = max_label_count / label_counts
                 label_weights = np.minimum(label_weights, self.max_label_weight)
-                label_weights["NOT ENOUGH INFO"] = 1.0
+                label_weights["NEI"] = 1.0
                 # Loop over the entries and assign a weight.
                 for entry in entries:
                     this_label = entry["to_tensorize"]["label"]
