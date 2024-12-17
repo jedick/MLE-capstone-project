@@ -7,7 +7,8 @@ Commits to the ReadyCite repo are listed in brackets.
 
 The models here start with the FEVER checkpoint (`fever_sci.ckpt`).
 
-- `citint_20241216` [XXX]: Model trained for 5 epochs.
+- `citint_20241216a` [[5e08ba](https://github.com/jedick/ReadyCite/commit/5e08ba51295ecdbb42cfdd9b86908adb7b06c7f3)]: Model trained for 5 epochs.
+- `citint_20241216b` [XXX]: Model trained for 20 epochs.
 
 ## Using the Citation-Integrity codebase (November 2024)
 

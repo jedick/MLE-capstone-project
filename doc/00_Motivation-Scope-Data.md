@@ -13,7 +13,7 @@ The unique features of this project are:
 
 ## Scope of the project
 
-![Data sources, tasks, goals, and tech for the three phases of the project](../images/project_overview.png "Project Overview")
+![Data sources, tasks, goals, and tech for the three phases of the project](images/project_overview.png "Project Overview")
 
 The problem starts relatively simple, with claims and abstracts or evidence sentences that are used for *claim verification*. Abstracts are available in the **SciFact** corpus and evidence sentences are available in the **Citation-Integrity** corpus.
 
