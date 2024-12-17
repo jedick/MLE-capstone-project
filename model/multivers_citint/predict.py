@@ -77,6 +77,9 @@ def format_predictions(args, predictions_all):
     
     # Dict keyed by claim.
     for prediction in predictions_all:
+        print(prediction['claim_id'])
+        if prediction['claim_id'] == 199:
+            break
         # Add prediction.
         formatted_entry = {
             prediction["abstract_id"]: {

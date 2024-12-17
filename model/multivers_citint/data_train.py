@@ -137,7 +137,7 @@ class SciFactDataset(Dataset):
         self.tokenizer = tokenizer
         self.dataset_name = dataset_name
         self.rationale_mask = rationale_mask
-        self.label_lookup = {"NOT_ACCURATE": 0, "NOT ENOUGH INFO": 1, "ACCURATE": 2}
+        self.label_lookup = {"REFUTE": 0, "NEI": 1, "SUPPORT": 2}
     def __len__(self):
         return len(self.entries)
 
@@ -178,7 +178,7 @@ class SciFactDataset(Dataset):
 
         # Get the label and the rationales.
         label_code = self.label_lookup[label]
-        if label_code != self.label_lookup["NOT ENOUGH INFO"]:
+        if label_code != self.label_lookup["NEI"]:
             # If it's an evidence document, get the label and create an
             # evidence vector for the sentences. Each evidence set gets
             # its own digit, starting from 1.
@@ -381,7 +381,7 @@ class SciFactReader(FactCheckingReader):
                 else:
                     seen.add(cited_doc.id)
                 # Convert claim and evidence into form for function input.
-                # the "NOT ENOUGH INFO" label applies to those cited_doc_ids but not evidence sentence
+                # the "NEI" label applies to those cited_doc_ids but not evidence sentence
                 
                 if cited_doc.id in claim.evidence:
                     ev = claim.evidence[cited_doc.id]
@@ -389,7 +389,7 @@ class SciFactReader(FactCheckingReader):
                     rationales = ev.rationales
                     positive_labels_rationale.append((label, rationales, cited_doc))
                 else:
-                    label = "NOT ENOUGH INFO"
+                    label = "NEI"
                     rationales = []
                     negative_labels_rationale.append((label, rationales, cited_doc))
             
@@ -746,7 +746,7 @@ class ConcatDataModule(LightningDataModule):
                 # downweight the NEI's,
                 labels = [x["to_tensorize"]["label"] for x in entries]
                 label_counts = (
-                    pd.Series(labels).value_counts().loc[["NOT_ACCURATE", "ACCURATE", "NOT ENOUGH INFO"]]
+                    pd.Series(labels).value_counts().loc[["REFUTE", "SUPPORT", "NEI"]]
                 )
                 
                 max_label_count = label_counts.max()

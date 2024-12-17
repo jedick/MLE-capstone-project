@@ -40,7 +40,7 @@ class MultiVerSDataset(Dataset):
         self.entries = entries
         self.tokenizer = tokenizer
         self.rationale_mask = 1.0
-        self.label_lookup = {"NOT_ACCURATE": 0, "NOT ENOUGH INFO": 1, "ACCURATE": 2}
+        self.label_lookup = {"REFUTE": 0, "NEI": 1, "SUPPORT": 2}
         
     def __len__(self):
         return len(self.entries)
@@ -74,7 +74,7 @@ class MultiVerSDataset(Dataset):
 
         # Get the label and the rationales.
         label_code = self.label_lookup[label]
-        if label_code != self.label_lookup["NOT ENOUGH INFO"]:
+        if label_code != self.label_lookup["NEI"]:
             # If it's an evidence document, get the label and create an
             # evidence vector for the sentences. Each evidence set gets
             # its own digit, starting from 1.
@@ -208,10 +208,6 @@ class MultiVerSReader:
     def __init__(self, predict_args):
         self.data_file = predict_args.input_file
         self.corpus_file = predict_args.corpus_file
-        # Basically, I used two different sets of labels. This was dumb, but
-        # doing this mapping fixes it.
-        # self.label_map = {"SUPPORT": "SUPPORTS",
-        #                   "CONTRADICT": "REFUTES"}
     
     def get_data(self, tokenizer):
         """

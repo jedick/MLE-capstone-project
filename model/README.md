@@ -51,9 +51,14 @@ Note: run this *after* installing packages from requirements.txt to avoid error 
 
 ### Download checkpoints
 
-MultiVerS start training from the `fever_sci` checkpoint.
-Citation-Integrity starts training from the `healthver` checkpoint.
-Note: I modified the wget command in `get_checkpoint.py` to continue interrupted downloads.
+The training steps are described in [the MultiVerS paper](10.48550/arXiv.2112.01640) and in [training.md](doc/training.md):
+
+- MultiVerS is initialized from the longformer-large checkpoint (`longformer_large_science`)
+- Pretraining in MultiVerS corresponds to the `fever_sci` checkpoint.
+- Fine-tuning in MultiVerS on different datasets produces the `covidfact`, `healthver`, and `scifact` checkpoints.
+- Training in the Citation-Integrity study starts from the `healthver` checkpoint.
+
+Download the checkpoints with these commands:
 
 ```
 python script/get_checkpoint.py fever_sci

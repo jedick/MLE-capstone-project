@@ -62,7 +62,7 @@ def get_predictions(args):
 
 def format_predictions(args, predictions_all):
     # Need to get the claim ID's from the original file, since the data loader
-    # won't have a record of claims for which no documents were retireved.
+    # won't have a record of claims for which no documents were retrieved.
     claims = util.load_jsonl(args.input_file)
     claim_ids = [x["id"] for x in claims]
     assert len(claim_ids) == len(set(claim_ids))

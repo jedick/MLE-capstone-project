@@ -19,18 +19,15 @@ def load_jsonl(fname):
 
 
 class Label(Enum):
-    ACCURATE = 2
+    SUPPORT = 2
     NEI = 1
-    NOT_ACCURATE = 0
+    REFUTE = 0
 
 def make_label(label_str, allow_NEI=True):
     lookup = {
-        "ACCURATE": Label.ACCURATE,
-        "NOT_ENOUGH_INFO": Label.NEI,
-        "NOT_ACCURATE": Label.NOT_ACCURATE,
-        # To handle SciFact dataset 20241128 jmd
-        "SUPPORT": Label.ACCURATE,
-        "CONTRADICT": Label.NOT_ACCURATE,
+        "SUPPORT": Label.SUPPORT,
+        "NEI": Label.NEI,
+        "REFUTE": Label.REFUTE,
     }
 
     res = lookup[label_str]

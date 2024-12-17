@@ -394,9 +394,9 @@ class MultiVerSModel(pl.LightningModule):
         the output of the forward pass.
         """
         # Mapping from ints to labels.
-        label_lookup = {0: "NOT_ACCURATE",
+        label_lookup = {0: "REFUTE",
                         1: "NEI",
-                        2: "ACCURATE"}
+                        2: "SUPPORT"}
     
         # Get predicted rationales, only keeping eligible sentences.
         instances = util.unbatch(batch, ignore=["tokenized"])

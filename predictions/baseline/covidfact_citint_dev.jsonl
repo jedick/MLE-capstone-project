@@ -1,0 +1,316 @@
+{"id": 0, "evidence": {}}
+{"id": 1, "evidence": {"31001": {"label": "REFUTE", "sentences": [0, 1, 4]}}}
+{"id": 2, "evidence": {"31002": {"label": "REFUTE", "sentences": [3, 4]}}}
+{"id": 3, "evidence": {}}
+{"id": 5, "evidence": {"31004": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 6, "evidence": {"31005": {"label": "SUPPORT", "sentences": [0, 1, 3]}}}
+{"id": 8, "evidence": {"31006": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 9, "evidence": {"31007": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 10, "evidence": {}}
+{"id": 11, "evidence": {"31009": {"label": "REFUTE", "sentences": [1, 2, 4]}}}
+{"id": 12, "evidence": {}}
+{"id": 13, "evidence": {}}
+{"id": 14, "evidence": {"31012": {"label": "REFUTE", "sentences": [3, 4]}}}
+{"id": 15, "evidence": {"31013": {"label": "REFUTE", "sentences": []}}}
+{"id": 16, "evidence": {"31014": {"label": "SUPPORT", "sentences": [2]}}}
+{"id": 17, "evidence": {"31015": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 18, "evidence": {"31016": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 19, "evidence": {"31017": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 20, "evidence": {"31018": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 21, "evidence": {"31019": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 23, "evidence": {"31020": {"label": "REFUTE", "sentences": [0, 2]}}}
+{"id": 24, "evidence": {"31021": {"label": "REFUTE", "sentences": []}}}
+{"id": 25, "evidence": {"31022": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 26, "evidence": {"31023": {"label": "REFUTE", "sentences": [0, 2]}}}
+{"id": 27, "evidence": {"31024": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 28, "evidence": {"31025": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 29, "evidence": {}}
+{"id": 30, "evidence": {"31027": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 31, "evidence": {"31028": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 33, "evidence": {"31029": {"label": "REFUTE", "sentences": [0, 3, 4]}}}
+{"id": 34, "evidence": {"31030": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 35, "evidence": {"31031": {"label": "SUPPORT", "sentences": []}}}
+{"id": 36, "evidence": {"31032": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 37, "evidence": {"31033": {"label": "SUPPORT", "sentences": [1]}}}
+{"id": 38, "evidence": {"31034": {"label": "REFUTE", "sentences": []}}}
+{"id": 39, "evidence": {"31035": {"label": "SUPPORT", "sentences": [0, 4]}}}
+{"id": 40, "evidence": {}}
+{"id": 41, "evidence": {"31037": {"label": "SUPPORT", "sentences": []}}}
+{"id": 42, "evidence": {"31038": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 43, "evidence": {}}
+{"id": 44, "evidence": {"31040": {"label": "REFUTE", "sentences": [2, 4]}}}
+{"id": 45, "evidence": {"31041": {"label": "REFUTE", "sentences": [0, 3]}}}
+{"id": 46, "evidence": {"31042": {"label": "REFUTE", "sentences": []}}}
+{"id": 48, "evidence": {"31043": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 49, "evidence": {"31044": {"label": "SUPPORT", "sentences": [0, 1]}}}
+{"id": 50, "evidence": {"31045": {"label": "REFUTE", "sentences": [0, 3]}}}
+{"id": 51, "evidence": {}}
+{"id": 53, "evidence": {"31047": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 54, "evidence": {"31048": {"label": "REFUTE", "sentences": [1, 2, 3]}}}
+{"id": 55, "evidence": {}}
+{"id": 58, "evidence": {"31050": {"label": "REFUTE", "sentences": []}}}
+{"id": 59, "evidence": {"31051": {"label": "SUPPORT", "sentences": []}}}
+{"id": 60, "evidence": {"24000": {"label": "REFUTE", "sentences": []}}}
+{"id": 61, "evidence": {}}
+{"id": 63, "evidence": {}}
+{"id": 64, "evidence": {"24003": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 65, "evidence": {}}
+{"id": 66, "evidence": {"24005": {"label": "REFUTE", "sentences": []}}}
+{"id": 67, "evidence": {"24006": {"label": "REFUTE", "sentences": [0, 1, 4]}}}
+{"id": 68, "evidence": {"24007": {"label": "REFUTE", "sentences": [1, 3]}}}
+{"id": 69, "evidence": {"24008": {"label": "REFUTE", "sentences": [1, 4]}}}
+{"id": 70, "evidence": {"24009": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 71, "evidence": {"24010": {"label": "REFUTE", "sentences": [0, 1, 2, 4]}}}
+{"id": 73, "evidence": {"24011": {"label": "SUPPORT", "sentences": []}}}
+{"id": 74, "evidence": {"24012": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 76, "evidence": {"24013": {"label": "REFUTE", "sentences": [1, 3]}}}
+{"id": 77, "evidence": {}}
+{"id": 78, "evidence": {"24015": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 79, "evidence": {"24016": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 80, "evidence": {"24017": {"label": "REFUTE", "sentences": [1, 2, 3, 4]}}}
+{"id": 81, "evidence": {}}
+{"id": 85, "evidence": {"24019": {"label": "REFUTE", "sentences": [0, 4]}}}
+{"id": 86, "evidence": {"24020": {"label": "REFUTE", "sentences": [1, 3]}}}
+{"id": 87, "evidence": {}}
+{"id": 88, "evidence": {"24022": {"label": "REFUTE", "sentences": []}}}
+{"id": 91, "evidence": {"24023": {"label": "SUPPORT", "sentences": []}}}
+{"id": 92, "evidence": {"24024": {"label": "REFUTE", "sentences": [3, 4]}}}
+{"id": 93, "evidence": {"24025": {"label": "REFUTE", "sentences": []}}}
+{"id": 94, "evidence": {"24026": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 95, "evidence": {"26000": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 97, "evidence": {"26001": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 98, "evidence": {"26002": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 99, "evidence": {"26003": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 100, "evidence": {"26004": {"label": "REFUTE", "sentences": [0, 1, 3]}}}
+{"id": 102, "evidence": {"26005": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 103, "evidence": {"26006": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 105, "evidence": {"26007": {"label": "REFUTE", "sentences": [0, 1, 3]}}}
+{"id": 106, "evidence": {"26008": {"label": "SUPPORT", "sentences": [4]}}}
+{"id": 107, "evidence": {"26009": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 108, "evidence": {"26010": {"label": "REFUTE", "sentences": []}}}
+{"id": 109, "evidence": {"26011": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 110, "evidence": {}}
+{"id": 112, "evidence": {"26013": {"label": "REFUTE", "sentences": []}}}
+{"id": 113, "evidence": {}}
+{"id": 114, "evidence": {"26015": {"label": "REFUTE", "sentences": [0, 1, 2]}}}
+{"id": 115, "evidence": {"26016": {"label": "REFUTE", "sentences": [2, 4]}}}
+{"id": 116, "evidence": {"26017": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 117, "evidence": {"26018": {"label": "REFUTE", "sentences": [2, 4]}}}
+{"id": 118, "evidence": {"26019": {"label": "REFUTE", "sentences": [0, 4]}}}
+{"id": 120, "evidence": {"26020": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 121, "evidence": {"26021": {"label": "SUPPORT", "sentences": []}}}
+{"id": 122, "evidence": {"26022": {"label": "REFUTE", "sentences": [1, 4]}}}
+{"id": 124, "evidence": {"40000": {"label": "SUPPORT", "sentences": []}}}
+{"id": 125, "evidence": {"40001": {"label": "REFUTE", "sentences": [1, 2, 3]}}}
+{"id": 126, "evidence": {"40002": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 129, "evidence": {"40003": {"label": "REFUTE", "sentences": []}}}
+{"id": 131, "evidence": {"40004": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 132, "evidence": {}}
+{"id": 133, "evidence": {}}
+{"id": 134, "evidence": {"40007": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 135, "evidence": {"40008": {"label": "REFUTE", "sentences": []}}}
+{"id": 136, "evidence": {"40009": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 137, "evidence": {"40010": {"label": "REFUTE", "sentences": []}}}
+{"id": 138, "evidence": {"40011": {"label": "REFUTE", "sentences": []}}}
+{"id": 139, "evidence": {"40012": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 140, "evidence": {}}
+{"id": 141, "evidence": {}}
+{"id": 142, "evidence": {"40015": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 143, "evidence": {"40016": {"label": "REFUTE", "sentences": []}}}
+{"id": 144, "evidence": {}}
+{"id": 145, "evidence": {"40018": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 146, "evidence": {"40019": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 147, "evidence": {"40020": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 148, "evidence": {"40021": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 149, "evidence": {}}
+{"id": 150, "evidence": {}}
+{"id": 151, "evidence": {"40024": {"label": "REFUTE", "sentences": []}}}
+{"id": 152, "evidence": {}}
+{"id": 153, "evidence": {"40026": {"label": "REFUTE", "sentences": []}}}
+{"id": 154, "evidence": {"40027": {"label": "REFUTE", "sentences": []}}}
+{"id": 155, "evidence": {"40028": {"label": "REFUTE", "sentences": [0, 1, 3]}}}
+{"id": 156, "evidence": {"40029": {"label": "SUPPORT", "sentences": []}}}
+{"id": 157, "evidence": {"40030": {"label": "REFUTE", "sentences": []}}}
+{"id": 158, "evidence": {"40031": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 159, "evidence": {"40032": {"label": "SUPPORT", "sentences": [0, 1]}}}
+{"id": 160, "evidence": {"40033": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 161, "evidence": {"40034": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 162, "evidence": {"40035": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 163, "evidence": {"40036": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 164, "evidence": {"40037": {"label": "REFUTE", "sentences": []}}}
+{"id": 165, "evidence": {"40038": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 166, "evidence": {"40039": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 167, "evidence": {"40040": {"label": "SUPPORT", "sentences": [2, 4]}}}
+{"id": 168, "evidence": {"40041": {"label": "REFUTE", "sentences": []}}}
+{"id": 169, "evidence": {"40042": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 170, "evidence": {"40043": {"label": "SUPPORT", "sentences": []}}}
+{"id": 171, "evidence": {"40044": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 172, "evidence": {"40045": {"label": "SUPPORT", "sentences": []}}}
+{"id": 173, "evidence": {"40046": {"label": "REFUTE", "sentences": []}}}
+{"id": 174, "evidence": {"40047": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 175, "evidence": {"40048": {"label": "REFUTE", "sentences": [0, 3]}}}
+{"id": 176, "evidence": {"40049": {"label": "REFUTE", "sentences": [0, 2, 4]}}}
+{"id": 177, "evidence": {"40050": {"label": "REFUTE", "sentences": []}}}
+{"id": 178, "evidence": {"40051": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 179, "evidence": {"40052": {"label": "SUPPORT", "sentences": []}}}
+{"id": 180, "evidence": {"40053": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 181, "evidence": {"40054": {"label": "REFUTE", "sentences": []}}}
+{"id": 182, "evidence": {"40055": {"label": "REFUTE", "sentences": []}}}
+{"id": 184, "evidence": {}}
+{"id": 185, "evidence": {"41001": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 188, "evidence": {"41002": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 189, "evidence": {"41003": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 191, "evidence": {"41004": {"label": "REFUTE", "sentences": [2, 4]}}}
+{"id": 193, "evidence": {"41005": {"label": "REFUTE", "sentences": [0, 2]}}}
+{"id": 194, "evidence": {"41006": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 195, "evidence": {"41007": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 197, "evidence": {"41008": {"label": "SUPPORT", "sentences": [1]}}}
+{"id": 198, "evidence": {}}
+{"id": 201, "evidence": {"41010": {"label": "SUPPORT", "sentences": [1]}}}
+{"id": 202, "evidence": {"41011": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 203, "evidence": {}}
+{"id": 204, "evidence": {"41013": {"label": "REFUTE", "sentences": []}}}
+{"id": 206, "evidence": {"41014": {"label": "REFUTE", "sentences": [2, 4]}}}
+{"id": 207, "evidence": {"8000": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 208, "evidence": {}}
+{"id": 209, "evidence": {"8002": {"label": "REFUTE", "sentences": [1, 3]}}}
+{"id": 211, "evidence": {"8003": {"label": "REFUTE", "sentences": [1, 4]}}}
+{"id": 212, "evidence": {}}
+{"id": 213, "evidence": {}}
+{"id": 214, "evidence": {"8006": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 215, "evidence": {"8007": {"label": "SUPPORT", "sentences": [0]}}}
+{"id": 216, "evidence": {"8008": {"label": "REFUTE", "sentences": [0, 1, 2, 3]}}}
+{"id": 217, "evidence": {"8009": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 218, "evidence": {"6000": {"label": "SUPPORT", "sentences": [0, 3]}}}
+{"id": 219, "evidence": {"6001": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 220, "evidence": {"6002": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 221, "evidence": {"6003": {"label": "REFUTE", "sentences": [0, 4]}}}
+{"id": 222, "evidence": {"6004": {"label": "REFUTE", "sentences": []}}}
+{"id": 223, "evidence": {"6005": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 224, "evidence": {"6006": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 225, "evidence": {"6007": {"label": "REFUTE", "sentences": []}}}
+{"id": 226, "evidence": {"6008": {"label": "REFUTE", "sentences": [0, 2]}}}
+{"id": 227, "evidence": {"6009": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 229, "evidence": {"6010": {"label": "REFUTE", "sentences": [0, 1, 4]}}}
+{"id": 230, "evidence": {"6011": {"label": "REFUTE", "sentences": []}}}
+{"id": 231, "evidence": {"6012": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 233, "evidence": {"6013": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 234, "evidence": {"6014": {"label": "REFUTE", "sentences": []}}}
+{"id": 235, "evidence": {"6015": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 236, "evidence": {"6016": {"label": "REFUTE", "sentences": [3, 4]}}}
+{"id": 237, "evidence": {"6017": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 238, "evidence": {"6018": {"label": "REFUTE", "sentences": []}}}
+{"id": 239, "evidence": {"6019": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 240, "evidence": {"38000": {"label": "REFUTE", "sentences": []}}}
+{"id": 241, "evidence": {"38001": {"label": "REFUTE", "sentences": [1, 3]}}}
+{"id": 242, "evidence": {"38002": {"label": "REFUTE", "sentences": []}}}
+{"id": 243, "evidence": {"38003": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 244, "evidence": {}}
+{"id": 245, "evidence": {"38005": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 247, "evidence": {}}
+{"id": 249, "evidence": {}}
+{"id": 254, "evidence": {}}
+{"id": 255, "evidence": {"38009": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 256, "evidence": {"38010": {"label": "REFUTE", "sentences": []}}}
+{"id": 257, "evidence": {"38011": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 258, "evidence": {"38012": {"label": "REFUTE", "sentences": [0, 2, 4]}}}
+{"id": 261, "evidence": {}}
+{"id": 262, "evidence": {"27000": {"label": "REFUTE", "sentences": []}}}
+{"id": 264, "evidence": {"27001": {"label": "REFUTE", "sentences": [0, 1, 4]}}}
+{"id": 265, "evidence": {"27002": {"label": "SUPPORT", "sentences": [0, 1, 2]}}}
+{"id": 266, "evidence": {"27003": {"label": "REFUTE", "sentences": [0, 2]}}}
+{"id": 267, "evidence": {"27004": {"label": "REFUTE", "sentences": []}}}
+{"id": 269, "evidence": {"27005": {"label": "SUPPORT", "sentences": []}}}
+{"id": 271, "evidence": {}}
+{"id": 272, "evidence": {"27007": {"label": "REFUTE", "sentences": []}}}
+{"id": 273, "evidence": {"27008": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 274, "evidence": {"27009": {"label": "REFUTE", "sentences": []}}}
+{"id": 275, "evidence": {}}
+{"id": 276, "evidence": {}}
+{"id": 277, "evidence": {"27012": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 278, "evidence": {"27013": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 279, "evidence": {"27014": {"label": "REFUTE", "sentences": [1, 2]}}}
+{"id": 280, "evidence": {}}
+{"id": 281, "evidence": {"27016": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 282, "evidence": {}}
+{"id": 284, "evidence": {}}
+{"id": 285, "evidence": {"27019": {"label": "SUPPORT", "sentences": [4]}}}
+{"id": 286, "evidence": {"27020": {"label": "REFUTE", "sentences": []}}}
+{"id": 287, "evidence": {"27021": {"label": "REFUTE", "sentences": [1, 2, 3]}}}
+{"id": 288, "evidence": {"27022": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 289, "evidence": {"27023": {"label": "REFUTE", "sentences": [0, 4]}}}
+{"id": 290, "evidence": {}}
+{"id": 291, "evidence": {}}
+{"id": 292, "evidence": {"27026": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 293, "evidence": {"27027": {"label": "REFUTE", "sentences": [1, 4]}}}
+{"id": 294, "evidence": {}}
+{"id": 295, "evidence": {"39001": {"label": "SUPPORT", "sentences": []}}}
+{"id": 297, "evidence": {"39002": {"label": "SUPPORT", "sentences": [2]}}}
+{"id": 299, "evidence": {"39003": {"label": "SUPPORT", "sentences": [1]}}}
+{"id": 303, "evidence": {}}
+{"id": 304, "evidence": {"39005": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 305, "evidence": {}}
+{"id": 308, "evidence": {"39007": {"label": "SUPPORT", "sentences": [1]}}}
+{"id": 311, "evidence": {}}
+{"id": 316, "evidence": {"39009": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 4, "evidence": {"31052": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 7, "evidence": {"31053": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 22, "evidence": {"31054": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 32, "evidence": {"31055": {"label": "REFUTE", "sentences": []}}}
+{"id": 47, "evidence": {}}
+{"id": 52, "evidence": {}}
+{"id": 56, "evidence": {"31058": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 57, "evidence": {"31059": {"label": "REFUTE", "sentences": []}}}
+{"id": 62, "evidence": {}}
+{"id": 72, "evidence": {}}
+{"id": 75, "evidence": {"24029": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 82, "evidence": {"24030": {"label": "REFUTE", "sentences": []}}}
+{"id": 83, "evidence": {}}
+{"id": 84, "evidence": {}}
+{"id": 89, "evidence": {}}
+{"id": 90, "evidence": {"24034": {"label": "REFUTE", "sentences": [2, 3]}}}
+{"id": 96, "evidence": {}}
+{"id": 101, "evidence": {"26024": {"label": "REFUTE", "sentences": [1, 2, 3]}}}
+{"id": 104, "evidence": {"26025": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 111, "evidence": {}}
+{"id": 119, "evidence": {"26027": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 123, "evidence": {"26028": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 127, "evidence": {"40056": {"label": "SUPPORT", "sentences": [4]}}}
+{"id": 128, "evidence": {"40057": {"label": "SUPPORT", "sentences": [0]}}}
+{"id": 130, "evidence": {"40058": {"label": "REFUTE", "sentences": [3]}}}
+{"id": 183, "evidence": {}}
+{"id": 186, "evidence": {"41016": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 187, "evidence": {"41017": {"label": "REFUTE", "sentences": [1, 2, 3]}}}
+{"id": 190, "evidence": {}}
+{"id": 192, "evidence": {"41019": {"label": "REFUTE", "sentences": [0, 1]}}}
+{"id": 196, "evidence": {"41020": {"label": "REFUTE", "sentences": [2]}}}
+{"id": 200, "evidence": {}}
+{"id": 205, "evidence": {"41022": {"label": "REFUTE", "sentences": []}}}
+{"id": 210, "evidence": {"8010": {"label": "REFUTE", "sentences": [1, 4]}}}
+{"id": 228, "evidence": {"6020": {"label": "REFUTE", "sentences": [1]}}}
+{"id": 232, "evidence": {"6021": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 246, "evidence": {}}
+{"id": 248, "evidence": {}}
+{"id": 250, "evidence": {"38016": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 251, "evidence": {}}
+{"id": 252, "evidence": {}}
+{"id": 253, "evidence": {"38019": {"label": "REFUTE", "sentences": [0, 1, 4]}}}
+{"id": 259, "evidence": {}}
+{"id": 260, "evidence": {}}
+{"id": 263, "evidence": {"27028": {"label": "REFUTE", "sentences": [4]}}}
+{"id": 268, "evidence": {}}
+{"id": 270, "evidence": {"27030": {"label": "REFUTE", "sentences": [0, 2, 3]}}}
+{"id": 283, "evidence": {"27031": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 296, "evidence": {}}
+{"id": 298, "evidence": {"39011": {"label": "REFUTE", "sentences": [3, 4]}}}
+{"id": 300, "evidence": {}}
+{"id": 301, "evidence": {}}
+{"id": 302, "evidence": {}}
+{"id": 306, "evidence": {}}
+{"id": 307, "evidence": {}}
+{"id": 309, "evidence": {"39017": {"label": "REFUTE", "sentences": [0]}}}
+{"id": 310, "evidence": {}}
+{"id": 312, "evidence": {"39019": {"label": "SUPPORT", "sentences": [2]}}}
+{"id": 313, "evidence": {"39020": {"label": "REFUTE", "sentences": []}}}
+{"id": 314, "evidence": {}}
+{"id": 315, "evidence": {"39022": {"label": "REFUTE", "sentences": [0, 4]}}}
