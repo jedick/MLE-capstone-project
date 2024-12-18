@@ -359,7 +359,6 @@ class SciFactReader(FactCheckingReader):
         data_file = claims_dir / f"claims_{fold_name}.jsonl"
         print(f"currently looking at {data_file}!")
         ds = GoldDataset(corpus_file, data_file)
-        ds = GoldDataset(corpus_file, data_file)
         print("GoldDataset constructed!")
         for i, claim in enumerate(ds.claims):
             
@@ -671,6 +670,7 @@ class ConcatDataModule(LightningDataModule):
         return parser
 
     def setup(self, stage=None):
+        # Not all datasets have test sets.
         if set(self.dataset_names) & set(self.datasets_with_test):
             test_fold = self._process_fold("test")
         else:

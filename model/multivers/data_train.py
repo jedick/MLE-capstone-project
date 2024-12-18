@@ -326,6 +326,7 @@ class SciFactReader(FactCheckingReader):
         claims_dir = self.data_dir
         corpus_file = self.data_dir / "corpus.jsonl"
         data_file = claims_dir / f"claims_{fold_name}.jsonl"
+        print(f"currently looking at {data_file}!")
         ds = GoldDataset(corpus_file, data_file)
         print("GoldDataset constructed!")
 
@@ -438,10 +439,7 @@ class ExternalReader(FactCheckingReader):
         fold_name = lookup[fold]
 
         res = []
-        if isinstance(self, PubMedQAReader):
-            data_file = f"{self.data_dir}/{fold_name}.jsonl"
-        else:
-            data_file = f"{self.data_dir}/{fold_name}.jsonl"
+        data_file = f"{self.data_dir}/{fold_name}.jsonl"
         data = util.load_jsonl(data_file)
 
         for i, instance in enumerate(data):

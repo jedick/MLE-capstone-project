@@ -55,7 +55,12 @@ def get_predictions(args):
     data_module = dm.ConcatDataModule(args_as_namespace)
     data_module.setup()
 
+    # Need to uncomment the right one because the args aren't used here 20241218 jmd
+    #dataloader = data_module.train_dataloader()
+    #dataloader = data_module.val_dataloader()
     dataloader = data_module.test_dataloader()
+    ## This is from MultiVerS; why isn't it used in Citation-Integrity?
+    #dataloader = get_dataloader(args)
     
     predictions_all = []
     # Make predictions.
@@ -77,9 +82,6 @@ def format_predictions(args, predictions_all):
     
     # Dict keyed by claim.
     for prediction in predictions_all:
-        print(prediction['claim_id'])
-        if prediction['claim_id'] == 199:
-            break
         # Add prediction.
         formatted_entry = {
             prediction["abstract_id"]: {
