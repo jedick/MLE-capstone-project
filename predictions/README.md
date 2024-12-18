@@ -5,7 +5,8 @@ Commits to the ReadyCite repo are listed in brackets.
 
 ## Baseline models
 
-- Files added in `baseline` directory [XXX]
+- Files in `baseline` directory [[cf59c5](https://github.com/jedick/ReadyCite/commit/cf59c51ab8d022070d65716bda1cbe4d704c9a51)]
+- Thes predictions are made using checkpoints from MultiVerS and Citation-Integrity; no additional training was done.
 - See [the notebook](../doc/07_Baselines.ipynb) for more information.
 
 ## Using the MultiVerS codebase
