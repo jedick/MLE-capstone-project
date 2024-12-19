@@ -1,16 +1,17 @@
 # Functions to evaluate predictions from multivers
 # 20241216 jmd first version
+# 20241219 addded get_metric()
 
 # Usage:
 #import eval
 #data = eval.read_data('data/citint', 'test')
 #predictions = eval.read_predictions('predictions/fever_citint_test.jsonl')
-#f1 = eval.calc_f1(data, predictions)
+#f1 = eval.calc_metric(data, predictions)
 #f1.round(2)
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score, precision_score, recall_score
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import errno
@@ -59,24 +60,87 @@ def read_predictions(file):
     return df
 
 
-def calc_f1(data, predictions):
+def calc_metric(data, predictions, metric = 'f1'):
     """
-    Calculates F1 using 'label' column in data and predictions DataFrames.
-    Returns F1 for SUPPORT, REFUTE, NEI, micro and macro average in that order.
+    Calculates metric (f1, precision, or recall) using the 'label'
+    column in the given data and predictions DataFrames.
+    Returns metrics for SUPPORT, REFUTE, NEI, micro and macro average in that order.
     """
 
     # List labels in the order we want
     labels = ['SUPPORT', 'REFUTE', 'NEI']
 
-    # F1 score for each label
-    f1_labels = f1_score(data.label, predictions.label, labels = labels, average = None)
+    if metric == 'f1':
+        score = f1_score
+    elif metric == 'precision':
+        score = precision_score
+    elif metric == 'recall':
+        score = recall_score
+    else:
+        raise ValueError(f'`metric` should be f1, precision or recall. Got {metric}.')
+
+    # Score for each label
+    label_scores = score(data.label, predictions.label, labels = labels, average = None)
     # Micro and macro averages
-    f1_micro = f1_score(data.label, predictions.label, labels = labels, average = 'micro')
-    f1_macro = f1_score(data.label, predictions.label, labels = labels, average = 'macro')
-    # Combine F1 scores
-    f1 = [*f1_labels, f1_micro, f1_macro]
+    micro_score = score(data.label, predictions.label, labels = labels, average = 'micro')
+    macro_score = score(data.label, predictions.label, labels = labels, average = 'macro')
+    # Combine scores
+    scores = [*label_scores, micro_score, macro_score]
     # Return values as NumPy array
-    return np.array(f1)
+    return np.array(scores)
+
+
+def get_metric(datasets, folds, checkpoints, metric, decile = None, return_qcut = False):
+    """
+    Get specified metric for the given combination of datasets, folds, and checkpoints.
+    Use decile = 'D1' to 'D10' to select claims with word counds in that decile.
+    """
+
+    # Initialize lists for non-numeric columns
+    ds, fs, cs = [], [], []
+    # Initialize empty array of the right shape
+    columns = ['SUPPORT', 'REFUTE', 'NEI', 'micro', 'macro']
+    metric_array = np.zeros(shape=(len(datasets) * len(checkpoints), len(columns)))
+    # Loop over checkpoints and datasets
+    for icheckpoint in range(len(checkpoints)):
+        for idataset in range(len(datasets)):
+            # Read the data and predictions
+            dataset = datasets[idataset]
+            fold = folds[idataset]
+            checkpoint = checkpoints[icheckpoint]
+            # Append the names to the lists
+            ds.append(dataset)
+            fs.append(fold)
+            cs.append(checkpoint)
+            labeled_data = read_data(f'../data/{dataset}', fold)
+            predictions = read_predictions(f'../predictions/baseline/{checkpoint}_{dataset}_{fold}.jsonl')
+
+            if decile is not None:
+                # Calculate claim length (number of words)
+                claim_length = labeled_data['claim'].apply(lambda x: len(str(x).split())).rename('claim_length')
+                if return_qcut:
+                    # Return 'raw' qcut to get bin ranges and value counts
+                    qcut = pd.qcut(claim_length, q=10)
+                    return qcut
+                else:
+                    # Keep the specific decile of the data
+                    deciles = ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10']
+                    qcut = pd.qcut(claim_length, q=10, labels=deciles)
+                    labeled_data = labeled_data[qcut==decile]
+                    predictions = predictions[qcut==decile]
+
+            metric_values = calc_metric(labeled_data, predictions, metric)
+            # The row index where we'll put the results
+            idx = len(datasets) * icheckpoint + idataset
+            metric_array[idx] = metric_values
+            metric_array
+
+    metric_df = pd.DataFrame(metric_array, columns = columns)
+    names_df = pd.DataFrame({'dataset': ds, 'fold': fs, 'checkpoint': cs})
+    df = pd.concat([names_df, metric_df], axis = 1)
+    # Add a leading column indicating the metric
+    df.insert(0, 'metric', metric)
+    return df
 
 
 def plot_cm(data, predictions):

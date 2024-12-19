@@ -16,7 +16,7 @@ The models here start with the `fever_sci.ckpt` checkpoint.
 - `citint_20241216a` [[5e08ba](https://github.com/jedick/ReadyCite/commit/5e08ba51295ecdbb42cfdd9b86908adb7b06c7f3)]: Model trained for 5 epochs.
 - `citint_20241216b` [[74ed58](https://github.com/jedick/ReadyCite/commit/74ed58bb1cb34c206970d580cb6aaa046dedb80f)]: Model trained for 20 epochs.
 
-## Using the Citation-Integrity codebase
+## Reproductions using the Citation-Integrity codebase
 
 The models here start with the HealthVer checkpoint (`healthver.ckpt`).
 

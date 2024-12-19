@@ -22,9 +22,9 @@ def get_args():
         "--dataset",
         type=str,
         help="The dataset to train on.",
-        choices=["citint", "scifact_20", "scifact_10", "scifact", "healthver", "covidfact"],
+        choices=["citintnm", "citint", "scifact_20", "scifact_10", "scifact", "healthver", "covidfact"],
     )
-    parser.add_argument("--gpus", type=str, help=help_gpus)
+    parser.add_argument("--gpus", type=str, help=help_gpus, default="1")
     parser.add_argument("--debug", action="store_true")
 
     parser.add_argument(
@@ -32,6 +32,11 @@ def get_args():
         action="store_true",
         help="Turning this on decreases memory usage at the cost of slower training",
     )
+
+    # Added by jmd 20241218
+    parser.add_argument("--epochs", type=int, help="Number of epochs", default=5)
+    parser.add_argument("--ckpt", type=str, help="Starting checkpoint file", default="checkpoints/fever_sci.ckpt")
+
     args = parser.parse_args()
     return args
 
@@ -49,7 +54,7 @@ def main():
     if n_gpus not in [1, 2, 4, 8]:
         raise ValueError("The number of GPU's must be a power of 2.")
 
-    epochs = 5
+    #epochs = 5
     workers_per_gpu = 4  # Number of CPU's per gpu.
     effective_batch_size = 8  # Desired effective batch size.
     accumulate_grad_batches = effective_batch_size // n_gpus
@@ -63,7 +68,7 @@ def main():
         "--datasets",
         args.dataset,
         "--starting_checkpoint",
-        "checkpoints/fever_sci.ckpt",
+        args.ckpt,
         "--experiment_name",
         args.dataset,
         "--num_workers",
@@ -77,9 +82,9 @@ def main():
         "--precision",
         16,
         "--max_epochs",
-        epochs,
+        args.epochs,
         "--scheduler_total_epochs",
-        epochs,
+        args.epochs,
         "--train_batch_size",
         1,
         "--eval_batch_size",
