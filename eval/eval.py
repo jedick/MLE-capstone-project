@@ -1,6 +1,6 @@
 # Functions to evaluate predictions from multivers
 # 20241216 jmd first version
-# 20241219 addded get_metric()
+# 20241219 added baseline()
 
 # Usage:
 #import eval
@@ -90,7 +90,7 @@ def calc_metric(data, predictions, metric = 'f1'):
     return np.array(scores)
 
 
-def get_metric(datasets, folds, checkpoints, metric, decile = None, return_qcut = False):
+def baseline(datasets, folds, checkpoints, metric, decile = None, return_qcut = False):
     """
     Get specified metric for the given combination of datasets, folds, and checkpoints.
     Use decile = 'D1' to 'D10' to select claims with word counds in that decile.
