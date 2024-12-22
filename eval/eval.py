@@ -19,7 +19,7 @@ import os
 
 def read_data(datadir, fold):
     """
-    Reads [citint|scifact] dataset of the given fold (train, dev, test).
+    Reads dataset (specified in datadir) with the given fold (train, dev, test).
     Returns a DataFrame
     """
     file = f'{datadir}/claims_{fold}.jsonl'

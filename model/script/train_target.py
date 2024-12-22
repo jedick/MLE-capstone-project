@@ -36,6 +36,8 @@ def get_args():
     # Added by jmd 20241218
     parser.add_argument("--epochs", type=int, help="Number of epochs", default=5)
     parser.add_argument("--ckpt", type=str, help="Starting checkpoint file", default="checkpoints/fever_sci.ckpt")
+    # Added by jmd 20241222
+    parser.add_argument("--rationale_weight", type=str, help="Rationale weight", default="15.0")
 
     args = parser.parse_args()
     return args
@@ -89,6 +91,8 @@ def main():
         1,
         "--eval_batch_size",
         2,
+        "--rationale_weight",
+        args.rationale_weight,
         "--encoder_name",
         "longformer-large-science",
         "--no_reweight_labels",
