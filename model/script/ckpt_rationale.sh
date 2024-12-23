@@ -13,7 +13,11 @@ train_and_predict () {
   # $3 number of epochs
   # $4 rationale weight (default in multivers/model.py is 15.0)
 
+  echo
+  echo
+  echo "---- Starting training ----"
   echo "python script/train_target.py --dataset $2 --gpus=1 --epochs=$3 --ckpt=checkpoints/baseline/$1.ckpt --gradient_checkpointing --rationale_weight=$4"
+  echo 
   time python script/train_target.py --dataset $2 --gpus=1 --epochs=$3 --ckpt=checkpoints/baseline/$1.ckpt --gradient_checkpointing --rationale_weight=$4
   echo "outputting predictions to ../predictions/$1_$2.jsonl"
   python multivers/predict.py \
@@ -22,9 +26,9 @@ train_and_predict () {
     --corpus_file data_train/target/$2/corpus.jsonl \
     --output_file ../predictions/$1_$2_$4.jsonl
 
-  mv checkpoints_user/$2/checkpoint/last.ckpt /home/multivers/checkpoints/$1_$2.ckpt
+  mv checkpoints_user/$2/checkpoint/last.ckpt /home/multivers/checkpoints/$1_$2_$4.ckpt
   rm -rf checkpoints_user/$2/checkpoint/
-  mv checkpoints_user/$2 checkpoints_user/$1_$2
+  mv checkpoints_user/$2 checkpoints_user/$1_$2_$4
 
 }
 
@@ -78,5 +82,5 @@ elif [[ $1 == "scifact_0" ]]
 then
   scifact_0
 else
-    echo "Allowed options are: {citintnm, citint}."
+    echo "Allowed options are: {citint_15, citint_0, scifact_15, scifact_0}."
 fi

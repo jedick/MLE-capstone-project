@@ -10,15 +10,6 @@ Local modifications:
   - REFUTE replaces NOT_ACCURATE in `citint`
 - To enable predictions on the test fold of `scifact`, cited_doc_ids were added from `scifact_10`.
 - Claims in `citint` have been reordered by increasing claim ID using `citint/reorder_claims.R`.
-  - The unordered claims were discovered by an error thrown in `format_predictions()` on the dev and train folds but not the test fold.
-- Claims in `citintnm` inherit the above changes to `citint` and have had the citation markers and surrounding punctuation removed with the following commands in sed:
-  - `s/<|multi_cit|>//g`
-  - `s/<|other_cit|>//g`
-  - `s/<|cit|>//g`
-  - `s/\ \[\]//g`
-  - `s/\ ()//g`
-  - `s/\[\]//g`
-  - `s/()//g`
 
 ## scifact
 

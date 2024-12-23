@@ -428,16 +428,6 @@ class CitIntReader(SciFactReader):
         self.data_dir = self.data_root / "target/citint"
         self.name = "CitInt"
 
-class CitIntNmReader(SciFactReader):
-    """
-    CitIntNm is formatted the same as SciFact.
-    """
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.data_dir = self.data_root / "target/citintnm"
-        self.name = "CitIntNm"
-
 
 class ExternalReader(FactCheckingReader):
     def get_fold(self, fold, tokenizer):
@@ -537,7 +527,6 @@ class ConcatDataModule(LightningDataModule):
             "healthver": HealthVerReader,
             "covidfact": CovidFactReader,
             "citint": CitIntReader,
-            "citintnm": CitIntNmReader,
             "fever": FEVERReader,
             "pubmedqa": PubMedQAReader,
             "evidence_inference": EvidenceInferenceReader,
@@ -549,14 +538,13 @@ class ConcatDataModule(LightningDataModule):
             "HealthVer": hparams.healthver_weight,
             "CovidFact": hparams.covidfact_weight,
             "CitInt": hparams.citint_weight,
-            "CitIntNm": hparams.citint_weight,
             "FEVER": hparams.fever_weight,
             "PubMedQA": hparams.pubmedqa_weight,
             "EvidenceInference": hparams.evidence_inference_weight,
         }
 
         # Datasets with a test set
-        self.datasets_with_test = ["citintnm", "citint", "scifact", "scifact_20", "scifact_10", "healthver", "covidfact"]
+        self.datasets_with_test = ["citint", "scifact", "scifact_20", "scifact_10", "healthver", "covidfact"]
 
         self.dataset_names = hparams.datasets.split(",")
         for name in self.dataset_names:
