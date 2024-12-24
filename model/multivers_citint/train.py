@@ -113,7 +113,7 @@ def construct_trainer():
             args.starting_checkpoint, hparams=args)
         hparams = args
         encoder = model.encoder
-        if hparams.starting_checkpoint == "checkpoints/healthver.ckpt":
+        if hparams.starting_checkpoint == "checkpoints/baseline/healthver.ckpt":
             target_embed_size = encoder.embeddings.word_embeddings.weight.size()[0]
             # add additional tokens
             num_new_tokens = 3

@@ -56,6 +56,7 @@ def get_predictions(args):
     data_module.setup()
 
     # Need to uncomment the right one because the args aren't used here 20241218 jmd
+    # NOTE: also need to put the correct dataset in ../train_configs.json
     #dataloader = data_module.train_dataloader()
     #dataloader = data_module.val_dataloader()
     dataloader = data_module.test_dataloader()

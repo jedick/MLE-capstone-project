@@ -180,7 +180,7 @@ class MultiVerSModel(pl.LightningModule):
         encoder.resize_token_embeddings(target_embed_size)
         encoder.load_state_dict(new_state_dict)
 
-        if hparams.starting_checkpoint != "checkpoints/healthver.ckpt" or IF_TRAIN == False:
+        if hparams.starting_checkpoint != "checkpoints/baseline/healthver.ckpt" or IF_TRAIN == False:
             print(f"hparams currently is {hparams.starting_checkpoint}")
             # add additional tokens
             num_new_tokens = 3
