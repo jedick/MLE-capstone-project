@@ -22,10 +22,7 @@ def read_data(datadir, fold):
     Reads dataset (specified in datadir) with the given fold (train, dev, test).
     Returns a DataFrame
     """
-    if 'scifact' in datadir and fold == 'test':
-        file = f'{datadir}/claims_{fold}1.jsonl'
-    else:
-        file = f'{datadir}/claims_{fold}.jsonl'
+    file = f'{datadir}/claims_{fold}.jsonl'
     # https://stackoverflow.com/questions/36077266/how-do-i-raise-a-filenotfounderror-properly
     if not os.path.isfile(file):
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), file)
