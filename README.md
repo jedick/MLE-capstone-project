@@ -1,6 +1,6 @@
-# 📚 ReadyCite
+# 📚 RefSup
 
-***AI-Powered Fact Checking for Scientific Citations***
+***Refute or Support: AI-Powered Fact Checking for Scientific Citations***
 
 ## Project Overview
 

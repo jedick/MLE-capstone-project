@@ -110,12 +110,12 @@ Use `scifact_10` or `scifact_20` for the datasets with negative sampling.
 
 Modifications made by JMD:
 
-- [[3e6935](https://github.com/jedick/ReadyCite/commit/3e69357ba6da88f9eea85e13f86cf9e7077811bd)] 2024-12-16 Commit MultiVerS codebase followed by these changes:
+- [[3e6935](https://github.com/jedick/RefSup/commit/3e69357ba6da88f9eea85e13f86cf9e7077811bd)] 2024-12-16 Commit MultiVerS codebase followed by these changes:
 	- Update `requirements.txt` with minimal list of packages
 	- `num_epochs` changed from 20 to 5
 	- Add support for Citation-Integrity (`citint`) and original SciFact (`scifact`) datasets
 	- Normalize labels in datasets (`SUPPORT`, `REFUTE`, `NEI`)
-- [[13ebe7](https://github.com/jedick/ReadyCite/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] 2024-11-27 Commit Citation-Integrity codebase (source: [277152](https://github.com/ScienceNLP-Lab/Citation-Integrity/commit/277152f9dfe3873455220f4cd15269474ab15617)) to show diffs from MultiVerS (source: [a6ce03](https://github.com/dwadden/multivers/commit/a6ce033f0e17ae38c1f102eae1ee4ca213fbbe2e)). Some changes in CitationIntegrity are:
+- [[13ebe7](https://github.com/jedick/RefSup/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] 2024-11-27 Commit Citation-Integrity codebase (source: [277152](https://github.com/ScienceNLP-Lab/Citation-Integrity/commit/277152f9dfe3873455220f4cd15269474ab15617)) to show diffs from MultiVerS (source: [a6ce03](https://github.com/dwadden/multivers/commit/a6ce033f0e17ae38c1f102eae1ee4ca213fbbe2e)). Some changes in CitationIntegrity are:
 	- Changes the number of epochs for training from 20 to 5
 	- Adds three tokens (`<|cit|>`, `<|multi_cit|>`, `<|other_cit|>`) 
 	- Has `"test"` rather than `"val"` in `val_dataloader` 
