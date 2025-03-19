@@ -64,6 +64,7 @@ def format_predictions(args, predictions_all):
     # Need to get the claim ID's from the original file, since the data loader
     # won't have a record of claims for which no documents were retrieved.
     claims = util.load_jsonl(args.input_file)
+
     claim_ids = [x["id"] for x in claims]
     assert len(claim_ids) == len(set(claim_ids))
 
@@ -71,15 +72,16 @@ def format_predictions(args, predictions_all):
 
     # Dict keyed by claim.
     for prediction in predictions_all:
-        # If it's NEI, skip it.
-        if prediction["predicted_label"] == "NEI":
-            continue
+        ## If it's NEI, skip it.
+        #if prediction["predicted_label"] == "NEI":
+        #    continue
 
         # Add prediction.
         formatted_entry = {
             prediction["abstract_id"]: {
                 "label": prediction["predicted_label"],
                 "sentences": prediction["predicted_rationale"],
+                "label_probs": prediction["label_probs"],
             }
         }
         formatted[prediction["claim_id"]].update(formatted_entry)

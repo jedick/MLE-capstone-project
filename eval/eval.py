@@ -11,7 +11,7 @@
 
 import numpy as np
 import pandas as pd
-from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.metrics import f1_score, precision_score, recall_score, roc_auc_score
 from matplotlib import pyplot as plt
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import errno
@@ -43,7 +43,7 @@ def read_data(datadir, fold):
     return df
 
 
-def read_predictions(file):
+def read_predictions(file, get_label_probs=False):
     """
     Reads labels from a predictions file
     """
@@ -54,9 +54,37 @@ def read_predictions(file):
         df = pd.read_json(file, lines=True)
     ## Print range of claim IDs
     #print('Range of claim IDs in '+file+' is '+str(df['id'].min())+'..'+str(df['id'].max()))
-    # To get the labels, use list comprehension to index into each of the dictionaries in the evidence column.
-    label = [list(x.values())[0]['label'] if not (x == {} or pd.isnull(x)) else 'NEI' for x in df['evidence']]
+
+    # Start with empty lists for labels and label_probs
+    label = []
+    label_probs = []
+    # Loop over evidence statements and pull out non-NEI ones if they exist
+    for evidence in df['evidence']:
+        # If the evidence is empty, then it's NEI
+        if evidence == {}:
+            evidence = {'0': {'label': 'NEI'}}
+        for index, key in enumerate(evidence):
+            if index == 0:
+                # Start by keeping the first label for this claim
+                this_label = evidence[key]['label']
+                # Get the label probabilities if requested
+                if get_label_probs:
+                    this_label_probs = evidence[key]['label_probs']
+            else:
+                # Change NEI to a non-NEI label if one is found for this claim
+                if this_label == 'NEI':
+                    this_label = evidence[key]['label']
+                    if get_label_probs:
+                        this_label_probs = evidence[key]['label_probs']
+
+        label.extend([this_label])
+        if get_label_probs:
+            label_probs.extend([this_label_probs])
+
     df['label'] = label
+    if get_label_probs:
+        df['label_probs'] = label_probs
+
     return df
 
 
@@ -64,11 +92,11 @@ def calc_metric(data, predictions, metric = 'f1'):
     """
     Calculates metric (f1, precision, or recall) using the 'label'
     column in the given data and predictions DataFrames.
-    Returns metrics for SUPPORT, REFUTE, NEI, micro and macro average in that order.
+    Returns metrics for REFUTE, NEI, SUPPORT, micro and macro average in that order.
     """
 
     # List labels in the order we want
-    labels = ['SUPPORT', 'REFUTE', 'NEI']
+    labels = ['REFUTE', 'NEI', 'SUPPORT']
 
     if metric == 'f1':
         score = f1_score
@@ -90,6 +118,30 @@ def calc_metric(data, predictions, metric = 'f1'):
     return np.array(scores)
 
 
+def calc_auroc(data, predictions):
+    """
+    Calculates AUROC using the 'label' column in the data and 'label_probs' in the predictions DataFrame.
+    Returns metrics for REFUTE, NEI, SUPPORT, micro and macro average in that order.
+    Uses multi_class='ovr' for compatibility with MulticlassAUROC in torchmetrics.
+    """
+
+    # Map labels to IDs
+    label2id = {"REFUTE": 0, "NEI": 1, "SUPPORT": 2}
+    label = data.label.map(label2id)
+    # Get label probabilities into the right shape
+    label_probs = np.stack(predictions.label_probs)
+
+    # Score for each label
+    label_scores = roc_auc_score(label, label_probs, average = None, multi_class='ovr')
+    # Micro and macro averages
+    micro_score = roc_auc_score(label, label_probs, average = 'micro', multi_class='ovr')
+    macro_score = roc_auc_score(label, label_probs, average = 'macro', multi_class='ovr')
+    # Combine scores
+    scores = [*label_scores, micro_score, macro_score]
+    # Return values as NumPy array
+    return np.array(scores)
+
+
 def baseline(datasets, folds, checkpoints, metric, decile = None, return_qcut = False):
     """
     Get specified metric for the given combination of datasets, folds, and checkpoints.
@@ -99,7 +151,7 @@ def baseline(datasets, folds, checkpoints, metric, decile = None, return_qcut = 
     # Initialize lists for non-numeric columns
     ds, fs, cs = [], [], []
     # Initialize empty array of the right shape
-    columns = ['SUPPORT', 'REFUTE', 'NEI', 'micro', 'macro']
+    columns = ['REFUTE', 'NEI', 'SUPPORT', 'micro', 'macro']
     metric_array = np.zeros(shape=(len(datasets) * len(checkpoints), len(columns)))
     # Loop over checkpoints and datasets
     for icheckpoint in range(len(checkpoints)):

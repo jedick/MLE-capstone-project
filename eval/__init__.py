@@ -1,1 +1,1 @@
-from .eval import read_data, read_predictions, calc_metric, baseline
+from .eval import read_data, read_predictions, calc_metric, baseline, calc_auroc

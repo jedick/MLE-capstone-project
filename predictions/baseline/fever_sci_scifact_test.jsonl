@@ -1,300 +1,300 @@
-{"id": 7, "evidence": {}}
-{"id": 8, "evidence": {}}
-{"id": 16, "evidence": {}}
-{"id": 23, "evidence": {}}
-{"id": 29, "evidence": {}}
-{"id": 31, "evidence": {"12428497": {"label": "SUPPORT", "sentences": [8]}}}
-{"id": 33, "evidence": {}}
-{"id": 38, "evidence": {}}
-{"id": 59, "evidence": {"4709641": {"label": "SUPPORT", "sentences": [1]}}}
-{"id": 65, "evidence": {}}
-{"id": 83, "evidence": {}}
-{"id": 84, "evidence": {"7521113": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 87, "evidence": {"7521113": {"label": "SUPPORT", "sentences": []}}}
-{"id": 97, "evidence": {"6540064": {"label": "SUPPORT", "sentences": [12]}}}
-{"id": 101, "evidence": {}}
-{"id": 102, "evidence": {}}
-{"id": 103, "evidence": {}}
-{"id": 107, "evidence": {"6191684": {"label": "SUPPORT", "sentences": []}}}
-{"id": 110, "evidence": {"16270577": {"label": "SUPPORT", "sentences": []}}}
-{"id": 117, "evidence": {"6372244": {"label": "SUPPORT", "sentences": []}}}
-{"id": 125, "evidence": {}}
-{"id": 131, "evidence": {}}
-{"id": 135, "evidence": {}}
-{"id": 136, "evidence": {}}
-{"id": 140, "evidence": {"7965928": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 145, "evidence": {"10582939": {"label": "REFUTE", "sentences": []}}}
-{"id": 147, "evidence": {}}
-{"id": 150, "evidence": {"6227220": {"label": "SUPPORT", "sentences": []}}}
-{"id": 151, "evidence": {"1084345": {"label": "REFUTE", "sentences": []}}}
-{"id": 158, "evidence": {}}
-{"id": 162, "evidence": {}}
-{"id": 170, "evidence": {"5824985": {"label": "REFUTE", "sentences": [10]}}}
-{"id": 188, "evidence": {"4421578": {"label": "REFUTE", "sentences": []}}}
-{"id": 190, "evidence": {"11411060": {"label": "SUPPORT", "sentences": []}}}
-{"id": 191, "evidence": {"2891825": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 192, "evidence": {"2891825": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 193, "evidence": {}}
-{"id": 194, "evidence": {}}
-{"id": 195, "evidence": {"2541699": {"label": "SUPPORT", "sentences": []}}}
-{"id": 202, "evidence": {"9558539": {"label": "SUPPORT", "sentences": []}}}
-{"id": 206, "evidence": {"15960670": {"label": "REFUTE", "sentences": [4]}}}
-{"id": 207, "evidence": {"13519661": {"label": "REFUTE", "sentences": [7]}}}
-{"id": 215, "evidence": {}}
-{"id": 231, "evidence": {}}
-{"id": 234, "evidence": {"4388470": {"label": "SUPPORT", "sentences": []}}}
-{"id": 240, "evidence": {}}
-{"id": 252, "evidence": {"24922825": {"label": "SUPPORT", "sentences": [7]}}}
-{"id": 257, "evidence": {}}
-{"id": 260, "evidence": {}}
-{"id": 270, "evidence": {}}
-{"id": 271, "evidence": {}}
-{"id": 273, "evidence": {"11614737": {"label": "SUPPORT", "sentences": [10, 13]}}}
-{"id": 276, "evidence": {"4961038": {"label": "REFUTE", "sentences": []}}}
-{"id": 282, "evidence": {}}
-{"id": 284, "evidence": {"1974176": {"label": "SUPPORT", "sentences": [6, 7]}}}
-{"id": 288, "evidence": {"4398832": {"label": "SUPPORT", "sentences": []}}}
-{"id": 289, "evidence": {}}
-{"id": 291, "evidence": {"15048300": {"label": "SUPPORT", "sentences": []}}}
-{"id": 297, "evidence": {"4398832": {"label": "SUPPORT", "sentences": []}}}
-{"id": 302, "evidence": {}}
-{"id": 307, "evidence": {"7821634": {"label": "SUPPORT", "sentences": [9]}}}
-{"id": 311, "evidence": {}}
-{"id": 318, "evidence": {}}
-{"id": 319, "evidence": {}}
-{"id": 320, "evidence": {"11369420": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 321, "evidence": {"11369420": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 322, "evidence": {"4587978": {"label": "SUPPORT", "sentences": [2]}}}
-{"id": 328, "evidence": {"17997584": {"label": "REFUTE", "sentences": [2]}}}
-{"id": 329, "evidence": {"9505448": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 344, "evidence": {}}
-{"id": 348, "evidence": {"13497630": {"label": "SUPPORT", "sentences": []}}}
-{"id": 353, "evidence": {}}
-{"id": 359, "evidence": {"38587347": {"label": "SUPPORT", "sentences": []}}}
-{"id": 360, "evidence": {"38587347": {"label": "SUPPORT", "sentences": []}}}
-{"id": 373, "evidence": {}}
-{"id": 374, "evidence": {}}
-{"id": 387, "evidence": {}}
-{"id": 395, "evidence": {}}
-{"id": 402, "evidence": {}}
-{"id": 405, "evidence": {}}
-{"id": 408, "evidence": {}}
-{"id": 409, "evidence": {}}
-{"id": 412, "evidence": {}}
-{"id": 419, "evidence": {"9315213": {"label": "SUPPORT", "sentences": [5]}}}
-{"id": 424, "evidence": {}}
-{"id": 427, "evidence": {}}
-{"id": 433, "evidence": {}}
-{"id": 438, "evidence": {}}
-{"id": 442, "evidence": {}}
-{"id": 446, "evidence": {"10991183": {"label": "SUPPORT", "sentences": []}}}
-{"id": 450, "evidence": {}}
-{"id": 451, "evidence": {"12804937": {"label": "SUPPORT", "sentences": []}}}
-{"id": 457, "evidence": {}}
-{"id": 459, "evidence": {"597790": {"label": "REFUTE", "sentences": [3]}}}
-{"id": 460, "evidence": {"40096222": {"label": "SUPPORT", "sentences": []}}}
-{"id": 462, "evidence": {}}
-{"id": 464, "evidence": {"13023410": {"label": "SUPPORT", "sentences": []}}}
-{"id": 465, "evidence": {"13023410": {"label": "SUPPORT", "sentences": []}}}
-{"id": 467, "evidence": {}}
-{"id": 468, "evidence": {}}
-{"id": 471, "evidence": {}}
-{"id": 476, "evidence": {}}
-{"id": 477, "evidence": {}}
-{"id": 496, "evidence": {}}
-{"id": 497, "evidence": {}}
-{"id": 503, "evidence": {}}
-{"id": 510, "evidence": {"7224723": {"label": "SUPPORT", "sentences": []}}}
-{"id": 511, "evidence": {"7224723": {"label": "SUPPORT", "sentences": []}}}
-{"id": 512, "evidence": {}}
-{"id": 518, "evidence": {}}
-{"id": 519, "evidence": {}}
-{"id": 520, "evidence": {}}
-{"id": 522, "evidence": {}}
-{"id": 534, "evidence": {"25515907": {"label": "REFUTE", "sentences": []}}}
-{"id": 538, "evidence": {"13282296": {"label": "REFUTE", "sentences": []}}}
-{"id": 543, "evidence": {"19688024": {"label": "SUPPORT", "sentences": [3]}}}
-{"id": 546, "evidence": {"10648422": {"label": "SUPPORT", "sentences": []}}}
-{"id": 556, "evidence": {}}
-{"id": 558, "evidence": {}}
-{"id": 561, "evidence": {"7114092": {"label": "SUPPORT", "sentences": []}}}
-{"id": 567, "evidence": {}}
-{"id": 581, "evidence": {"23460562": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 583, "evidence": {"14260013": {"label": "SUPPORT", "sentences": []}}}
-{"id": 586, "evidence": {}}
-{"id": 596, "evidence": {"4824840": {"label": "SUPPORT", "sentences": [9]}}}
-{"id": 599, "evidence": {}}
-{"id": 604, "evidence": {}}
-{"id": 605, "evidence": {}}
-{"id": 608, "evidence": {"37549932": {"label": "SUPPORT", "sentences": []}}}
-{"id": 627, "evidence": {"16355392": {"label": "REFUTE", "sentences": []}}}
-{"id": 629, "evidence": {}}
-{"id": 630, "evidence": {"5468807": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 634, "evidence": {"1686997": {"label": "SUPPORT", "sentences": []}}}
-{"id": 639, "evidence": {}}
-{"id": 656, "evidence": {}}
-{"id": 664, "evidence": {}}
-{"id": 675, "evidence": {}}
-{"id": 678, "evidence": {}}
-{"id": 695, "evidence": {"1071991": {"label": "SUPPORT", "sentences": []}}}
-{"id": 697, "evidence": {"31884697": {"label": "SUPPORT", "sentences": []}}}
-{"id": 699, "evidence": {}}
-{"id": 701, "evidence": {}}
-{"id": 706, "evidence": {"22442133": {"label": "REFUTE", "sentences": []}}}
-{"id": 707, "evidence": {"22442133": {"label": "REFUTE", "sentences": [6]}}}
-{"id": 708, "evidence": {"22442133": {"label": "REFUTE", "sentences": []}}}
-{"id": 711, "evidence": {"22420524": {"label": "SUPPORT", "sentences": []}}}
-{"id": 712, "evidence": {"22420524": {"label": "REFUTE", "sentences": []}}}
-{"id": 719, "evidence": {}}
-{"id": 720, "evidence": {"10692948": {"label": "REFUTE", "sentences": []}}}
-{"id": 722, "evidence": {"1834762": {"label": "REFUTE", "sentences": [4]}}}
-{"id": 725, "evidence": {}}
-{"id": 731, "evidence": {}}
-{"id": 735, "evidence": {}}
-{"id": 741, "evidence": {"23078022": {"label": "SUPPORT", "sentences": []}}}
-{"id": 750, "evidence": {}}
-{"id": 754, "evidence": {}}
-{"id": 763, "evidence": {}}
-{"id": 769, "evidence": {"19736671": {"label": "SUPPORT", "sentences": []}}}
-{"id": 773, "evidence": {"24922825": {"label": "REFUTE", "sentences": [7]}}}
-{"id": 786, "evidence": {}}
-{"id": 794, "evidence": {"8551160": {"label": "REFUTE", "sentences": [1]}}}
-{"id": 796, "evidence": {"8551160": {"label": "SUPPORT", "sentences": [1]}}}
-{"id": 806, "evidence": {"22180793": {"label": "REFUTE", "sentences": []}}}
-{"id": 809, "evidence": {}}
-{"id": 819, "evidence": {}}
-{"id": 824, "evidence": {"15319019": {"label": "SUPPORT", "sentences": []}}}
-{"id": 827, "evidence": {}}
-{"id": 829, "evidence": {}}
-{"id": 833, "evidence": {"5811042": {"label": "REFUTE", "sentences": []}}}
-{"id": 836, "evidence": {}}
-{"id": 842, "evidence": {}}
-{"id": 843, "evidence": {}}
-{"id": 849, "evidence": {}}
-{"id": 850, "evidence": {"14171859": {"label": "SUPPORT", "sentences": []}}}
-{"id": 851, "evidence": {"3355397": {"label": "SUPPORT", "sentences": [12]}}}
-{"id": 862, "evidence": {"16066726": {"label": "SUPPORT", "sentences": []}}}
-{"id": 864, "evidence": {"20568364": {"label": "SUPPORT", "sentences": []}}}
-{"id": 865, "evidence": {}}
-{"id": 868, "evidence": {}}
-{"id": 869, "evidence": {}}
-{"id": 872, "evidence": {"1180972": {"label": "SUPPORT", "sentences": []}}}
-{"id": 874, "evidence": {}}
-{"id": 875, "evidence": {}}
-{"id": 878, "evidence": {}}
-{"id": 888, "evidence": {}}
-{"id": 889, "evidence": {}}
-{"id": 892, "evidence": {"13509809": {"label": "SUPPORT", "sentences": []}}}
-{"id": 905, "evidence": {}}
-{"id": 906, "evidence": {}}
-{"id": 915, "evidence": {}}
-{"id": 918, "evidence": {"16422880": {"label": "SUPPORT", "sentences": []}}}
-{"id": 920, "evidence": {}}
-{"id": 924, "evidence": {"17077004": {"label": "SUPPORT", "sentences": []}}}
-{"id": 931, "evidence": {}}
-{"id": 932, "evidence": {}}
-{"id": 937, "evidence": {}}
-{"id": 943, "evidence": {"21295300": {"label": "SUPPORT", "sentences": []}}}
-{"id": 947, "evidence": {}}
-{"id": 948, "evidence": {}}
-{"id": 950, "evidence": {"4422723": {"label": "SUPPORT", "sentences": []}}}
-{"id": 958, "evidence": {"6501747": {"label": "SUPPORT", "sentences": []}}}
-{"id": 961, "evidence": {"7114092": {"label": "SUPPORT", "sentences": []}}}
-{"id": 966, "evidence": {}}
-{"id": 968, "evidence": {}}
-{"id": 974, "evidence": {"27446873": {"label": "REFUTE", "sentences": []}}}
-{"id": 981, "evidence": {"20128547": {"label": "SUPPORT", "sentences": []}}}
-{"id": 983, "evidence": {"2988714": {"label": "SUPPORT", "sentences": []}}}
-{"id": 986, "evidence": {"1383826": {"label": "SUPPORT", "sentences": [14]}}}
-{"id": 987, "evidence": {}}
-{"id": 991, "evidence": {"16472469": {"label": "SUPPORT", "sentences": [5]}}}
-{"id": 995, "evidence": {"16472469": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 1007, "evidence": {}}
-{"id": 1010, "evidence": {"5558754": {"label": "SUPPORT", "sentences": [10]}}}
-{"id": 1013, "evidence": {"6277638": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1017, "evidence": {}}
-{"id": 1022, "evidence": {}}
-{"id": 1039, "evidence": {"16287725": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1051, "evidence": {"19878070": {"label": "SUPPORT", "sentences": [8, 10]}}}
-{"id": 1057, "evidence": {}}
-{"id": 1059, "evidence": {}}
-{"id": 1060, "evidence": {}}
-{"id": 1061, "evidence": {"20381484": {"label": "SUPPORT", "sentences": [10]}}}
-{"id": 1063, "evidence": {"20381484": {"label": "SUPPORT", "sentences": [10]}}}
-{"id": 1064, "evidence": {"2919030": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1066, "evidence": {"20418809": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1071, "evidence": {}}
-{"id": 1076, "evidence": {}}
-{"id": 1077, "evidence": {}}
-{"id": 1078, "evidence": {"16855829": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1079, "evidence": {"16855829": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1080, "evidence": {}}
-{"id": 1082, "evidence": {}}
-{"id": 1083, "evidence": {}}
-{"id": 1092, "evidence": {"641786": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1093, "evidence": {"641786": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1094, "evidence": {}}
-{"id": 1095, "evidence": {"16167746": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1108, "evidence": {}}
-{"id": 1113, "evidence": {"15816729": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1116, "evidence": {"253672": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1117, "evidence": {}}
-{"id": 1122, "evidence": {"4456756": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1123, "evidence": {"4456756": {"label": "REFUTE", "sentences": []}}}
-{"id": 1124, "evidence": {"4456756": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1129, "evidence": {}}
-{"id": 1131, "evidence": {"17997584": {"label": "SUPPORT", "sentences": [3]}}}
-{"id": 1143, "evidence": {}}
-{"id": 1147, "evidence": {"13906581": {"label": "REFUTE", "sentences": []}}}
-{"id": 1149, "evidence": {"24713020": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1151, "evidence": {"1287809": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1152, "evidence": {"1287809": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1154, "evidence": {"7370282": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 1155, "evidence": {"12584053": {"label": "REFUTE", "sentences": [10]}}}
-{"id": 1160, "evidence": {"12584053": {"label": "REFUTE", "sentences": [10]}}}
-{"id": 1167, "evidence": {"4455466": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1172, "evidence": {"7370282": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1189, "evidence": {}}
-{"id": 1192, "evidence": {}}
-{"id": 1198, "evidence": {}}
-{"id": 1201, "evidence": {}}
-{"id": 1203, "evidence": {"3475317": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1217, "evidence": {}}
-{"id": 1222, "evidence": {}}
-{"id": 1233, "evidence": {"13905670": {"label": "REFUTE", "sentences": [4]}}}
-{"id": 1240, "evidence": {}}
-{"id": 1242, "evidence": {}}
-{"id": 1243, "evidence": {}}
-{"id": 1250, "evidence": {}}
-{"id": 1251, "evidence": {"14362678": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1252, "evidence": {"14362678": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1256, "evidence": {}}
-{"id": 1264, "evidence": {"24558930": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1267, "evidence": {}}
-{"id": 1277, "evidence": {}}
-{"id": 1283, "evidence": {"3578380": {"label": "SUPPORT", "sentences": [9]}}}
-{"id": 1285, "evidence": {}}
-{"id": 1286, "evidence": {"1649738": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1287, "evidence": {"30553457": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 1296, "evidence": {}}
-{"id": 1299, "evidence": {"11718220": {"label": "REFUTE", "sentences": []}}}
-{"id": 1301, "evidence": {}}
-{"id": 1313, "evidence": {"24177706": {"label": "REFUTE", "sentences": [4]}}}
-{"id": 1317, "evidence": {}}
-{"id": 1318, "evidence": {"16284655": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1321, "evidence": {"16284655": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1326, "evidence": {"24241932": {"label": "SUPPORT", "sentences": [6]}}}
-{"id": 1329, "evidence": {"3475317": {"label": "REFUTE", "sentences": []}}}
-{"id": 1338, "evidence": {}}
-{"id": 1343, "evidence": {}}
-{"id": 1354, "evidence": {"5256564": {"label": "SUPPORT", "sentences": [4]}}}
-{"id": 1357, "evidence": {"13764090": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1358, "evidence": {}}
-{"id": 1365, "evidence": {}}
-{"id": 1369, "evidence": {}}
-{"id": 1377, "evidence": {}}
-{"id": 1384, "evidence": {"22843616": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1388, "evidence": {"23895668": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1396, "evidence": {}}
-{"id": 1399, "evidence": {"11903247": {"label": "SUPPORT", "sentences": []}}}
-{"id": 1408, "evidence": {}}
+{"id": 7, "evidence": {"6490571": {"label": "NEI", "sentences": [], "label_probs": [0.0024794540368020535, 0.8426687121391296, 0.15485180914402008]}}}
+{"id": 8, "evidence": {"3471191": {"label": "NEI", "sentences": [], "label_probs": [0.0023967113811522722, 0.9901018142700195, 0.007501421496272087]}}}
+{"id": 16, "evidence": {"22080671": {"label": "NEI", "sentences": [], "label_probs": [6.704271527269157e-06, 0.999988317489624, 5.0315829867031425e-06]}}}
+{"id": 23, "evidence": {"41493639": {"label": "NEI", "sentences": [], "label_probs": [0.013949422165751457, 0.9722815752029419, 0.01376906968653202]}}}
+{"id": 29, "evidence": {"24341590": {"label": "NEI", "sentences": [], "label_probs": [0.010140908882021904, 0.9652319550514221, 0.024627141654491425]}}}
+{"id": 31, "evidence": {"12428497": {"label": "SUPPORT", "sentences": [8], "label_probs": [0.0009420767892152071, 0.051543790847063065, 0.9475141167640686]}}}
+{"id": 33, "evidence": {"5152028": {"label": "NEI", "sentences": [], "label_probs": [0.005078586284071207, 0.9924479722976685, 0.0024734465405344963]}}}
+{"id": 38, "evidence": {"11705328": {"label": "NEI", "sentences": [], "label_probs": [7.272813036252046e-06, 0.9999781847000122, 1.4483910490525886e-05]}}}
+{"id": 59, "evidence": {"4709641": {"label": "SUPPORT", "sentences": [1], "label_probs": [0.00034986756509169936, 0.00010883515642490238, 0.9995414018630981]}}}
+{"id": 65, "evidence": {"14806256": {"label": "NEI", "sentences": [], "label_probs": [6.5228473431488965e-06, 0.9999879598617554, 5.473618784890277e-06]}}}
+{"id": 83, "evidence": {"18064113": {"label": "NEI", "sentences": [], "label_probs": [0.00010240217670798302, 0.9993659853935242, 0.0005316257593221962]}}}
+{"id": 84, "evidence": {"7521113": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.00020780408522114158, 0.00015595662989653647, 0.999636173248291]}}}
+{"id": 87, "evidence": {"7521113": {"label": "SUPPORT", "sentences": [], "label_probs": [0.20439498126506805, 0.008107016794383526, 0.7874979972839355]}}}
+{"id": 97, "evidence": {"6540064": {"label": "SUPPORT", "sentences": [12], "label_probs": [0.035207200795412064, 0.12682925164699554, 0.8379635214805603]}}}
+{"id": 101, "evidence": {"9393969": {"label": "NEI", "sentences": [], "label_probs": [3.464039400569163e-05, 0.9998145699501038, 0.0001508380810264498]}}}
+{"id": 102, "evidence": {"8989616": {"label": "NEI", "sentences": [], "label_probs": [6.836539341747994e-06, 0.9999881982803345, 4.962586899637245e-06]}}}
+{"id": 103, "evidence": {"13791788": {"label": "NEI", "sentences": [], "label_probs": [7.37006776034832e-05, 0.9992693066596985, 0.0006569527904503047]}}}
+{"id": 107, "evidence": {"6191684": {"label": "SUPPORT", "sentences": [], "label_probs": [0.17497365176677704, 0.32984212040901184, 0.4951842427253723]}}}
+{"id": 110, "evidence": {"16270577": {"label": "SUPPORT", "sentences": [], "label_probs": [0.05117999017238617, 0.001343117910437286, 0.9474769234657288]}}}
+{"id": 117, "evidence": {"6372244": {"label": "SUPPORT", "sentences": [], "label_probs": [0.010448947548866272, 0.00017965621373150498, 0.9893714189529419]}}}
+{"id": 125, "evidence": {"24512064": {"label": "NEI", "sentences": [], "label_probs": [0.0004641559789888561, 0.9962906837463379, 0.003245132276788354]}}}
+{"id": 131, "evidence": {"7975937": {"label": "NEI", "sentences": [], "label_probs": [6.608524472540012e-06, 0.9999881982803345, 5.212902578932699e-06]}}}
+{"id": 135, "evidence": {"18574146": {"label": "NEI", "sentences": [], "label_probs": [6.770767504349351e-05, 0.9995311498641968, 0.00040112045826390386]}}}
+{"id": 136, "evidence": {"18574146": {"label": "NEI", "sentences": [], "label_probs": [7.340540469158441e-05, 0.9992497563362122, 0.00067683937959373]}}}
+{"id": 140, "evidence": {"7965928": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.009152301587164402, 0.0337100476026535, 0.9571376442909241]}}}
+{"id": 145, "evidence": {"10582939": {"label": "REFUTE", "sentences": [], "label_probs": [0.6522101163864136, 0.33936163783073425, 0.008428260684013367]}}}
+{"id": 147, "evidence": {"10582939": {"label": "NEI", "sentences": [], "label_probs": [0.10403230786323547, 0.8905253410339355, 0.005442332476377487]}}}
+{"id": 150, "evidence": {"6227220": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00013471089187078178, 0.00020607396436389536, 0.9996592998504639]}}}
+{"id": 151, "evidence": {"1084345": {"label": "REFUTE", "sentences": [], "label_probs": [0.5208668112754822, 0.0048229326494038105, 0.4743102788925171]}}}
+{"id": 158, "evidence": {"9394119": {"label": "NEI", "sentences": [], "label_probs": [0.2136499285697937, 0.7415640354156494, 0.044786009937524796]}}}
+{"id": 162, "evidence": {"18872233": {"label": "NEI", "sentences": [], "label_probs": [0.03622964769601822, 0.4946433901786804, 0.4691269099712372]}}}
+{"id": 170, "evidence": {"5824985": {"label": "REFUTE", "sentences": [10], "label_probs": [0.5205087065696716, 0.3800247609615326, 0.09946656972169876]}}}
+{"id": 188, "evidence": {"4421578": {"label": "REFUTE", "sentences": [], "label_probs": [0.8578033447265625, 0.13348543643951416, 0.008711271919310093]}}}
+{"id": 190, "evidence": {"11411060": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00038076055352576077, 0.0017560747219249606, 0.9978631138801575]}}}
+{"id": 191, "evidence": {"2891825": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.012332119047641754, 0.024016601964831352, 0.9636513590812683]}}}
+{"id": 192, "evidence": {"2891825": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.0018407899187877774, 0.004050597548484802, 0.9941086769104004]}}}
+{"id": 193, "evidence": {"13235609": {"label": "NEI", "sentences": [], "label_probs": [0.00011318070028210059, 0.9982373714447021, 0.0016493857838213444]}}}
+{"id": 194, "evidence": {"2541699": {"label": "NEI", "sentences": [], "label_probs": [0.0031042820774018764, 0.9766655564308167, 0.020230144262313843]}}}
+{"id": 195, "evidence": {"2541699": {"label": "SUPPORT", "sentences": [], "label_probs": [0.012563572265207767, 0.04950004070997238, 0.9379363059997559]}}}
+{"id": 202, "evidence": {"9558539": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00011318759788991883, 0.0002577274281065911, 0.999629020690918]}}}
+{"id": 206, "evidence": {"15960670": {"label": "REFUTE", "sentences": [4], "label_probs": [0.7888706922531128, 0.010183860547840595, 0.20094549655914307]}}}
+{"id": 207, "evidence": {"13519661": {"label": "REFUTE", "sentences": [7], "label_probs": [0.99958735704422, 0.00013922780635766685, 0.0002734219888225198]}}}
+{"id": 215, "evidence": {"5035851": {"label": "NEI", "sentences": [], "label_probs": [6.3119314290815964e-06, 0.9999879598617554, 5.67199867873569e-06]}}}
+{"id": 231, "evidence": {"3067015": {"label": "NEI", "sentences": [], "label_probs": [5.3399515309138224e-05, 0.9995885491371155, 0.00035801142803393304]}}}
+{"id": 234, "evidence": {"4388470": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0011916992953047156, 8.062467531999573e-05, 0.9987277388572693]}}}
+{"id": 240, "evidence": {"14079881": {"label": "NEI", "sentences": [], "label_probs": [5.218303340370767e-05, 0.9997815489768982, 0.0001662917056819424]}}}
+{"id": 252, "evidence": {"24922825": {"label": "SUPPORT", "sentences": [7], "label_probs": [0.0001297411072300747, 0.00025286732125096023, 0.999617338180542]}}}
+{"id": 257, "evidence": {"11624482": {"label": "NEI", "sentences": [], "label_probs": [0.0001254849776159972, 0.9992293119430542, 0.0006451646913774312]}}}
+{"id": 260, "evidence": {"1122279": {"label": "NEI", "sentences": [], "label_probs": [0.0003051045350730419, 0.9956342577934265, 0.004060599487274885]}}}
+{"id": 270, "evidence": {"8814634": {"label": "NEI", "sentences": [], "label_probs": [0.0009574714349582791, 0.9140675067901611, 0.08497503399848938]}}}
+{"id": 271, "evidence": {"8814634": {"label": "NEI", "sentences": [], "label_probs": [0.00010839633614523336, 0.9993646740913391, 0.0005269765388220549]}}}
+{"id": 273, "evidence": {"11614737": {"label": "SUPPORT", "sentences": [10, 13], "label_probs": [0.002202618168666959, 0.028901370242238045, 0.9688960313796997]}}}
+{"id": 276, "evidence": {"4961038": {"label": "REFUTE", "sentences": [], "label_probs": [0.9107348322868347, 0.002593991346657276, 0.08667118847370148]}}}
+{"id": 282, "evidence": {"33499189": {"label": "NEI", "sentences": [], "label_probs": [0.0034639539662748575, 0.9591901302337646, 0.03734593093395233]}}}
+{"id": 284, "evidence": {"1974176": {"label": "SUPPORT", "sentences": [6, 7], "label_probs": [0.014720465987920761, 0.014849105849862099, 0.9704303741455078]}}}
+{"id": 288, "evidence": {"4398832": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00018142545013688505, 0.00012056875857524574, 0.9996980428695679]}}}
+{"id": 289, "evidence": {"10212612": {"label": "NEI", "sentences": [], "label_probs": [0.0036196697037667036, 0.7165409326553345, 0.2798393964767456]}}}
+{"id": 291, "evidence": {"15048300": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0001576181675773114, 0.0003193170123267919, 0.9995230436325073]}}}
+{"id": 297, "evidence": {"4398832": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0004552148748189211, 0.00012028898345306516, 0.9994244575500488]}}}
+{"id": 302, "evidence": {"3553087": {"label": "NEI", "sentences": [], "label_probs": [6.379091701091966e-06, 0.9999880790710449, 5.549443812924437e-06]}}}
+{"id": 307, "evidence": {"7821634": {"label": "SUPPORT", "sentences": [9], "label_probs": [0.00011614642426138744, 0.0003189827548339963, 0.9995648264884949]}}}
+{"id": 311, "evidence": {"6173523": {"label": "NEI", "sentences": [], "label_probs": [4.723631718661636e-05, 0.9996535778045654, 0.0002991846122313291]}}}
+{"id": 318, "evidence": {"23887844": {"label": "NEI", "sentences": [], "label_probs": [5.966307526250603e-06, 0.999987006187439, 7.006975920376135e-06]}}}
+{"id": 319, "evidence": {"23887844": {"label": "NEI", "sentences": [], "label_probs": [5.992960723233409e-06, 0.9999868869781494, 7.070942046993878e-06]}}}
+{"id": 320, "evidence": {"11369420": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.0001629899925319478, 0.00019731461361516267, 0.999639630317688]}}}
+{"id": 321, "evidence": {"11369420": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.0006937442813068628, 9.433319792151451e-05, 0.9992119073867798]}}}
+{"id": 322, "evidence": {"4587978": {"label": "SUPPORT", "sentences": [2], "label_probs": [0.00017238996224477887, 0.00018789719615597278, 0.999639630317688]}}}
+{"id": 328, "evidence": {"17997584": {"label": "REFUTE", "sentences": [2], "label_probs": [0.9995100498199463, 0.0002377582131884992, 0.0002522284921724349]}}}
+{"id": 329, "evidence": {"9505448": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.0001408244133926928, 0.0002172911772504449, 0.9996418952941895]}}}
+{"id": 344, "evidence": {"4394817": {"label": "NEI", "sentences": [], "label_probs": [8.764454832999036e-05, 0.999228835105896, 0.0006834847736172378]}}}
+{"id": 348, "evidence": {"13497630": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0012733133044093847, 0.041094060987234116, 0.9576326012611389]}}}
+{"id": 353, "evidence": {"14658685": {"label": "NEI", "sentences": [], "label_probs": [0.00017209953512065113, 0.9972743391990662, 0.00255361245945096]}}}
+{"id": 359, "evidence": {"38587347": {"label": "SUPPORT", "sentences": [], "label_probs": [0.023401880636811256, 0.3628690242767334, 0.6137290596961975]}}}
+{"id": 360, "evidence": {"38587347": {"label": "SUPPORT", "sentences": [], "label_probs": [0.020507486537098885, 0.3874872326850891, 0.5920053720474243]}}}
+{"id": 373, "evidence": {"997143": {"label": "NEI", "sentences": [], "label_probs": [0.029969576746225357, 0.943875253200531, 0.02615516446530819]}}}
+{"id": 374, "evidence": {"26336593": {"label": "NEI", "sentences": [], "label_probs": [0.004957250319421291, 0.6774776577949524, 0.3175651431083679]}}}
+{"id": 387, "evidence": {"30507607": {"label": "NEI", "sentences": [], "label_probs": [9.062203025678173e-05, 0.999042809009552, 0.0008665950736030936]}}}
+{"id": 395, "evidence": {"25079962": {"label": "NEI", "sentences": [], "label_probs": [0.004164061043411493, 0.9919791221618652, 0.003856801427900791]}}}
+{"id": 402, "evidence": {"5633876": {"label": "NEI", "sentences": [], "label_probs": [5.8923767937812954e-05, 0.9996389150619507, 0.00030217962921597064]}}}
+{"id": 405, "evidence": {"6796297": {"label": "NEI", "sentences": [], "label_probs": [6.566727734025335e-06, 0.9999881982803345, 5.193708147999132e-06]}}}
+{"id": 408, "evidence": {"2526777": {"label": "NEI", "sentences": [], "label_probs": [0.019225317984819412, 0.9492807388305664, 0.031493935734033585]}}}
+{"id": 409, "evidence": {"2526777": {"label": "NEI", "sentences": [], "label_probs": [0.0020306881051510572, 0.9691817164421082, 0.02878762222826481]}}}
+{"id": 412, "evidence": {"6309659": {"label": "NEI", "sentences": [], "label_probs": [0.00010790640226332471, 0.999370276927948, 0.0005217985017225146]}}}
+{"id": 419, "evidence": {"9315213": {"label": "SUPPORT", "sentences": [5], "label_probs": [0.000291805830784142, 0.0008085150620900095, 0.9988995790481567]}}}
+{"id": 424, "evidence": {"33257464": {"label": "NEI", "sentences": [], "label_probs": [0.00029855663888156414, 0.9978017210960388, 0.0018997278530150652]}}}
+{"id": 427, "evidence": {"16728949": {"label": "NEI", "sentences": [], "label_probs": [0.011619220487773418, 0.9712250828742981, 0.01715567708015442]}}}
+{"id": 433, "evidence": {"9500590": {"label": "NEI", "sentences": [], "label_probs": [2.802645212796051e-05, 0.9998340606689453, 0.0001378706656396389]}}}
+{"id": 438, "evidence": {"22401061": {"label": "NEI", "sentences": [], "label_probs": [0.00023472939210478216, 0.9973213076591492, 0.002443931298330426]}}}
+{"id": 442, "evidence": {"2014909": {"label": "NEI", "sentences": [], "label_probs": [0.008642549626529217, 0.9830130934715271, 0.008344330824911594]}}}
+{"id": 446, "evidence": {"10991183": {"label": "SUPPORT", "sentences": [], "label_probs": [0.006969323381781578, 0.4636746346950531, 0.5293560028076172]}}}
+{"id": 450, "evidence": {"12209494": {"label": "NEI", "sentences": [], "label_probs": [6.065393336029956e-06, 0.9999862909317017, 7.685706805204973e-06]}}}
+{"id": 451, "evidence": {"12804937": {"label": "SUPPORT", "sentences": [], "label_probs": [0.001713622477836907, 0.08021710813045502, 0.9180692434310913]}}}
+{"id": 457, "evidence": {"30507607": {"label": "NEI", "sentences": [], "label_probs": [1.0290124919265509e-05, 0.9999613761901855, 2.8294918593019247e-05]}}}
+{"id": 459, "evidence": {"597790": {"label": "REFUTE", "sentences": [3], "label_probs": [0.9087029695510864, 0.002833534264937043, 0.08846347033977509]}}}
+{"id": 460, "evidence": {"40096222": {"label": "SUPPORT", "sentences": [], "label_probs": [0.008234066888689995, 0.4625318646430969, 0.5292341113090515]}}}
+{"id": 462, "evidence": {"15478227": {"label": "NEI", "sentences": [], "label_probs": [5.321891512721777e-05, 0.9995825886726379, 0.0003641621442511678]}}}
+{"id": 464, "evidence": {"13023410": {"label": "SUPPORT", "sentences": [], "label_probs": [0.016487738117575645, 0.0008031391189433634, 0.9827090501785278]}}}
+{"id": 465, "evidence": {"13023410": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00020445948757696897, 0.00012230381253175437, 0.9996732473373413]}}}
+{"id": 467, "evidence": {"39059143": {"label": "NEI", "sentences": [], "label_probs": [6.192246473801788e-06, 0.9999862909317017, 7.529939011874376e-06]}}}
+{"id": 468, "evidence": {"39059143": {"label": "NEI", "sentences": [], "label_probs": [6.334153567877365e-06, 0.9999871253967285, 6.498986294900533e-06]}}}
+{"id": 471, "evidence": {"7185591": {"label": "NEI", "sentences": [], "label_probs": [6.141136964288307e-06, 0.9999876022338867, 6.247192686714698e-06]}}}
+{"id": 476, "evidence": {"14767844": {"label": "NEI", "sentences": [], "label_probs": [4.3982530769426376e-05, 0.9996845722198486, 0.0002714476431719959]}}}
+{"id": 477, "evidence": {"14767844": {"label": "NEI", "sentences": [], "label_probs": [0.00018426222959533334, 0.994417667388916, 0.005398056469857693]}}}
+{"id": 496, "evidence": {"17077004": {"label": "NEI", "sentences": [], "label_probs": [0.0002160724689019844, 0.9983751773834229, 0.0014087713789194822]}}}
+{"id": 497, "evidence": {"17077004": {"label": "NEI", "sentences": [], "label_probs": [0.0004497168702073395, 0.9840154647827148, 0.015534784644842148]}}}
+{"id": 503, "evidence": {"10883736": {"label": "NEI", "sentences": [], "label_probs": [0.00020246015628799796, 0.9980898499488831, 0.0017077201046049595]}}}
+{"id": 510, "evidence": {"7224723": {"label": "SUPPORT", "sentences": [], "label_probs": [0.03209822252392769, 0.00854964554309845, 0.9593521952629089]}}}
+{"id": 511, "evidence": {"7224723": {"label": "SUPPORT", "sentences": [], "label_probs": [0.03209822252392769, 0.00854964554309845, 0.9593521952629089]}}}
+{"id": 512, "evidence": {"13230773": {"label": "NEI", "sentences": [], "label_probs": [4.026919850730337e-05, 0.9997319579124451, 0.00022770299983676523]}}}
+{"id": 518, "evidence": {"15663829": {"label": "NEI", "sentences": [], "label_probs": [6.166609637148213e-06, 0.9999860525131226, 7.741213266854174e-06]}}}
+{"id": 519, "evidence": {"17587795": {"label": "NEI", "sentences": [], "label_probs": [0.0036167174112051725, 0.7800935506820679, 0.21628978848457336]}}}
+{"id": 520, "evidence": {"17587795": {"label": "NEI", "sentences": [], "label_probs": [0.002683389699086547, 0.7877652645111084, 0.2095513790845871]}}}
+{"id": 522, "evidence": {"5691302": {"label": "NEI", "sentences": [], "label_probs": [0.0024122640024870634, 0.9889660477638245, 0.008621678687632084]}}}
+{"id": 534, "evidence": {"25515907": {"label": "REFUTE", "sentences": [], "label_probs": [0.9917725920677185, 0.0006897353450767696, 0.007537656929343939]}}}
+{"id": 538, "evidence": {"13282296": {"label": "REFUTE", "sentences": [], "label_probs": [0.7434780597686768, 0.20973624289035797, 0.046785615384578705]}}}
+{"id": 543, "evidence": {"19688024": {"label": "SUPPORT", "sentences": [3], "label_probs": [0.00011850321607198566, 0.0002631358802318573, 0.999618411064148]}}}
+{"id": 546, "evidence": {"10648422": {"label": "SUPPORT", "sentences": [], "label_probs": [0.009840867482125759, 0.00024546319036744535, 0.9899137020111084]}}}
+{"id": 556, "evidence": {"1049501": {"label": "NEI", "sentences": [], "label_probs": [0.0028878396842628717, 0.9822209477424622, 0.014891156926751137]}}}
+{"id": 558, "evidence": {"1049501": {"label": "NEI", "sentences": [], "label_probs": [6.477970146079315e-06, 0.9999829530715942, 1.060690738086123e-05]}}}
+{"id": 561, "evidence": {"7114092": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00015368152526207268, 0.00015022262232378125, 0.9996960163116455]}}}
+{"id": 567, "evidence": {"23418635": {"label": "NEI", "sentences": [], "label_probs": [0.00030855421209707856, 0.9941837191581726, 0.005507717374712229]}}}
+{"id": 581, "evidence": {"23460562": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.00020391632278915495, 0.00017564106383360922, 0.9996204376220703]}}}
+{"id": 583, "evidence": {"14260013": {"label": "SUPPORT", "sentences": [], "label_probs": [0.007957826368510723, 0.0016978135099634528, 0.9903443455696106]}}}
+{"id": 586, "evidence": {"42291761": {"label": "NEI", "sentences": [], "label_probs": [6.397949618985876e-05, 0.9995349645614624, 0.00040106766391545534]}}}
+{"id": 596, "evidence": {"4824840": {"label": "SUPPORT", "sentences": [9], "label_probs": [0.0019109074492007494, 0.002128708641976118, 0.9959604144096375]}}}
+{"id": 599, "evidence": {"12779444": {"label": "NEI", "sentences": [], "label_probs": [4.070798240718432e-05, 0.9996888637542725, 0.00027040831628255546]}}}
+{"id": 604, "evidence": {"13578199": {"label": "NEI", "sentences": [], "label_probs": [6.155114533612505e-06, 0.9999874830245972, 6.407195087376749e-06]}}}
+{"id": 605, "evidence": {"13578199": {"label": "NEI", "sentences": [], "label_probs": [6.380905233527301e-06, 0.9999880790710449, 5.567281277762959e-06]}}}
+{"id": 608, "evidence": {"37549932": {"label": "SUPPORT", "sentences": [], "label_probs": [0.008776149712502956, 0.009448027238249779, 0.9817758202552795]}}}
+{"id": 627, "evidence": {"16355392": {"label": "REFUTE", "sentences": [], "label_probs": [0.5584317445755005, 0.0014456304488703609, 0.4401226341724396]}}}
+{"id": 629, "evidence": {"24512064": {"label": "NEI", "sentences": [], "label_probs": [5.327798135112971e-05, 0.9996036887168884, 0.0003430042997933924]}}}
+{"id": 630, "evidence": {"5468807": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.052391525357961655, 0.0002260758337797597, 0.947382390499115]}}}
+{"id": 634, "evidence": {"1686997": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0015996452420949936, 0.06294000148773193, 0.9354602694511414]}}}
+{"id": 639, "evidence": {"6503185": {"label": "NEI", "sentences": [], "label_probs": [2.3616536054760218e-05, 0.9998694658279419, 0.00010692806245060638]}}}
+{"id": 656, "evidence": {"8533245": {"label": "NEI", "sentences": [], "label_probs": [3.797962563112378e-05, 0.9996590614318848, 0.0003029125218745321]}}}
+{"id": 664, "evidence": {"22080671": {"label": "NEI", "sentences": [], "label_probs": [0.013862633146345615, 0.5627033114433289, 0.4234340488910675]}}}
+{"id": 675, "evidence": {"857189": {"label": "NEI", "sentences": [], "label_probs": [1.7759704860509373e-05, 0.9999076128005981, 7.461415225407109e-05]}}}
+{"id": 678, "evidence": {"13639330": {"label": "NEI", "sentences": [], "label_probs": [0.0005892093759030104, 0.946308434009552, 0.05310230702161789]}}}
+{"id": 695, "evidence": {"1071991": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0007608802989125252, 0.0006499398732557893, 0.9985890984535217]}}}
+{"id": 697, "evidence": {"31884697": {"label": "SUPPORT", "sentences": [], "label_probs": [0.17053642868995667, 0.010291572660207748, 0.8191720843315125]}}}
+{"id": 699, "evidence": {"22544171": {"label": "NEI", "sentences": [], "label_probs": [0.0018928860081359744, 0.9804008603096008, 0.017706267535686493]}}}
+{"id": 701, "evidence": {"4350400": {"label": "NEI", "sentences": [], "label_probs": [3.554013528628275e-05, 0.9997485280036926, 0.0002159343275707215]}}}
+{"id": 706, "evidence": {"22442133": {"label": "REFUTE", "sentences": [], "label_probs": [0.7002498507499695, 0.2970034182071686, 0.0027468018233776093]}}}
+{"id": 707, "evidence": {"22442133": {"label": "REFUTE", "sentences": [6], "label_probs": [0.9621443152427673, 0.025975678116083145, 0.011880063451826572]}}}
+{"id": 708, "evidence": {"22442133": {"label": "REFUTE", "sentences": [], "label_probs": [0.8722046613693237, 0.1039685606956482, 0.02382674440741539]}}}
+{"id": 711, "evidence": {"22420524": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00012559349124785513, 0.00041036895709112287, 0.9994640946388245]}}}
+{"id": 712, "evidence": {"22420524": {"label": "REFUTE", "sentences": [], "label_probs": [0.9815564155578613, 0.007417603395879269, 0.011025894433259964]}}}
+{"id": 719, "evidence": {"10692948": {"label": "NEI", "sentences": [], "label_probs": [0.012092167511582375, 0.5311754941940308, 0.45673230290412903]}}}
+{"id": 720, "evidence": {"10692948": {"label": "REFUTE", "sentences": [], "label_probs": [0.9143293499946594, 0.084313303232193, 0.001357358880341053]}}}
+{"id": 722, "evidence": {"1834762": {"label": "REFUTE", "sentences": [4], "label_probs": [0.9615909457206726, 0.0037502888590097427, 0.0346587672829628]}}}
+{"id": 725, "evidence": {"7521113": {"label": "NEI", "sentences": [], "label_probs": [7.3621376941446215e-06, 0.9999773502349854, 1.526962296338752e-05]}}}
+{"id": 731, "evidence": {"13400643": {"label": "NEI", "sentences": [], "label_probs": [0.10119893401861191, 0.7379927039146423, 0.16080838441848755]}}}
+{"id": 735, "evidence": {"4961038": {"label": "NEI", "sentences": [], "label_probs": [0.3318212926387787, 0.4309837818145752, 0.23719491064548492]}}}
+{"id": 741, "evidence": {"23078022": {"label": "SUPPORT", "sentences": [], "label_probs": [0.014188328757882118, 0.03604205325245857, 0.9497695565223694]}}}
+{"id": 750, "evidence": {"19800147": {"label": "NEI", "sentences": [], "label_probs": [4.599938984028995e-05, 0.9996765851974487, 0.00027748034335672855]}}}
+{"id": 754, "evidence": {"1173667": {"label": "NEI", "sentences": [], "label_probs": [8.189414074877277e-06, 0.9999725818634033, 1.9229575627832673e-05]}}}
+{"id": 763, "evidence": {"24575065": {"label": "NEI", "sentences": [], "label_probs": [0.02742118388414383, 0.9246984124183655, 0.0478803813457489]}}}
+{"id": 769, "evidence": {"19736671": {"label": "SUPPORT", "sentences": [], "label_probs": [0.15339508652687073, 0.1834607869386673, 0.663144052028656]}}}
+{"id": 773, "evidence": {"24922825": {"label": "REFUTE", "sentences": [7], "label_probs": [0.9711378216743469, 0.003161005675792694, 0.025701124221086502]}}}
+{"id": 786, "evidence": {"12471115": {"label": "NEI", "sentences": [], "label_probs": [0.00015964850899763405, 0.998569130897522, 0.00127118406817317]}}}
+{"id": 794, "evidence": {"8551160": {"label": "REFUTE", "sentences": [1], "label_probs": [0.9772832989692688, 0.014667387120425701, 0.008049346506595612]}}}
+{"id": 796, "evidence": {"8551160": {"label": "SUPPORT", "sentences": [1], "label_probs": [0.003294376190751791, 0.10768195241689682, 0.8890237212181091]}}}
+{"id": 806, "evidence": {"22180793": {"label": "REFUTE", "sentences": [], "label_probs": [0.9623467326164246, 0.004454127512872219, 0.03319917246699333]}}}
+{"id": 809, "evidence": {"26336593": {"label": "NEI", "sentences": [], "label_probs": [0.00019016525766346604, 0.9970026612281799, 0.0028072192799299955]}}}
+{"id": 819, "evidence": {"17814815": {"label": "NEI", "sentences": [], "label_probs": [5.955155302217463e-06, 0.9999853372573853, 8.695213182363659e-06]}}}
+{"id": 824, "evidence": {"15319019": {"label": "SUPPORT", "sentences": [], "label_probs": [0.09436250478029251, 0.022773602977395058, 0.8828638792037964]}}}
+{"id": 827, "evidence": {"4678846": {"label": "NEI", "sentences": [], "label_probs": [6.436127023334848e-06, 0.9999877214431763, 5.838276592839975e-06]}}}
+{"id": 829, "evidence": {"4678846": {"label": "NEI", "sentences": [], "label_probs": [1.6151860108948313e-05, 0.9999204874038696, 6.336887599900365e-05]}}}
+{"id": 833, "evidence": {"5811042": {"label": "REFUTE", "sentences": [], "label_probs": [0.9758225679397583, 0.008078334853053093, 0.016099093481898308]}}}
+{"id": 836, "evidence": {"15928989": {"label": "NEI", "sentences": [], "label_probs": [6.036018476152094e-06, 0.9999866485595703, 7.2943316808959935e-06]}}}
+{"id": 842, "evidence": {"2056197": {"label": "NEI", "sentences": [], "label_probs": [2.508958277758211e-05, 0.9998700618743896, 0.00010482544894330204]}}}
+{"id": 843, "evidence": {"2056197": {"label": "NEI", "sentences": [], "label_probs": [4.770012674271129e-05, 0.9994539618492126, 0.0004983178223483264]}}}
+{"id": 849, "evidence": {"4828631": {"label": "NEI", "sentences": [], "label_probs": [0.0027948198840022087, 0.954383373260498, 0.04282185807824135]}}}
+{"id": 850, "evidence": {"14171859": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00026417867047712207, 0.00021559717424679548, 0.9995203018188477]}}}
+{"id": 851, "evidence": {"3355397": {"label": "SUPPORT", "sentences": [12], "label_probs": [0.2453305870294571, 0.16530123353004456, 0.5893682241439819]}}}
+{"id": 862, "evidence": {"16066726": {"label": "SUPPORT", "sentences": [], "label_probs": [0.007425183430314064, 0.00038397041498683393, 0.9921908974647522]}}}
+{"id": 864, "evidence": {"20568364": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00023569611948914826, 0.002229360630735755, 0.997534990310669]}}}
+{"id": 865, "evidence": {"116075383": {"label": "NEI", "sentences": [], "label_probs": [1.733054523356259e-05, 0.9999135732650757, 6.907938222866505e-05]}}}
+{"id": 868, "evidence": {"195689316": {"label": "NEI", "sentences": [], "label_probs": [8.875081402948126e-05, 0.9993341565132141, 0.0005770473508164287]}}}
+{"id": 869, "evidence": {"195689316": {"label": "NEI", "sentences": [], "label_probs": [8.875081402948126e-05, 0.9993341565132141, 0.0005770473508164287]}}}
+{"id": 872, "evidence": {"1180972": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0007524137035943568, 0.11194062978029251, 0.8873069882392883]}}}
+{"id": 874, "evidence": {"195689316": {"label": "NEI", "sentences": [], "label_probs": [0.0003658632340375334, 0.9988504648208618, 0.0007836867007426918]}}}
+{"id": 875, "evidence": {"195689316": {"label": "NEI", "sentences": [], "label_probs": [0.0003658632340375334, 0.9988504648208618, 0.0007836867007426918]}}}
+{"id": 878, "evidence": {"313394": {"label": "NEI", "sentences": [], "label_probs": [0.00015099463053047657, 0.9990422129631042, 0.0008067868184298277]}}}
+{"id": 888, "evidence": {"19878070": {"label": "NEI", "sentences": [], "label_probs": [3.410437057027593e-05, 0.9997789263725281, 0.0001870279957074672]}}}
+{"id": 889, "evidence": {"19878070": {"label": "NEI", "sentences": [], "label_probs": [4.2385054257465526e-05, 0.9996542930603027, 0.0003032931999769062]}}}
+{"id": 892, "evidence": {"13509809": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0069998521357774734, 0.00011466281284810975, 0.992885410785675]}}}
+{"id": 905, "evidence": {"1818578": {"label": "NEI", "sentences": [], "label_probs": [4.8383652028860524e-05, 0.9995092153549194, 0.0004424076760187745]}}}
+{"id": 906, "evidence": {"1818578": {"label": "NEI", "sentences": [], "label_probs": [4.938137499266304e-05, 0.9997007846832275, 0.0002498230605851859]}}}
+{"id": 915, "evidence": {"18037805": {"label": "NEI", "sentences": [], "label_probs": [1.0597286745905876e-05, 0.9999595880508423, 2.9798051400575787e-05]}}}
+{"id": 918, "evidence": {"16422880": {"label": "SUPPORT", "sentences": [], "label_probs": [0.15894903242588043, 0.2753550708293915, 0.5656958818435669]}}}
+{"id": 920, "evidence": {"1642727": {"label": "NEI", "sentences": [], "label_probs": [0.30536240339279175, 0.6870605945587158, 0.007576971780508757]}}}
+{"id": 924, "evidence": {"17077004": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00011803607776528224, 0.000300237734336406, 0.9995816349983215]}}}
+{"id": 931, "evidence": {"16056514": {"label": "NEI", "sentences": [], "label_probs": [0.00013391388347372413, 0.9984166622161865, 0.0014493850758299232]}}}
+{"id": 932, "evidence": {"6144337": {"label": "NEI", "sentences": [], "label_probs": [0.00041181137203238904, 0.9843083024024963, 0.015279949642717838]}}}
+{"id": 937, "evidence": {"26231129": {"label": "NEI", "sentences": [], "label_probs": [6.78207334203762e-06, 0.999981164932251, 1.1998462468909565e-05]}}}
+{"id": 943, "evidence": {"21295300": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00017871346790343523, 0.00013143278192728758, 0.9996898174285889]}}}
+{"id": 947, "evidence": {"26112696": {"label": "NEI", "sentences": [], "label_probs": [5.5831726058386266e-05, 0.9996174573898315, 0.00032669061329215765]}}}
+{"id": 948, "evidence": {"13578199": {"label": "NEI", "sentences": [], "label_probs": [6.2565136431658175e-06, 0.9999850988388062, 8.679932761879172e-06]}}}
+{"id": 950, "evidence": {"4422723": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00015063841419760138, 0.00018643488874658942, 0.9996629953384399]}}}
+{"id": 958, "evidence": {"6501747": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0002087889879476279, 0.00015121963224373758, 0.9996399879455566]}}}
+{"id": 961, "evidence": {"7114092": {"label": "SUPPORT", "sentences": [], "label_probs": [0.41857287287712097, 0.0023078389931470156, 0.5791193246841431]}}}
+{"id": 966, "evidence": {"7912": {"label": "NEI", "sentences": [], "label_probs": [5.9061490901513025e-05, 0.9996046423912048, 0.00033631769474595785]}}}
+{"id": 968, "evidence": {"2119889": {"label": "NEI", "sentences": [], "label_probs": [2.922403291449882e-05, 0.9998456239700317, 0.00012509565567597747]}}}
+{"id": 974, "evidence": {"27446873": {"label": "REFUTE", "sentences": [], "label_probs": [0.9386927485466003, 0.0416879765689373, 0.019619248807430267]}}}
+{"id": 981, "evidence": {"20128547": {"label": "SUPPORT", "sentences": [], "label_probs": [0.18474727869033813, 0.0025543803349137306, 0.8126983046531677]}}}
+{"id": 983, "evidence": {"2988714": {"label": "SUPPORT", "sentences": [], "label_probs": [0.04189828410744667, 0.005975124891847372, 0.9521266222000122]}}}
+{"id": 986, "evidence": {"1383826": {"label": "SUPPORT", "sentences": [14], "label_probs": [0.00038086107815615833, 0.0009899735450744629, 0.9986292123794556]}}}
+{"id": 987, "evidence": {"3033830": {"label": "NEI", "sentences": [], "label_probs": [0.00010409287642687559, 0.9983401298522949, 0.0015557132428511977]}}}
+{"id": 991, "evidence": {"16472469": {"label": "SUPPORT", "sentences": [5], "label_probs": [0.03117336891591549, 0.2905997931957245, 0.6782268285751343]}}}
+{"id": 995, "evidence": {"16472469": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.00014215892588254064, 0.0002797827764879912, 0.999578058719635]}}}
+{"id": 1007, "evidence": {"2547636": {"label": "NEI", "sentences": [], "label_probs": [6.282912181632128e-06, 0.9999879598617554, 5.76625006942777e-06]}}}
+{"id": 1010, "evidence": {"5558754": {"label": "SUPPORT", "sentences": [10], "label_probs": [0.0037399125285446644, 0.047349393367767334, 0.9489107131958008]}}}
+{"id": 1013, "evidence": {"6277638": {"label": "SUPPORT", "sentences": [], "label_probs": [0.05839553475379944, 0.0032774058636277914, 0.9383270144462585]}}}
+{"id": 1017, "evidence": {"2014909": {"label": "NEI", "sentences": [], "label_probs": [6.326062703010393e-06, 0.9999878406524658, 5.836078798893141e-06]}}}
+{"id": 1022, "evidence": {"39368721": {"label": "NEI", "sentences": [], "label_probs": [6.889196356496541e-06, 0.9999819993972778, 1.107934531319188e-05]}}}
+{"id": 1039, "evidence": {"16287725": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00013312968076206744, 0.0001978957443498075, 0.9996689558029175]}}}
+{"id": 1051, "evidence": {"19878070": {"label": "SUPPORT", "sentences": [8, 10], "label_probs": [0.003399389795958996, 0.025582697242498398, 0.9710178971290588]}}}
+{"id": 1057, "evidence": {"13027590": {"label": "NEI", "sentences": [], "label_probs": [2.5178580472129397e-05, 0.9998557567596436, 0.00011901604739250615]}}}
+{"id": 1059, "evidence": {"13734012": {"label": "NEI", "sentences": [], "label_probs": [3.741478576557711e-05, 0.9997479319572449, 0.00021467142505571246]}}}
+{"id": 1060, "evidence": {"13734012": {"label": "NEI", "sentences": [], "label_probs": [2.930382834165357e-05, 0.9998220801353455, 0.00014859743532724679]}}}
+{"id": 1061, "evidence": {"20381484": {"label": "SUPPORT", "sentences": [10], "label_probs": [0.0001175895522464998, 0.00028301391284912825, 0.9995993971824646]}}}
+{"id": 1063, "evidence": {"20381484": {"label": "SUPPORT", "sentences": [10], "label_probs": [0.00011950398766202852, 0.00028670139727182686, 0.9995937943458557]}}}
+{"id": 1064, "evidence": {"2919030": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00012223375961184502, 0.00021560763707384467, 0.9996621608734131]}}}
+{"id": 1066, "evidence": {"20418809": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0016172631876543164, 0.0005366309778764844, 0.9978461265563965]}}}
+{"id": 1071, "evidence": {"25649714": {"label": "NEI", "sentences": [], "label_probs": [8.395943950745277e-06, 0.9999746084213257, 1.6998941646306776e-05]}}}
+{"id": 1076, "evidence": {"13883546": {"label": "NEI", "sentences": [], "label_probs": [1.6028498066589236e-05, 0.9999277591705322, 5.626669371849857e-05]}}}
+{"id": 1077, "evidence": {"13883546": {"label": "NEI", "sentences": [], "label_probs": [7.312091838684864e-06, 0.9999771118164062, 1.5524879927397706e-05]}}}
+{"id": 1078, "evidence": {"16855829": {"label": "SUPPORT", "sentences": [], "label_probs": [0.1738232672214508, 0.005088175646960735, 0.8210886120796204]}}}
+{"id": 1079, "evidence": {"16855829": {"label": "SUPPORT", "sentences": [], "label_probs": [0.393653929233551, 0.004980471916496754, 0.6013655662536621]}}}
+{"id": 1080, "evidence": {"5691302": {"label": "NEI", "sentences": [], "label_probs": [0.00010891543206525967, 0.9995967745780945, 0.00029428009293042123]}}}
+{"id": 1082, "evidence": {"5691302": {"label": "NEI", "sentences": [], "label_probs": [7.317507879633922e-06, 0.9999784231185913, 1.42969838634599e-05]}}}
+{"id": 1083, "evidence": {"5691302": {"label": "NEI", "sentences": [], "label_probs": [3.924039992853068e-05, 0.9997137188911438, 0.0002470641047693789]}}}
+{"id": 1092, "evidence": {"641786": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00014357565669342875, 0.00018575161811895669, 0.9996706247329712]}}}
+{"id": 1093, "evidence": {"641786": {"label": "SUPPORT", "sentences": [], "label_probs": [0.19982057809829712, 0.0032516370993107557, 0.796927809715271]}}}
+{"id": 1094, "evidence": {"1173667": {"label": "NEI", "sentences": [], "label_probs": [0.0006636965554207563, 0.9859043955802917, 0.013431860134005547]}}}
+{"id": 1095, "evidence": {"16167746": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00013338842836674303, 0.00019098081975243986, 0.9996756315231323]}}}
+{"id": 1108, "evidence": {"13770184": {"label": "NEI", "sentences": [], "label_probs": [6.542584287672071e-06, 0.9999822378158569, 1.1277803423581645e-05]}}}
+{"id": 1113, "evidence": {"15816729": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0050056190229952335, 0.41950100660324097, 0.575493335723877]}}}
+{"id": 1116, "evidence": {"253672": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0013276359532028437, 0.02858666516840458, 0.9700857400894165]}}}
+{"id": 1117, "evidence": {"23351136": {"label": "NEI", "sentences": [], "label_probs": [1.1490458746266086e-05, 0.9999555349349976, 3.296022259746678e-05]}}}
+{"id": 1122, "evidence": {"4456756": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00010946860129479319, 0.0002934651856776327, 0.9995970129966736]}}}
+{"id": 1123, "evidence": {"4456756": {"label": "REFUTE", "sentences": [], "label_probs": [0.6921491026878357, 0.032645877450704575, 0.27520495653152466]}}}
+{"id": 1124, "evidence": {"4456756": {"label": "SUPPORT", "sentences": [], "label_probs": [0.017360923811793327, 0.07553709298372269, 0.9071018695831299]}}}
+{"id": 1129, "evidence": {"15972906": {"label": "NEI", "sentences": [], "label_probs": [0.0001776745484676212, 0.9990345239639282, 0.0007878472679294646]}}}
+{"id": 1131, "evidence": {"17997584": {"label": "SUPPORT", "sentences": [3], "label_probs": [0.00040290001197718084, 0.00019868506933562458, 0.9993983507156372]}}}
+{"id": 1143, "evidence": {"5260382": {"label": "NEI", "sentences": [], "label_probs": [7.408366218442097e-05, 0.9996094107627869, 0.0003165127127431333]}}}
+{"id": 1147, "evidence": {"13906581": {"label": "REFUTE", "sentences": [], "label_probs": [0.999531626701355, 0.00035751290852203965, 0.00011090056068496779]}}}
+{"id": 1149, "evidence": {"24713020": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00014388201816473156, 0.0005590330110862851, 0.999297022819519]}}}
+{"id": 1151, "evidence": {"1287809": {"label": "SUPPORT", "sentences": [], "label_probs": [0.10496073961257935, 0.0707891434431076, 0.8242500424385071]}}}
+{"id": 1152, "evidence": {"1287809": {"label": "SUPPORT", "sentences": [], "label_probs": [0.12374691665172577, 0.03215865418314934, 0.844094455242157]}}}
+{"id": 1154, "evidence": {"7370282": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.0007324842736124992, 6.0994407249381766e-05, 0.9992066025733948]}}}
+{"id": 1155, "evidence": {"12584053": {"label": "REFUTE", "sentences": [10], "label_probs": [0.9893769025802612, 0.004120347555726767, 0.006502767559140921]}}}
+{"id": 1160, "evidence": {"12584053": {"label": "REFUTE", "sentences": [10], "label_probs": [0.9077382683753967, 0.08432996273040771, 0.007931754924356937]}}}
+{"id": 1167, "evidence": {"4455466": {"label": "SUPPORT", "sentences": [], "label_probs": [0.006209749262779951, 0.25740188360214233, 0.7363883852958679]}}}
+{"id": 1172, "evidence": {"7370282": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0013744054595008492, 0.02462628297507763, 0.9739993214607239]}}}
+{"id": 1189, "evidence": {"3033830": {"label": "NEI", "sentences": [], "label_probs": [2.9776152587146498e-05, 0.9997623562812805, 0.00020791735732927918]}}}
+{"id": 1192, "evidence": {"20532591": {"label": "NEI", "sentences": [], "label_probs": [0.0017172840889543295, 0.8688182830810547, 0.12946449220180511]}}}
+{"id": 1198, "evidence": {"469066": {"label": "NEI", "sentences": [], "label_probs": [2.3809587219147943e-05, 0.9998224377632141, 0.0001538002397865057]}}}
+{"id": 1201, "evidence": {"3441524": {"label": "NEI", "sentences": [], "label_probs": [4.737147537525743e-05, 0.999678373336792, 0.0002742897195275873]}}}
+{"id": 1203, "evidence": {"3475317": {"label": "SUPPORT", "sentences": [], "label_probs": [0.09853526949882507, 0.14823435246944427, 0.7532303929328918]}}}
+{"id": 1217, "evidence": {"15635366": {"label": "NEI", "sentences": [], "label_probs": [2.804771611408796e-05, 0.9998229146003723, 0.00014907917648088187]}}}
+{"id": 1222, "evidence": {"5289038": {"label": "NEI", "sentences": [], "label_probs": [0.033226411789655685, 0.9064770340919495, 0.060296572744846344]}}}
+{"id": 1233, "evidence": {"13905670": {"label": "REFUTE", "sentences": [4], "label_probs": [0.7059094905853271, 0.022418120875954628, 0.2716723084449768]}}}
+{"id": 1240, "evidence": {"4427392": {"label": "NEI", "sentences": [], "label_probs": [0.00043162156362086535, 0.9953005313873291, 0.00426787743344903]}}}
+{"id": 1242, "evidence": {"22405338": {"label": "NEI", "sentences": [], "label_probs": [7.087125595717225e-06, 0.9999775886535645, 1.529475412098691e-05]}}}
+{"id": 1243, "evidence": {"18949516": {"label": "NEI", "sentences": [], "label_probs": [1.9644759959192015e-05, 0.9998931884765625, 8.710192196303979e-05]}}}
+{"id": 1250, "evidence": {"6796297": {"label": "NEI", "sentences": [], "label_probs": [6.506205863843206e-06, 0.999988317489624, 5.221720130066387e-06]}}}
+{"id": 1251, "evidence": {"14362678": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0002178716822527349, 0.0002073639479931444, 0.9995748400688171]}}}
+{"id": 1252, "evidence": {"14362678": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0004640759725589305, 0.00027421434060670435, 0.9992616772651672]}}}
+{"id": 1256, "evidence": {"581832": {"label": "NEI", "sentences": [], "label_probs": [6.1848663790442515e-06, 0.9999877214431763, 6.135248895589029e-06]}}}
+{"id": 1264, "evidence": {"24558930": {"label": "SUPPORT", "sentences": [], "label_probs": [0.012942870147526264, 0.41738662123680115, 0.5696704387664795]}}}
+{"id": 1267, "evidence": {"52072815": {"label": "NEI", "sentences": [], "label_probs": [0.02662271074950695, 0.9684190154075623, 0.004958337638527155]}}}
+{"id": 1277, "evidence": {"3475317": {"label": "NEI", "sentences": [], "label_probs": [0.06892789155244827, 0.48616528511047363, 0.4449068009853363]}}}
+{"id": 1283, "evidence": {"3578380": {"label": "SUPPORT", "sentences": [9], "label_probs": [0.00023469125153496861, 0.0005164729664102197, 0.9992488026618958]}}}
+{"id": 1285, "evidence": {"6431384": {"label": "NEI", "sentences": [], "label_probs": [0.10251352190971375, 0.6697046160697937, 0.22778186202049255]}}}
+{"id": 1286, "evidence": {"1649738": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0030739123467355967, 0.000146079488331452, 0.9967800974845886]}}}
+{"id": 1287, "evidence": {"30553457": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.00021598068997263908, 0.0033630537800490856, 0.9964209794998169]}}}
+{"id": 1296, "evidence": {"27466734": {"label": "NEI", "sentences": [], "label_probs": [0.0001343048206763342, 0.9975900650024414, 0.002275664359331131]}}}
+{"id": 1299, "evidence": {"11718220": {"label": "REFUTE", "sentences": [], "label_probs": [0.999555766582489, 0.0002133263915311545, 0.00023091195907909423]}}}
+{"id": 1301, "evidence": {"30058568": {"label": "NEI", "sentences": [], "label_probs": [0.021492190659046173, 0.9507964253425598, 0.02771134488284588]}}}
+{"id": 1313, "evidence": {"24177706": {"label": "REFUTE", "sentences": [4], "label_probs": [0.9860152006149292, 0.0013505450915545225, 0.01263430155813694]}}}
+{"id": 1317, "evidence": {"4928282": {"label": "NEI", "sentences": [], "label_probs": [5.962000614090357e-06, 0.9999868869781494, 7.154244485718664e-06]}}}
+{"id": 1318, "evidence": {"16284655": {"label": "SUPPORT", "sentences": [], "label_probs": [0.08690310269594193, 0.22093312442302704, 0.6921637654304504]}}}
+{"id": 1321, "evidence": {"16284655": {"label": "SUPPORT", "sentences": [], "label_probs": [0.02874157764017582, 0.002475832821801305, 0.9687826037406921]}}}
+{"id": 1326, "evidence": {"24241932": {"label": "SUPPORT", "sentences": [6], "label_probs": [0.01020131353288889, 0.040144529193639755, 0.9496541023254395]}}}
+{"id": 1329, "evidence": {"3475317": {"label": "REFUTE", "sentences": [], "label_probs": [0.9535169005393982, 0.0013688849285244942, 0.045114148408174515]}}}
+{"id": 1338, "evidence": {"13953762": {"label": "NEI", "sentences": [], "label_probs": [0.0005326064419932663, 0.9296212792396545, 0.06984609365463257]}}}
+{"id": 1343, "evidence": {"19736671": {"label": "NEI", "sentences": [], "label_probs": [2.325041168660391e-05, 0.9998643398284912, 0.00011238688603043556]}}}
+{"id": 1354, "evidence": {"5256564": {"label": "SUPPORT", "sentences": [4], "label_probs": [0.00011913735215784982, 0.00028132428997196257, 0.9995995163917542]}}}
+{"id": 1357, "evidence": {"13764090": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0009754934580996633, 0.00013918403419665992, 0.9988853335380554]}}}
+{"id": 1358, "evidence": {"6054657": {"label": "NEI", "sentences": [], "label_probs": [9.45650608628057e-05, 0.9991377592086792, 0.0007676667883060873]}}}
+{"id": 1365, "evidence": {"17415081": {"label": "NEI", "sentences": [], "label_probs": [7.746177288936451e-06, 0.999976634979248, 1.560944838274736e-05]}}}
+{"id": 1369, "evidence": {"2425364": {"label": "NEI", "sentences": [], "label_probs": [0.0003162271750625223, 0.9959530830383301, 0.0037306819576770067]}}}
+{"id": 1377, "evidence": {"3944632": {"label": "NEI", "sentences": [], "label_probs": [0.003059256821870804, 0.9952619075775146, 0.0016788006760179996]}}}
+{"id": 1384, "evidence": {"22843616": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00011733813880709931, 0.00021009749616496265, 0.999672532081604]}}}
+{"id": 1388, "evidence": {"23895668": {"label": "SUPPORT", "sentences": [], "label_probs": [0.00014695730351377279, 0.0002035158104263246, 0.9996495246887207]}}}
+{"id": 1396, "evidence": {"17717391": {"label": "NEI", "sentences": [], "label_probs": [8.036373037612066e-05, 0.9995298385620117, 0.00038983093691058457]}}}
+{"id": 1399, "evidence": {"11903247": {"label": "SUPPORT", "sentences": [], "label_probs": [0.0012034517712891102, 0.2638273239135742, 0.7349691987037659]}}}
+{"id": 1408, "evidence": {"8087082": {"label": "NEI", "sentences": [], "label_probs": [6.108210982347373e-06, 0.9999865293502808, 7.357572940236423e-06]}}}
