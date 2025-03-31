@@ -6,6 +6,11 @@ An NLP framework for automated validation of citations and claims, ensuring refe
 
 This repository contains models, datasets, and tools for verifying the accuracy of citations in scientific literature. The project builds on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
+- See the [project proposal](notebooks/00_Project-Proposal.md) for additional background information and project plans.
+- See the [pyvers repository](https://github.com/jedick/pyvers) for a Python package with data modules and model training code developed to support this project.
+- See [this blog post](https://jedick.github.io/blog/experimenting-with-transformer-models/) for experiments with different transformer models.
+- The rest of this README describes the project files contained in this repository.
+
 ## Data Sources
 
 The project utilizes two primary datasets, normalized with consistent labeling:
