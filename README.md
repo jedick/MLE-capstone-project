@@ -4,12 +4,14 @@ An NLP framework for automated validation of citations and claims, ensuring refe
 
 ## Overview
 
-This repository contains models, datasets, and tools for verifying the accuracy of citations in scientific literature. The project builds on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
+This project builds on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
+This repository hold datasets and code for reproducing previous models, as well as model predictions and Jupyter notebooks for reporting the performance of the models.
 
-- See the [pyvers repository](https://github.com/jedick/pyvers) for a Python package with data modules, model classes, and an app made for this project.
-- See [this blog post](https://jedick.github.io/blog/experimenting-with-transformer-models/) for experiments with different transformer models.
-- See the [project proposal](notebooks/00_Project-Proposal.md) for additional background information and project plans.
-- The rest of this README describes the project files contained in this repository.
+Most of the code in this repository is based on previous work.
+See the [pyvers repository](https://github.com/jedick/pyvers) for a new implementation of claim verification models in an installable Python package.
+Some of the pyvers functionality is used in the Jupyter notebooks, but it is kept in a different repository to be able to maintain and install the Python package separately from the rest of this project.
+
+The rest of this README describes the project files contained in this repository.
 
 ## Data Sources
 
@@ -41,8 +43,9 @@ These models are built on transformer architectures:
 
 ## Notebooks
 
-Jupyter notebooks for exploration, analysis, and model training:
+Markdown and Jupyter notebooks for exploration, analysis, and model training:
 
+- **Proposal**: [Project proposal](notebooks/00_Project-Proposal.md)
 - **Reproduction**: [Citation-Integrity model](notebooks/01_Reproduction-of-Citation-Integrity.ipynb)
 - **Data Processing**: 
   - [Citation-Integrity wrangling](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb)
@@ -55,6 +58,8 @@ Jupyter notebooks for exploration, analysis, and model training:
   - [Checkpoints and rationale weights](notebooks/07_Checkpoints_and_Rationale_Weight.ipynb)
   - [Scaling up the model](notebooks/08_Scaling_Up.ipynb)
 - **Utilities**: [eval.py](notebooks/eval.py) - Metrics calculation module
+
+See also [this blog post](https://jedick.github.io/blog/experimenting-with-transformer-models/) for experiments with different transformer models.
 
 ## Setup Instructions
 
