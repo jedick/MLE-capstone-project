@@ -1,17 +1,41 @@
-# AI4citations: AI-Powered Citation Verification
+# ML Capstone Project
 
-An NLP framework for automated validation of citations and claims, ensuring references accurately support stated information.
+This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information.
+We build on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
-## Overview
+## Highlights
 
-This project builds on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
-This repository hold datasets and code for reproducing previous models, as well as model predictions and Jupyter notebooks for reporting the performance of the models.
+- Reproduction of state-of-the-art scientific claim verification baselines - [baselines](baselines)
+  - Uses MultiVerS model, based on Longformer
+- Development of Python package with ML engineering capabilities - [pyvers](https://github.com/jedick/pyvers)
+  - Ingestion of multiple data sources using consistent labeling -- both data files and HuggingFace datasets
+  - Uses HF models pretrained on natural language inference (NLI) datasets to support the claim verification task
+  - Fine-tunes models using Pytorch Lightning for scalable model training, evaluation, and reporting
+- Deployment of final model to HuggingFace - [fine-tuned model](https://huggingface.co/jedick/DeBERTa-v3-base-mnli-fever-anli-scifact-citint)
+- Web app for end users - [AI4citations](https://github.com/jedick/AI4citations)
+  - Input a claim and evidence statements to get results
+  - Barchart visualization of class probabilities
+  - Choose from pre-trained and fine-tuned models
 
-Most of the code in this repository is based on previous work.
-See the [pyvers repository](https://github.com/jedick/pyvers) for a new implementation of claim verification models in an installable Python package.
-Some of the pyvers functionality is used in the Jupyter notebooks, but it is kept in a different repository to be able to maintain and install the Python package separately from the rest of this project.
+## Milestones
 
-The rest of this README describes the project files contained in this repository.
+All the steps of the project, from data exploration and processing to model training and deployment are recorded in notebook and blog posts.
+
+- **Proposal**: [Project proposal](notebooks/00_Project-Proposal.md)
+- **Data Wrangling**: 
+  - [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb)
+  - [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb)
+- **Data Exploration**:
+  - [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb)
+  - [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb)
+- **Baselines** - reproductions and baselines using the MultiVerS model fine-tuned on single datasets:
+  - [Citation-Integrity model](notebooks/01_Reproduction-of-Citation-Integrity.ipynb)
+  - [Model baselines](notebooks/06_Baselines.ipynb)
+  - [Comparison of starting checkpoints](notebooks/07_Checkpoints_and_Rationale_Weight.ipynb)
+  - [eval.py](notebooks/eval.py) - Metrics calculation module
+- **Model Development** - more recent transformer models fine-tuned on multiple datasets:
+  - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models/) (blog post)
+  - [Scaling up the model](notebooks/08_Scaling_Up.ipynb)
 
 ## Data Sources
 
@@ -30,86 +54,6 @@ The project utilizes two primary datasets, normalized with consistent labeling:
 
 For more details on data format, see [MultiVerS data documentation](https://github.com/dwadden/multivers/blob/main/doc/data.md).
 
-## Models
-
-The repository contains two versions of the MultiVerS model:
-
-- **multivers**: Standard MultiVerS implementation with local modifications
-- **multivers_citint**: Adapted version used in the Citation-Integrity study
-
-These models are built on transformer architectures:
-- [MultiVerS](https://github.com/dwadden/multivers) | [Paper](https://doi.org/10.48550/arXiv.2112.01640)
-- [Longformer](https://github.com/allenai/longformer) | [Paper](https://doi.org/10.48550/arXiv.2004.05150)
-
-## Notebooks
-
-Markdown and Jupyter notebooks for exploration, analysis, and model training:
-
-- **Proposal**: [Project proposal](notebooks/00_Project-Proposal.md)
-- **Reproduction**: [Citation-Integrity model](notebooks/01_Reproduction-of-Citation-Integrity.ipynb)
-- **Data Processing**: 
-  - [Citation-Integrity wrangling](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb)
-  - [SciFact wrangling](notebooks/03_Data-Wrangling-for-SciFact.ipynb)
-- **Exploration**:
-  - [Citation-Integrity analysis](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb)
-  - [SciFact analysis](notebooks/05_Data-Exploration-for-SciFact.ipynb)
-- **Model Development**:
-  - [Baselines](notebooks/06_Baselines.ipynb)
-  - [Checkpoints and rationale weights](notebooks/07_Checkpoints_and_Rationale_Weight.ipynb)
-  - [Scaling up the model](notebooks/08_Scaling_Up.ipynb)
-- **Utilities**: [eval.py](notebooks/eval.py) - Metrics calculation module
-
-See also [this blog post](https://jedick.github.io/blog/experimenting-with-transformer-models/) for experiments with different transformer models.
-
-## Setup Instructions
-
-### Environment Setup
-
-```bash
-# Create and activate conda environment
-conda create -n multivers python=3.8
-conda activate multivers
-
-# Install dependencies
-conda install --file requirements.txt -c conda-forge
-
-# Install PyTorch with CUDA support (check GPU compatibility first)
-# Example for CUDA 11.0:
-conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=11.0 -c pytorch
-```
-
-### Model Checkpoints
-
-Download required checkpoints:
-
-```bash
-python script/get_checkpoint.py fever_sci
-python script/get_checkpoint.py healthver
-```
-
-### Training & Prediction
-
-#### Citation-Integrity Dataset
-
-```bash
-# Train (approx. 3 hours for 5 epochs)
-CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python script/train_target.py --dataset citint --gpus=1 --gradient_checkpointing
-
-# Generate predictions
-python multivers/predict.py \
-  --checkpoint_path=checkpoints/last.ckpt \
-  --input_file=data_train/target/citint/claims_test.jsonl \
-  --corpus_file=data_train/target/citint/corpus.jsonl \
-  --output_file=predictions.jsonl
-```
-
-#### SciFact Dataset
-
-```bash
-# Train (approx. 1.5 hours for 5 epochs)
-CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python script/train_target.py --dataset scifact --gpus=1 --gradient_checkpointing
-```
-
 ## Acknowledgments
 
 This project builds upon several significant contributions from the scientific community:
@@ -119,14 +63,3 @@ This project builds upon several significant contributions from the scientific c
 - MultiVerS model by [Wadden et al., 2021](https://doi.org/10.48550/arXiv.2112.01640)
 - Longformer model by [Beltagy et al., 2020](https://doi.org/10.48550/arXiv.2004.05150)
 
-## Change Log
-
-- [[1dba23](https://github.com/jedick/AI4citations/commit/1dba23cd2cdef341ed37df76f2f37f50a4cfec03)] (2024-12-16) Normalized labels across datasets (`SUPPORT`, `REFUTE`, `NEI`)
-- [[a5b029](https://github.com/jedick/AI4citations/commit/a5b0298ecbad2d2ab1ee02fad5487f966a29f6cf)] (2024-12-16) Made modifications to MultiVerS codebase:
-  - Simplified requirements.txt
-  - Reduced `num_epochs` from 20 to 5
-  - Added support for Citation-Integrity (`citint`) and original SciFact datasets
-- [[13ebe7](https://github.com/jedick/AI4citations/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] (2024-11-27) Cloned Citation-Integrity codebase; noted key differences from MultiVerS:
-  - Training epochs reduced from 20 to 5
-  - Additional tokens: `<|cit|>`, `<|multi_cit|>`, `<|other_cit|>`
-  - Setting for `rationale_weight` changed from 15 to 0
