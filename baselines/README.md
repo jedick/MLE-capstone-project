@@ -35,6 +35,11 @@ python script/get_checkpoint.py healthver
 
 ## Training & Prediction
 
+Copy data files from the `data` directory of this repository into the correct location for training:
+
+- `data_train/target/citint` for Citation-Integrity
+- `data_train/target/scifact` for SciFact
+
 ### Citation-Integrity Dataset
 
 ```bash

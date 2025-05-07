@@ -3,7 +3,7 @@
 This document summarizes the checkpoints and model parameters used for different sets of experiments.
 Commits to this repo are listed in square brackets.
 
-NOTE: The Reproductions and one Baseline model (`bestModel-001`) use the `../model/multivers_citint` codebase. All others use the `../model/multivers` codebase.
+NOTE: The Reproductions and one Baseline model (`bestModel-001`) use the `../baselines/multivers_citint` codebase. All others use the `../baselines/multivers` codebase.
 
 ## Reproductions using the Citation-Integrity codebase
 
