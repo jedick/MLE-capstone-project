@@ -3,6 +3,8 @@
 This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information.
 We build on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
+![ML Capstone Project Diagram](./images/project_diagram.png)
+
 ## Highlights
 
 - Reproduction of state-of-the-art scientific claim verification baselines - [baselines](baselines)
@@ -15,7 +17,7 @@ We build on established datasets and models to classify citation accuracy as SUP
 - Web app for end users - [AI4citations](https://github.com/jedick/AI4citations)
   - Input a claim and evidence statements to get results
   - Barchart visualization of class probabilities
-  - Choose from pre-trained and fine-tuned models
+  - Choose from pretrained and fine-tuned models
 
 The model created in this project achieves <i>7 percentage point increase in average F1</i> over the best baseline model fine-tuned on a single dataset:
 
@@ -28,7 +30,7 @@ The model created in this project achieves <i>7 percentage point increase in ave
     <td>Model</td>
     <td>SciFact</td>
     <td>Citation-Integrity</td>
-    <td></i>Average</i></td>
+    <td><i>Average</i></td>
   </tr>
   <tr>
     <td>SciFact baseline [1]</td>
@@ -70,7 +72,7 @@ All the steps of the project, from data exploration and processing to model trai
   - [Comparison of starting checkpoints](notebooks/07_Checkpoints_and_Rationale_Weight.ipynb)
   - [eval.py](notebooks/eval.py): Metrics calculation module
 - **Model Development**: DeBERTa fine-tuned on multiple datasets
-  - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models/) (blog post)
+  - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) (blog post)
   - [Scaling up the model](notebooks/08_Scaling_Up.ipynb)
 
 ## Data Sources
@@ -90,12 +92,38 @@ The project utilizes two primary datasets, normalized with consistent labeling:
 
 For more details on data format, see [MultiVerS data documentation](https://github.com/dwadden/multivers/blob/main/doc/data.md).
 
+## Managing Uncertainty
+
+The best approach wasn't always obvious at the beginning.
+
+- The order of sentence pairs in the tokenizer is important
+  - Model documentation and papers are not clear about ordering sentence pairs for natural language inference
+  - Experimenting with pretrained DeBERTa suggests that it was trained with evidence before claim
+  - Maintaining the same order for fine-tuning and inference gives improved performance
+  - The pyvers package uses this order consistently, improving reliability of NLI classification
+    - See zero-shot demonstration in the pyvers [README](https://github.com/jedick/pyvers)
+- Overfitting deep networks isn't necessarily bad
+  - Fine-tuning pretrained transformer models on small datasets begins overfitting after 1 or 2 epochs
+  - Nevertheless, continued fine-tuning improves prediction accuracy on test data
+  - The bias-variance tradeoff in classical ML should be rethought for models with large numbers of parameters
+    - Empirical discovery in this project: [blog post]((https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/#the-paradox-of-rising-loss-and-improving-accuracy))
+    - "Benign overfitting" in the research literature: [blog post](https://jedick.github.io/blog/modern-understanding-of-overfitting-and-generalization-in-machine-learning/)
+
+## Looking Forward
+
+TODOs for future development.
+
+- Handle class imbalance: MultiVerS implements reweighting in the loss function. Can we do the same with DeBERTa?
+- Data augmentation: Use a library such as [TextAttack](https://github.com/QData/TextAttack), [TextAugment](https://github.com/dsfsi/textaugment), or [nlpaug](https://github.com/makcedward/nlpaug) to add examples with synonyms or back-translations. This may improve generalizability.
+- Low-rank adaptation (LoRA): Can [speed up fine-tuning](10.48550/arXiv.2106.09685) and [mitigate overfitting](https://web.stanford.edu/class/cs224n/final-reports/256907158.pdf) compared to optimizing all parameters in the model.
+
 ## Acknowledgments
 
-This project builds upon several significant contributions from the scientific community:
+This project builds upon several significant contributions from the research community:
 
-- SciFact dataset by [Wadden et al., 2020](https://arxiv.org/abs/2004.14974)
 - Citation-Integrity dataset by [Sarol et al., 2024](https://doi.org/10.1093/bioinformatics/btae420)
+- DeBERTa model by [He et al., 2021](https://doi.org/10.48550/arXiv.2006.03654)
 - MultiVerS model by [Wadden et al., 2021](https://doi.org/10.48550/arXiv.2112.01640)
+- SciFact dataset by [Wadden et al., 2020](https://arxiv.org/abs/2004.14974)
 - Longformer model by [Beltagy et al., 2020](https://doi.org/10.48550/arXiv.2004.05150)
 
