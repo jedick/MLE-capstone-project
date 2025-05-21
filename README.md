@@ -1,9 +1,11 @@
-# ML Capstone Project
+# ML Engineering Capstone Project
 
 This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information.
 We build on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
-![ML Capstone Project Diagram](./images/project_diagram.png)
+<div align="center">
+  <img src="./images/project_diagram.png" alt="MLE Capstone Project Diagram" style="width:75%;"/>
+</div>
 
 ## Highlights
 
@@ -19,7 +21,7 @@ We build on established datasets and models to classify citation accuracy as SUP
   - Barchart visualization of class probabilities
   - Choose from pretrained and fine-tuned models
 
-The model created in this project achieves <i>7 percentage point increase in average F1</i> over the best baseline model fine-tuned on a single dataset:
+The model generated in this project achieves a <i>7 percentage point increase in average F1</i> over the best baseline model fine-tuned on a single dataset:
 
 <table>
   <tr>
@@ -39,21 +41,22 @@ The model created in this project achieves <i>7 percentage point increase in ave
     <td><i>0.48</i></td>
   </tr>
   <tr>
-    <td>Citation-Integrity baseline [1]</td>
+    <td>Citation-Integrity baseline [2]</td>
     <td>0.74</td>
     <td>0.44</td>
     <td><i>0.59</i></td>
   </tr>
   <tr>
-    <td>Fine-tuned DeBERTa [2]</td>
+    <td>Fine-tuned DeBERTa [3]</td>
     <td><strong>0.84</strong></td>
     <td><strong>0.47</strong></td>
     <td><strong><i>0.66</i></strong></td>
   </tr>
 </table>
 
-- [1] Fine-tuned MultiVerS on one dataset by the original authors ([Wadden et al., 2021](https://doi.org/10.48550/arXiv.2112.01640); [Sarol et al., 2024](https://doi.org/10.1093/bioinformatics/btae420))
-- [2] Fine-tuned DeBERTa on shuffled data from both datasets in this project
+- [1] MultiVerS pretrained on FeverSci and fine-tuned on SciFact by [Wadden et al. (2021)](https://doi.org/10.48550/arXiv.2112.01640)
+- [2] MultiVerS pretrained on HealthVer and fine-tuned on Citation-Integrity by [Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420)
+- [3] DeBERTa v3 [pretrained on multiple NLI datasets](https://huggingface.co/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli) and fine-tuned on shuffled data from SciFact and Citation-Integrity in this project
 
 ## Milestones
 

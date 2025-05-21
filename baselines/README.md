@@ -63,12 +63,12 @@ CUDA_LAUNCH_BLOCKING=1 TOKENIZERS_PARALLELISM=false python script/train_target.p
 
 ## Change Log
 
-- [[1dba23](https://github.com/jedick/ML-capstone-project/commit/1dba23cd2cdef341ed37df76f2f37f50a4cfec03)] (2024-12-16) Normalized labels across datasets (`SUPPORT`, `REFUTE`, `NEI`)
-- [[a5b029](https://github.com/jedick/ML-capstone-project/commit/a5b0298ecbad2d2ab1ee02fad5487f966a29f6cf)] (2024-12-16) Made modifications to MultiVerS codebase:
+- [[1dba23](https://github.com/jedick/MLE-capstone-project/commit/1dba23cd2cdef341ed37df76f2f37f50a4cfec03)] (2024-12-16) Normalized labels across datasets (`SUPPORT`, `REFUTE`, `NEI`)
+- [[a5b029](https://github.com/jedick/MLE-capstone-project/commit/a5b0298ecbad2d2ab1ee02fad5487f966a29f6cf)] (2024-12-16) Made modifications to MultiVerS codebase:
   - Simplified requirements.txt
   - Reduced `num_epochs` from 20 to 5
   - Added support for Citation-Integrity (`citint`) and original SciFact datasets
-- [[13ebe7](https://github.com/jedick/ML-capstone-project/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] (2024-11-27) Cloned Citation-Integrity codebase; noted key differences from MultiVerS:
+- [[13ebe7](https://github.com/jedick/MLE-capstone-project/commit/13ebe74cb872e1344d352d630f11d4b8e4be67cf)] (2024-11-27) Cloned Citation-Integrity codebase; noted key differences from MultiVerS:
   - Training epochs reduced from 20 to 5
   - Additional tokens: `<|cit|>`, `<|multi_cit|>`, `<|other_cit|>`
   - Setting for `rationale_weight` changed from 15 to 0
