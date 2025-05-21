@@ -77,6 +77,8 @@ All the steps of the project, from data exploration and processing to model trai
 - **Model Development**: DeBERTa fine-tuned on multiple datasets
   - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) (blog post)
   - [Scaling up the model](notebooks/08_Scaling-Up.ipynb)
+- **Model Deployment**:
+  - [Deployment and engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md)
 
 ## Data Sources
 
