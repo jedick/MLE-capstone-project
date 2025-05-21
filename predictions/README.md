@@ -29,5 +29,5 @@ See [the notebook](../notebooks/01_Reproduction-of-Citation-Integrity.ipynb) for
 - The training uses two settings for rationale weight (15 to enable the rationale identification task in MultiVerS and 0 to disable it).
 - Predictions are made for the test splits.
 - Predictions for the dev splits are in `ckpt_rationale_dev`.
-- See [the notebook](../notebooks/07_Checkpoints_and_Rationale_Weight.ipynb) for more information.
+- See [the notebook](../notebooks/07_Checkpoints-and-Rationale-Weight.ipynb) for more information.
 

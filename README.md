@@ -11,7 +11,7 @@ We build on established datasets and models to classify citation accuracy as SUP
 
 - Reproduction of state-of-the-art scientific claim verification baselines - [baselines](baselines)
   - Uses MultiVerS model, based on Longformer
-- Development of Python package with ML engineering capabilities - [pyvers](https://github.com/jedick/pyvers)
+- Development of Python package for model training - [pyvers](https://github.com/jedick/pyvers)
   - Ingestion of multiple data sources using consistent labeling -- both data files and HuggingFace datasets
   - Uses HF models pretrained on natural language inference (NLI) datasets to support the claim verification task
   - Fine-tunes models using PyTorch Lightning for scalable model training, evaluation, and reporting
@@ -72,11 +72,11 @@ All the steps of the project, from data exploration and processing to model trai
 - **Baselines**: MultiVerS model fine-tuned on single datasets
   - [Reproduction of Citation-Integrity](notebooks/01_Reproduction-of-Citation-Integrity.ipynb)
   - [Model baselines](notebooks/06_Baselines.ipynb)
-  - [Comparison of starting checkpoints](notebooks/07_Checkpoints_and_Rationale_Weight.ipynb)
+  - [Comparison of starting checkpoints](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb)
   - [eval.py](notebooks/eval.py): Metrics calculation module
 - **Model Development**: DeBERTa fine-tuned on multiple datasets
   - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) (blog post)
-  - [Scaling up the model](notebooks/08_Scaling_Up.ipynb)
+  - [Scaling up the model](notebooks/08_Scaling-Up.ipynb)
 
 ## Data Sources
 
