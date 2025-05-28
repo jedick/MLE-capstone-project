@@ -79,6 +79,7 @@ All the steps of the project, from data exploration and processing to model trai
   - [Scaling up the model](notebooks/08_Scaling-Up.ipynb)
 - **Model Deployment**:
   - [Deployment and engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md)
+  - [Deployment architecture](notebooks/10_Deployment-Architecture.md)
 
 ## Data Sources
 
@@ -124,7 +125,7 @@ TODOs for future development.
 
 ## Acknowledgments
 
-I wish to thank my mentor, Divya Vellanki, for giving essential advice and steady encouragement throughout this project.
+I wish to thank my mentor, Divya Vellanki, for giving valuable advice and encouragement throughout this project.
 
 The Springboard MLE bootcamp curriculum provided the conceptual and practical foundations.
 
