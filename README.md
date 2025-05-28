@@ -124,6 +124,10 @@ TODOs for future development.
 
 ## Acknowledgments
 
+I wish to thank my mentor, Divya Vellanki, for giving essential advice and steady encouragement throughout this project.
+
+The Springboard MLE bootcamp curriculum provided the conceptual and practical foundations.
+
 This project builds upon several significant contributions from the research community:
 
 - Citation-Integrity dataset by [Sarol et al., 2024](https://doi.org/10.1093/bioinformatics/btae420)
