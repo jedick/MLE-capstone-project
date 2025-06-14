@@ -18,7 +18,7 @@ We build on established datasets and models to classify citation accuracy as SUP
 - Deployment of final model to HuggingFace - [fine-tuned model](https://huggingface.co/jedick/DeBERTa-v3-base-mnli-fever-anli-scifact-citint)
 - Web app for end users - [AI4citations](https://github.com/jedick/AI4citations)
   - Input a claim and evidence statements to get results
-  - Barchart visualization of class probabilities
+  - Evidence retrieval from PDFs
   - Choose from pretrained and fine-tuned models
 
 The model generated in this project achieves a <i>7 percentage point increase in average F1</i> over the best baseline model fine-tuned on a single dataset:
@@ -60,26 +60,23 @@ The model generated in this project achieves a <i>7 percentage point increase in
 
 ## Milestones
 
-All the steps of the project, from data exploration and processing to model training and deployment are recorded in notebook and blog posts.
+All the steps of the project, from initial ideas, to data exploration, to model training and deployment, are recorded in public documents, notebooks, and blog posts.
 
-- [Project Proposal](notebooks/00_Project-Proposal.md)
-- **Data Wrangling**
-  - [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb): Data quality (some claims are very short sentence fragments) and class imbalance (less than 10% of claims are NEI)
-  - [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb): Partial test dataset (corrected with data from `scifact_10`; see below) and class imbalance (40% NEI and Support, 20% Refute)
-- **Data Exploration**
-  - [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb): Main topics are cells, cancer, COVID-19, patients, infection, and disease
-  - [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb): Main topics are gene expression, cancer, treatment, and infection
-- **Baselines**: MultiVerS model fine-tuned on single datasets
-  - [Reproduction of Citation-Integrity](notebooks/01_Reproduction-of-Citation-Integrity.ipynb)
-  - [Model baselines](notebooks/06_Baselines.ipynb)
-  - [Comparison of starting checkpoints](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb)
-  - [eval.py](notebooks/eval.py): Metrics calculation module
-- **Model Development**: DeBERTa fine-tuned on multiple datasets
-  - [Experiments with different transformer models](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) (blog post)
-  - [Scaling up the model](notebooks/08_Scaling-Up.ipynb)
-- **Model Deployment**:
-  - [Deployment and engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md)
-  - [Deployment architecture](notebooks/10_Deployment-Architecture.md)
+| Step | Links |
+|-|-|
+| 1 Initial project ideas | [Google Colab doc](https://docs.google.com/document/d/1QMHkzGv1kPJtFDiK-1YWUcK4C_ysJywW/edit?usp=sharing&ouid=111099330977735872115&rtpof=true&sd=true) |
+| 2 Data collection | [`data` directory](data) ([see below](#data-sources) for details) |
+| 3 Project proposal | [notebook](notebooks/00_Project-Proposal.md) |
+| 4 Survey existing research | [notebook](notebooks/01_Reproduction-of-Citation-Integrity.ipynb) for Citation-Integrity |
+| 5a Data wrangling | notebooks for [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb) and [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb) |
+| 5a Data exploration | notebooks for [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb) and [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb) |
+| 6 Baselines | notebooks for [MultiVerS model](notebooks/06_Baselines.ipynb) and [checkpoint comparisons](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb); metric calculation [Python module](notebooks/eval.py) |
+| 7 Experiment with different models | [blog post](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) on fine-tuning DeBERTa on multiple datasets |
+| 8 Scale the prototype | [notebook](notebooks/08_Scaling-Up.ipynb) |
+| 9 Deployment and engineering plan | [notebook](notebooks/09_Deployment-and-Engineering-Plan.md) |
+| 10 Deployment architecture | [notebook](notebooks/10_Deployment-Architecture.md) |
+| 11 Deployment implementation | [blog post](https://jedick.github.io/blog/deploying-AI4citations-from-research-to-production/) |
+| 12 Share the project | this repo, [pyvers repo](https://github.com/jedick/pyvers), [AI4citations repo](https://github.com/jedick/AI4citations), and [live app](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm-dark.svg) |
 
 ## Data Sources
 
@@ -97,6 +94,13 @@ The project utilizes two primary datasets, normalized with consistent labeling:
 - Downloaded from: https://github.com/ScienceNLP-Lab/Citation-Integrity/ (Google Drive link)
 
 For more details on data format, see [MultiVerS data documentation](https://github.com/dwadden/multivers/blob/main/doc/data.md).
+
+- **Data wrangling notes:**
+  - For Citation-Integrity, identified issues with data quality (some claims are very short sentence fragments) and class imbalance (less than 10% of claims are NEI)
+  - For SciFact, identified incomplete test dataset (corrected with data from `scifact_10`; see below) and class imbalance (40% NEI and Support, 20% Refute)
+- **Data exploration notes:**
+  - For Citation-Integrity, main topics are cells, cancer, COVID-19, patients, infection, and disease
+  - For SciFact, main topics are gene expression, cancer, treatment, and infection
 
 ## Managing Uncertainty
 
