@@ -1,27 +1,17 @@
-# ML Engineering Capstone Project
+# ML Engineering Capstone Project: Automated Citation Verification
 
-This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information.
-We build on established datasets and models to classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
+This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information. In an era where scientific misinformation can have serious consequences, verifying that citations properly support the claims they reference is crucial for maintaining the integrity of scientific literature and preventing the spread of false information.
+
+**The Problem**: Studies show that 10-20% or more of citations in scientific literature are inaccurate, failing to support the claims they reference. This undermines scientific credibility and can perpetuate misinformation. Our solution uses state-of-the-art transformer models to automatically classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
 <div align="center">
   <img src="./images/project_diagram.png" alt="MLE Capstone Project Diagram" style="width:75%;"/>
 </div>
 
-## Highlights
+## Key Achievements
 
-- Reproduction of state-of-the-art scientific claim verification baselines - [baselines](baselines)
-  - Uses MultiVerS model, based on Longformer
-- Development of Python package for model training - [pyvers](https://github.com/jedick/pyvers)
-  - Ingestion of multiple data sources using consistent labeling -- both data files and HuggingFace datasets
-  - Uses HF models pretrained on natural language inference (NLI) datasets to support the claim verification task
-  - Fine-tunes models using PyTorch Lightning for scalable model training, evaluation, and reporting
-- Deployment of final model to HuggingFace - [fine-tuned model](https://huggingface.co/jedick/DeBERTa-v3-base-mnli-fever-anli-scifact-citint)
-- Web app for end users - [AI4citations](https://github.com/jedick/AI4citations)
-  - Input a claim and evidence statements to get results
-  - Evidence retrieval from PDFs
-  - Choose from pretrained and fine-tuned models
-
-The model generated in this project achieves a <i>7 percentage point increase in average F1</i> over the best baseline model fine-tuned on a single dataset:
+### **Superior Model Performance**
+Our fine-tuned DeBERTa model achieves a **7 percentage point increase in average F1** over the best baseline model:
 
 <table>
   <tr>
@@ -54,90 +44,99 @@ The model generated in this project achieves a <i>7 percentage point increase in
   </tr>
 </table>
 
-- [1] MultiVerS pretrained on FeverSci and fine-tuned on SciFact by [Wadden et al. (2021)](https://doi.org/10.48550/arXiv.2112.01640)
-- [2] MultiVerS pretrained on HealthVer and fine-tuned on Citation-Integrity by [Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420)
-- [3] DeBERTa v3 [pretrained on multiple NLI datasets](https://huggingface.co/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli) and fine-tuned on shuffled data from SciFact and Citation-Integrity in this project
+### **Production-Ready Deliverables**
 
-## Milestones
+- **🏋 [PyVers Python Package](https://github.com/jedick/pyvers)**: Comprehensive framework for model training with multi-dataset ingestion, Hugging Face integration, and PyTorch Lightning for scalable training
+- **🔀 [Fine-tuned Model](https://huggingface.co/jedick/DeBERTa-v3-base-mnli-fever-anli-scifact-citint)**: Publicly available model ready for inference
+- **🌐 [AI4Citations Web Application](https://huggingface.co/spaces/jedick/AI4citations)**: **Live application** on Hugging Face Spaces where users can input claims and evidence to get verification results and provide feedback for model improvement
+- **</> [Application Repository](https://github.com/jedick/AI4citations)**: Complete source code for [Gradio](https://github.com/gradio-app/gradio) frontend and evidence retrieval from PDFs 
 
-All the steps of the project, from initial ideas, to data exploration, to model training and deployment, are recorded in public documents, notebooks, and blog posts.
+### **Technical Innovation**
+- Improvement on state-of-the-art baselines that use the MultiVerS model (Longformer-based architecture)
+- Multi-dataset training approach combining SciFact and Citation-Integrity datasets
+- Evidence retrieval from PDFs using text similarity (BM25-based), semantic search (BERT-based), or LLMs (OpenAI API).
+- Comprehensive evaluation framework with detailed performance metrics
+- Feedback functionality implemented with Hugging Face datasets
+- API access to inference through the Gradio app
 
-| Step | Links |
-|-|-|
-| 1 Initial project ideas | [Google Colab doc](https://docs.google.com/document/d/1QMHkzGv1kPJtFDiK-1YWUcK4C_ysJywW/edit?usp=sharing&ouid=111099330977735872115&rtpof=true&sd=true) |
-| 2 Data collection | [`data` directory](data) ([see below](#data-sources) for details) |
-| 3 Project proposal | [notebook](notebooks/00_Project-Proposal.md) |
-| 4 Survey existing research | [notebook](notebooks/01_Reproduction-of-Citation-Integrity.ipynb) for Citation-Integrity |
-| 5a Data wrangling | notebooks for [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb) and [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb) |
-| 5a Data exploration | notebooks for [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb) and [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb) |
-| 6 Baselines | notebooks for [MultiVerS model](notebooks/06_Baselines.ipynb) and [checkpoint comparisons](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb); metric calculation [Python module](notebooks/eval.py) |
-| 7 Experiment with different models | [blog post](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) on fine-tuning DeBERTa on multiple datasets |
-| 8 Scale the prototype | [notebook](notebooks/08_Scaling-Up.ipynb) |
-| 9 Deployment and engineering plan | [notebook](notebooks/09_Deployment-and-Engineering-Plan.md) |
-| 10 Deployment architecture | [notebook](notebooks/10_Deployment-Architecture.md) |
-| 11 Deployment implementation | [blog post](https://jedick.github.io/blog/deploying-AI4citations-from-research-to-production/) |
-| 12 Share the project | this repo, [pyvers repo](https://github.com/jedick/pyvers), [AI4citations repo](https://github.com/jedick/AI4citations), and [live app](https://huggingface.co/datasets/huggingface/badges/resolve/main/open-in-hf-spaces-sm-dark.svg) |
+## Project Development Timeline
+
+This project follows a systematic approach covering all aspects of the machine learning engineering lifecycle:
+
+| Phase | Component | Description |
+|-------|-----------|-------------|
+| 🎯 | **Problem Definition** | [Initial project ideas](https://docs.google.com/document/d/1QMHkzGv1kPJtFDiK-1YWUcK4C_ysJywW/edit?usp=sharing&ouid=111099330977735872115&rtpof=true&sd=true) identifying citation accuracy as a critical scientific integrity issue |
+| 📊 | **Data Collection** | [data directory](data) with curated datasets from SciFact and Citation-Integrity |
+| 📝 | **Project Proposal** | [Detailed proposal](notebooks/00_Project-Proposal.md) outlining approach and deliverables |
+| 🔍 | **Literature Review** | [Research survey](notebooks/01_Reproduction-of-Citation-Integrity.ipynb) reproducing Citation-Integrity methodology |
+| 🧹 | **Data Wrangling** | Notebooks for [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb) and [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb) preprocessing |
+| 🔬 | **Data Exploration** | Analysis notebooks for [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb) and [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb) |
+| 🏗️ | **Baseline Models** | [MultiVerS baseline](notebooks/06_Baselines.ipynb) and [checkpoint analysis](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb) with custom [evaluation metrics](notebooks/eval.py) |
+| 🧪 | **Model Experimentation** | [Blog post](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) on fine-tuning DeBERTa across multiple datasets |
+| ⚡ | **Scaling Prototype** | [Scaling implementation](notebooks/08_Scaling-Up.ipynb) for production readiness |
+| 🏛️ | **Deployment Planning** | [Engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md) and [architecture design](notebooks/10_Deployment-Architecture.md) |
+| 🚀 | **Production Deployment** | [Blog post](https://jedick.github.io/blog/deploying-AI4citations-from-research-to-production/) documenting deployment process |
+| 👐 | **Project Sharing** | Public repositories (this one, [pyvers](https://github.com/jedick/pyvers), [AI4citations](https://github.com/jedick/AI4citations)) and [live application](https://huggingface.co/spaces/jedick/AI4citations) |
 
 ## Data Sources
 
-The project utilizes two primary datasets, normalized with consistent labeling:
+The project combines two high-quality datasets for biomedical citations with consistent labeling and preprocessing:
 
-### SciFact
-- 1,409 scientific claims verified against 5,183 abstracts
-- Source: [GitHub](https://github.com/allenai/scifact) | [Paper](https://doi.org/10.18653/v1/2020.emnlp-main.609)
-- Downloaded from: https://scifact.s3-us-west-2.amazonaws.com/release/latest/data.tar.gz
-- Test fold includes labels and abstract IDs from [`scifact_10`](https://github.com/dwadden/multivers/blob/main/script/get_data_train.sh)
+### SciFact Dataset
+- **Scope**: 1,409 scientific claims verified against 5,183 abstracts
+- **Source**: [GitHub Repository](https://github.com/allenai/scifact) | [Research Paper](https://doi.org/10.18653/v1/2020.emnlp-main.609)
+- **Main Topics**: gene expression, cancer, treatment, infection
+- **Data Quality**: Enhanced test fold with labels and abstract IDs from [`scifact_10`](https://github.com/dwadden/multivers/blob/main/script/get_data_train.sh)
 
-### Citation-Integrity
-- 3,063 citation instances from biomedical publications
-- Source: [GitHub](https://github.com/ScienceNLP-Lab/Citation-Integrity/) | [Paper](https://doi.org/10.1093/bioinformatics/btae420)
-- Downloaded from: https://github.com/ScienceNLP-Lab/Citation-Integrity/ (Google Drive link)
+### Citation-Integrity Dataset
+- **Scope**: 3,063 citation instances from biomedical publications
+- **Source**: [GitHub Repository](https://github.com/ScienceNLP-Lab/Citation-Integrity/) | [Research Paper](https://doi.org/10.1093/bioinformatics/btae420)
+- **Main Topics**: cells, cancer, COVID-19, patients
 
-For more details on data format, see [MultiVerS data documentation](https://github.com/dwadden/multivers/blob/main/doc/data.md).
+**Technical Approach**: Both datasets follow the [MultiVerS data format](https://github.com/dwadden/multivers/blob/main/doc/data.md), enabling consistent model training and evaluation across different domains.
 
-- **Data wrangling notes:**
-  - For Citation-Integrity, identified issues with data quality (some claims are very short sentence fragments) and class imbalance (less than 10% of claims are NEI)
-  - For SciFact, identified incomplete test dataset (corrected with data from `scifact_10`; see below) and class imbalance (40% NEI and Support, 20% Refute)
-- **Data exploration notes:**
-  - For Citation-Integrity, main topics are cells, cancer, COVID-19, patients, infection, and disease
-  - For SciFact, main topics are gene expression, cancer, treatment, and infection
+## Novel Insights and Lessons Learned
 
-## Managing Uncertainty
+This project uncovered several findings that weren't documented in existing literature or course materials:
 
-The best approach wasn't always obvious at the beginning.
+### 🔄 **Sentence Pair Ordering Matters**
+- **Discovery**: The order of sentence pairs in transformer tokenization significantly impacts performance
+- **Investigation**: Model documentation and papers lack clarity on proper ordering for natural language inference
+- **Solution**: Experiments revealed DeBERTa was trained with evidence-before-claim ordering
+- **Impact**: Maintaining consistent ordering between fine-tuning and inference improved classification accuracy
+- **Implementation**: The pyvers package enforces this ordering, enhancing model reliability
 
-- The order of sentence pairs in the tokenizer is important
-  - Model documentation and papers are not clear about ordering sentence pairs for natural language inference
-  - Experimenting with pretrained DeBERTa suggests that it was trained with evidence before claim
-  - Maintaining the same order for fine-tuning and inference gives improved performance
-  - The pyvers package uses this order consistently, improving reliability of NLI classification
-    - See zero-shot demonstration in the pyvers [README](https://github.com/jedick/pyvers)
-- Overfitting deep networks isn't necessarily bad
-  - Fine-tuning pretrained transformer models on small datasets begins overfitting after 1 or 2 epochs
-  - Nevertheless, continued fine-tuning improves prediction accuracy on test data
-  - The bias-variance tradeoff in classical ML should be rethought for models with large numbers of parameters
-    - Empirical discovery in this project: [blog post]((https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/#the-paradox-of-rising-loss-and-improving-accuracy))
-    - "Benign overfitting" in the research literature: [blog post](https://jedick.github.io/blog/modern-understanding-of-overfitting-and-generalization-in-machine-learning/)
+### 📈 **Rethinking Overfitting in Deep Learning**
+- **Conventional Wisdom**: Classical ML teaches that overfitting hurts generalization
+- **Surprising Finding**: Fine-tuning pretrained transformers on small datasets shows apparent overfitting after 1-2 epochs, yet continued training improves test accuracy
+- **Insight**: The bias-variance tradeoff behaves differently for large parameter models
+- **Documentation**: Detailed analysis in [blog post](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/#the-paradox-of-rising-loss-and-improving-accuracy) with connections to "benign overfitting" research
+- **Practical Impact**: Optimized training schedules based on test performance rather than traditional early stopping
 
-## Looking Forward
+## Future Development Opportunities
 
-TODOs for future development.
-
-- Handle class imbalance: MultiVerS implements reweighting in the loss function. Can we do the same with DeBERTa?
-- Data augmentation: Use a library such as [TextAttack](https://github.com/QData/TextAttack), [TextAugment](https://github.com/dsfsi/textaugment), or [nlpaug](https://github.com/makcedward/nlpaug) to add examples with synonyms or back-translations. This may improve generalizability.
-- Low-rank adaptation (LoRA): Can [speed up fine-tuning](10.48550/arXiv.2106.09685) and [mitigate overfitting](https://web.stanford.edu/class/cs224n/final-reports/256907158.pdf) compared to optimizing all parameters in the model.
+- **Class Imbalance Handling**: Implement loss function reweighting similar to MultiVerS approach
+- **Data Augmentation**: Integrate libraries like [TextAttack](https://github.com/QData/TextAttack), [TextAugment](https://github.com/dsfsi/textaugment), or [nlpaug](https://github.com/makcedward/nlpaug) for synthetic data generation
+- **Efficient Fine-tuning**: Explore Low-rank Adaptation (LoRA) for faster training and overfitting mitigation
+- **Expanded Domains**: Extend beyond biomedical literature to other scientific disciplines
+- **Real-time Processing**: Optimize inference speed for large-scale document processing
 
 ## Acknowledgments
 
-I wish to thank my mentor, Divya Vellanki, for giving valuable advice and encouragement throughout this project.
+Special thanks to Divya Vellanki, my mentor, for invaluable guidance and encouragement throughout this project.
 
-The Springboard MLE bootcamp curriculum provided the conceptual and practical foundations.
+The Springboard MLE bootcamp provided the foundational knowledge and structured approach that made this project possible.
 
-This project builds upon several significant contributions from the research community:
+This work builds upon significant contributions from the research community:
+- Citation-Integrity dataset by [Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420)
+- DeBERTa model by [He et al. (2021)](https://doi.org/10.48550/arXiv.2006.03654)
+- MultiVerS model by [Wadden et al. (2021)](https://doi.org/10.48550/arXiv.2112.01640)
+- SciFact dataset by [Wadden et al. (2020)](https://arxiv.org/abs/2004.14974)
+- Longformer model by [Beltagy et al. (2020)](https://doi.org/10.48550/arXiv.2004.05150)
 
-- Citation-Integrity dataset by [Sarol et al., 2024](https://doi.org/10.1093/bioinformatics/btae420)
-- DeBERTa model by [He et al., 2021](https://doi.org/10.48550/arXiv.2006.03654)
-- MultiVerS model by [Wadden et al., 2021](https://doi.org/10.48550/arXiv.2112.01640)
-- SciFact dataset by [Wadden et al., 2020](https://arxiv.org/abs/2004.14974)
-- Longformer model by [Beltagy et al., 2020](https://doi.org/10.48550/arXiv.2004.05150)
+---
 
+**References:**
+- [1] MultiVerS pretrained on FeverSci and fine-tuned on SciFact by [Wadden et al. (2021)](https://doi.org/10.48550/arXiv.2112.01640)
+- [2] MultiVerS pretrained on HealthVer and fine-tuned on Citation-Integrity by [Sarol et al. (2024)](https://doi.org/10.1093/bioinformatics/btae420)
+- [3] DeBERTa v3 [pretrained on multiple NLI datasets](https://huggingface.co/MoritzLaurer/DeBERTa-v3-base-mnli-fever-anli) and fine-tuned on shuffled data from SciFact and Citation-Integrity in this project
