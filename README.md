@@ -1,11 +1,13 @@
-# ML Engineering Capstone Project: Automated Citation Verification
+# Automated Citation Verification
+
+**_An ML Engineering Capstone Project_**
 
 This project develops an NLP framework for automated validation of citations and claims, ensuring references accurately support stated information. In an era where scientific misinformation can have serious consequences, verifying that citations properly support the claims they reference is crucial for maintaining the integrity of scientific literature and preventing the spread of false information.
 
 **The Problem**: Studies show that 10-20% or more of citations in scientific literature are inaccurate, failing to support the claims they reference. This undermines scientific credibility and can perpetuate misinformation. Our solution uses state-of-the-art transformer models to automatically classify citation accuracy as SUPPORT, REFUTE, or NEI (Not Enough Information).
 
 <div align="center">
-  <img src="./images/project_diagram.png" alt="MLE Capstone Project Diagram" style="width:75%;"/>
+  <img src="./images/project_diagram.png" alt="MLE Capstone Project Diagram" style="width:60%;"/>
 </div>
 
 ## Key Achievements
@@ -46,17 +48,17 @@ Our fine-tuned DeBERTa model achieves a **7 percentage point increase in average
 
 ### **Production-Ready Deliverables**
 
-- **🏋 [PyVers Python Package](https://github.com/jedick/pyvers)**: Comprehensive framework for model training with multi-dataset ingestion, Hugging Face integration, and PyTorch Lightning for scalable training
+- **🏋 [PyVers Python Package](https://github.com/jedick/pyvers)**: Comprehensive framework for model training with multi-dataset ingestion, 🤗 Hugging Face integration, and ⚡ PyTorch Lightning for scalable training
 - **🔀 [Fine-tuned Model](https://huggingface.co/jedick/DeBERTa-v3-base-mnli-fever-anli-scifact-citint)**: Publicly available model ready for inference
 - **🌐 [AI4Citations Web Application](https://huggingface.co/spaces/jedick/AI4citations)**: **Live application** on Hugging Face Spaces where users can input claims and evidence to get verification results and provide feedback for model improvement
-- **</> [Application Repository](https://github.com/jedick/AI4citations)**: Complete source code for [Gradio](https://github.com/gradio-app/gradio) frontend and evidence retrieval from PDFs 
+- **</> [Application Repository](https://github.com/jedick/AI4citations)**: Complete source code for [Gradio](https://github.com/gradio-app/gradio) frontend and evidence retrieval modules
 
 ### **Technical Innovation**
-- Improvement on state-of-the-art baselines that use the MultiVerS model (Longformer-based architecture)
+- Improvement on state-of-the-art baselines that use the MultiVerS model based on Longformer
 - Multi-dataset training approach combining SciFact and Citation-Integrity datasets
 - Evidence retrieval from PDFs using text similarity (BM25-based), semantic search (BERT-based), or LLMs (OpenAI API).
 - Comprehensive evaluation framework with detailed performance metrics
-- Feedback functionality implemented with Hugging Face datasets
+- Feedback functionality implemented with Hugging Face Datasets
 - API access to inference through the Gradio app
 
 ## Project Development Timeline
@@ -66,17 +68,17 @@ This project follows a systematic approach covering all aspects of the machine l
 | Phase | Component | Description |
 |-------|-----------|-------------|
 | 🎯 | **Problem Definition** | [Initial project ideas](https://docs.google.com/document/d/1QMHkzGv1kPJtFDiK-1YWUcK4C_ysJywW/edit?usp=sharing&ouid=111099330977735872115&rtpof=true&sd=true) identifying citation accuracy as a critical scientific integrity issue |
-| 📊 | **Data Collection** | [data directory](data) with curated datasets from SciFact and Citation-Integrity |
+| 📊 | **Data Collection** | [Data directory](data) with curated datasets from SciFact and Citation-Integrity |
 | 📝 | **Project Proposal** | [Detailed proposal](notebooks/00_Project-Proposal.md) outlining approach and deliverables |
 | 🔍 | **Literature Review** | [Research survey](notebooks/01_Reproduction-of-Citation-Integrity.ipynb) reproducing Citation-Integrity methodology |
 | 🧹 | **Data Wrangling** | Notebooks for [Citation-Integrity](notebooks/02_Data-Wrangling-for-Citation-Integrity.ipynb) and [SciFact](notebooks/03_Data-Wrangling-for-SciFact.ipynb) preprocessing |
 | 🔬 | **Data Exploration** | Analysis notebooks for [Citation-Integrity](notebooks/04_Data-Exploration-for-Citation-Integrity.ipynb) and [SciFact](notebooks/05_Data-Exploration-for-SciFact.ipynb) |
-| 🏗️ | **Baseline Models** | [MultiVerS baseline](notebooks/06_Baselines.ipynb) and [checkpoint analysis](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb) with custom [evaluation metrics](notebooks/eval.py) |
+| 📍 | **Baseline Models** | [MultiVerS baseline](notebooks/06_Baselines.ipynb) and [checkpoint analysis](notebooks/07_Checkpoints-and-Rationale-Weight.ipynb) with custom [evaluation metrics](notebooks/eval.py) |
 | 🧪 | **Model Experimentation** | [Blog post](https://jedick.github.io/blog/experimenting-with-transformer-models-for-citation-verification/) on fine-tuning DeBERTa across multiple datasets |
-| ⚡ | **Scaling Prototype** | [Scaling implementation](notebooks/08_Scaling-Up.ipynb) for production readiness |
-| 🏛️ | **Deployment Planning** | [Engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md) and [architecture design](notebooks/10_Deployment-Architecture.md) |
-| 🚀 | **Production Deployment** | [Blog post](https://jedick.github.io/blog/deploying-AI4citations-from-research-to-production/) documenting deployment process |
-| 👐 | **Project Sharing** | Public repositories (this one, [pyvers](https://github.com/jedick/pyvers), [AI4citations](https://github.com/jedick/AI4citations)) and [live application](https://huggingface.co/spaces/jedick/AI4citations) |
+| 🪜 | **Scaling Prototype** | [Scaling implementation](notebooks/08_Scaling-Up.ipynb) for production readiness |
+| 📐 | **Deployment Planning** | [Engineering plan](notebooks/09_Deployment-and-Engineering-Plan.md) and [architecture design](notebooks/10_Deployment-Architecture.md) |
+| 💫 | **Production Deployment** | [Blog post](https://jedick.github.io/blog/deploying-AI4citations-from-research-to-production/) documenting deployment process |
+| ❇ | **Project Sharing** | Public repositories (this one, [pyvers](https://github.com/jedick/pyvers), [AI4citations](https://github.com/jedick/AI4citations)) and [live application](https://huggingface.co/spaces/jedick/AI4citations) |
 
 ## Data Sources
 
